@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+.imageTable td {
+	text-align: center;
+	padding: 2px;
+}
+
+.imageTable  tr, td {
+    border: none !important;
+}

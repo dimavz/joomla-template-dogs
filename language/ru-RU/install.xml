@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" client="site" type="language" method="upgrade">
+	<name>Cobalt Russian [Frontend]</name>
+    <tag>ru-RU</tag>
+    <version>8.341</version>
+    <creationDate>2012-07-08</creationDate>
+    <author>MintJoomla</author>
+    <authorEmail>info@mintjoomla.com</authorEmail>
+    <authorUrl>www.mintjoomla.com</authorUrl>
+    <copyright>Copyright (C) 2005 - 2012 MintJoomla.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>Russian Language for Cobalt 8 by AsmuZ</description>
+	<files>
+		<filename file="meta">install.xml</filename>
+		<filename>ru-RU.com_cobalt.ini</filename>
+		
+		<filename>ru-RU.com_cobalt_gateway_paypal.ini</filename>
+		
+		<filename>ru-RU.mod_section_statistics.ini</filename>
+		<filename>ru-RU.mod_user_statistics.ini</filename>
+		
+		<filename>ru-RU.com_cobalt_field_audio.ini</filename>
+		<filename>ru-RU.com_cobalt_field_boolean.ini</filename>
+		<filename>ru-RU.com_cobalt_field_child.ini</filename>
+		<filename>ru-RU.com_cobalt_field_datetime.ini</filename>
+		<filename>ru-RU.com_cobalt_field_digits.ini</filename>
+		<filename>ru-RU.com_cobalt_field_email.ini</filename>
+		<filename>ru-RU.com_cobalt_field_gallery.ini</filename>
+		<filename>ru-RU.com_cobalt_field_geo.ini</filename>
+		<filename>ru-RU.com_cobalt_field_html.ini</filename>
+		<filename>ru-RU.com_cobalt_field_image.ini</filename>
+		<filename>ru-RU.com_cobalt_field_listautocomplete.ini</filename>
+		<filename>ru-RU.com_cobalt_field_multilevelselect.ini</filename>
+		<filename>ru-RU.com_cobalt_field_parent.ini</filename>
+		<filename>ru-RU.com_cobalt_field_passwd.ini</filename>
+		<filename>ru-RU.com_cobalt_field_paytodownload.ini</filename>
+		<filename>ru-RU.com_cobalt_field_payvoucher.ini</filename>
+		<filename>ru-RU.com_cobalt_field_paytoaccess.ini</filename>
+		<filename>ru-RU.com_cobalt_field_readmore.ini</filename>
+		<filename>ru-RU.com_cobalt_field_register.ini</filename>
+		<filename>ru-RU.com_cobalt_field_records.ini</filename>
+		<filename>ru-RU.com_cobalt_field_select.ini</filename>
+		<filename>ru-RU.com_cobalt_field_status.ini</filename>
+		<filename>ru-RU.com_cobalt_field_telephone.ini</filename>
+		<filename>ru-RU.com_cobalt_field_text.ini</filename>
+		<filename>ru-RU.com_cobalt_field_textarea.ini</filename>
+		<filename>ru-RU.com_cobalt_field_uploads.ini</filename>
+		<filename>ru-RU.com_cobalt_field_url.ini</filename>
+		<filename>ru-RU.com_cobalt_field_video.ini</filename>
+	</files>
+</extension>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cobaltfield>
+	<name>Addthis Pro</name>
+	<group>Special Form Elements</group>
+	<config>
+		<fields name="params">
+			<fieldset name="tmpl">
+				<field type="filelist" name="template_output_list" filter="php$" hide_none="1" hide_default="1" directory="/components/com_cobalt/fields/addthispro/tmpl/output" label="F_TMPLLIST" default="default.php" />
+				<field type="filelist" name="template_output_full" filter="php$" hide_none="1" hide_default="1" directory="/components/com_cobalt/fields/addthispro/tmpl/output" label="F_TMPLFULL" default="default.php" />
+			</fieldset>
+			<fieldset name="general" label="FS_GENERAL" addfieldpath="/administrator/components/com_cobalt/models/fields">				
+				<field name="profile_id" type="text" default="ra-53ac3e47741dafaa" label="PROFILE_ID" description="PROFILE_ID_DESC" />
+				<field name="style" type="radio" default="32x32" label="STYLE" description="STYLE_DESC" multiple="false">
+				  <option value="32x32">Big icons (32x32)</option>
+				  <option value="20x20">Normal icons (20x20)</option>
+				  <option value="16x16">Small icons (16x16)</option>
+				  <option value="with_counts">Original icons with vertical counts</option>
+				  <option value="with_counts_h">Original icons with horizontal counts</option>
+				</field>
+				<field name="services_icons" type="list" default="" label="SERVICES_INCLUDE" description="SERVICES_INCLUDE_DESC" multiple="true">
+				  <option value="facebook">Facebook</option>
+				  <option value="google_plusone_share">Google PlusOne</option>
+				  <option value="twitter">Twitter</option>				  
+				  <option value="pinterest_share">Pinterest Share</option>
+				  <option value="delicious">Delicious</option>				  				  
+				  <option value="linkedin">LinkedIn</option>
+				  <option value="digg">Digg</option>				  
+				  <option value="reddit">Reddit</option>
+				  <option value="tumblr">Tumblr</option>
+				  <option value="viadeo">Viadeo</option>			  
+				  <option value="xing">XING</option>
+				  <option value="yahoobkm">Y! Bookmarks</option>
+				  <option value="amazonwishlist">Amazon</option>
+				  <option value="buffer">Buffer</option>
+				  <option value="gmail">Gmail</option>
+				  <option value="google">Google Bookmarks</option>
+				  <option value="mymailru">Mail.ru</option>
+				  <option value="evernote">Evernote</option>
+				  <option value="email">Email</option>
+				  <option value="print">Print</option>
+				  <option value="compact">Addthis Compact</option>
+				</field>
+				<field name="services_counts_v" type="list" default="" label="SERVICES_INCLUDE_COUNTS" description="SERVICES_INCLUDE_COUNTS_DESC" multiple="true">
+				  <option value="fl">Facebook Like</option>
+				  <option value="tt">Twitter Tweet</option>
+				  <option value="g1">Google +1</option>				  
+				  <option value="li">LinkedIn</option>
+				  <option value="ppi">Pinterest Pin it</option>
+				  <option value="ac">Addthis Compact</option>
+				</field>
+				<field name="services_counts_h" type="list" default="" label="SERVICES_INCLUDE_COUNTS_H" description="SERVICES_INCLUDE_COUNTS_DESC_H" multiple="true">
+				  <option value="fl">Facebook Like</option>
+				  <option value="fr">Facebook Recommend</option>
+				  <option value="tt">Twitter Tweet</option>	
+				  <option value="g1">Google +1</option>				  
+				  <option value="li">LinkedIn</option>
+				  <option value="ppi">Pinterest Pin it</option>
+				  <option value="su">StumbleUpon</option>
+				  <option value="ac">Addthis Compact</option>
+				</field>
+				<field name="field_type" type="list" default="1" label="Use fields" description="" multiple="false">
+				  <option value="1">By ID</option>
+				  <option value="0">By KEY</option>
+				</field>
+				<field name="pic_id" type="text" default="" label="PIC_FIELD_ID" description="PIC_FIELD_ID_DESC" class="picById"/>
+				<field name="desc_id" type="text" default="" label="DESC_FIELD_ID" description="DESC_FIELD_ID_DESC" class="descById"/>
+				<field name="pic_key" type="text" default="" label="PIC_FIELD_KEY" description="PIC_FIELD_KEY_DESC" class="picByKey"/>
+				<field name="desc_key" type="text" default="" label="DESC_FIELD_KEY" description="DESC_FIELD_KEY_DESC" class="descByKey"/>
+				
+			</fieldset>
+			<fieldset name="field_pos_list" label="FIELD_POSITION" addfieldpath="/administrator/components/com_cobalt/models/fields">							
+				<field name="pos_full" type="list" default="0" label="FIELD_FULL_POSITION" description="FIELD_FULL_POSITION_DESC" multiple="false">
+				  <option value="0">In Fields List</option>
+				  <option value="1">In Item title</option>
+				  <option value="2">Bottom of item</option>
+				  <option value="3">Custom CSS selector</option>
+				</field>
+				<field name="custom_pos_full" type="text" default="" label="CSS_FULL"/>
+				
+				<field name="after_before_full" type="list" default="append" label="FIELD_LIST_POSITION_AB_FULL" description="FIELD_LIST_POSITION_DESC_AB_FULL" multiple="false">
+				  <option value="append">After</option>
+				  <option value="prepend">Before</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</cobaltfield>

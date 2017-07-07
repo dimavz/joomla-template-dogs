@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" client="administrator" type="language" method="upgrade">
+	<name>Cobalt Russian [Backend]</name>
+    <tag>ru-RU</tag>
+    <version>8.341</version>
+    <creationDate>2012-07-08</creationDate>
+    <author>MintJoomla</author>
+    <authorEmail>info@mintjoomla.com</authorEmail>
+    <authorUrl>www.mintjoomla.com</authorUrl>
+    <copyright>Copyright (C) 2005 - 2012 MintJoomla.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>Russian Language for Cobalt 8 by AsmuZ</description>
+	<files>
+		<filename>ru-RU.com_cobalt.ini</filename>
+		<filename>ru-RU.com_cobalt.sys.ini</filename>
+		<filename file="meta">install.xml</filename>
+	</files>
+</extension>

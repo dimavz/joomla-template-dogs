@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="file" method="upgrade">
+	<name>Cobalt - Field - AddThis Pro</name>
+	<author>ANDI Amine</author>
+	<license>GPL GNU</license>
+	<authorEmail>support@tadamonet.net</authorEmail>
+	<authorUrl>http://www.tadamonet.net</authorUrl>
+	<creationDate>06/28/2014</creationDate>
+	<copyright>(c) 2014 TADAMONET Web Solutions</copyright>
+	<version>1.1</version>
+	<description><![CDATA[
+			<div class="well"><strong>Cobalt - Field - AddThis Pro:</strong> 
+				<ul>
+					<li>Allow to choose share services for each share bar type</li>
+					<li>Allow share records in list and full view</li>
+					<li>Allow to change share bar position in full view</li>
+				</ul>
+			</div>
+		]]></description>
+	
+	<fileset>
+		<files target="components/com_cobalt/fields">
+			<folder>addthispro</folder>
+		</files>
+		<files folder="addthispro/language" target="language/en-GB">
+             <filename>en-GB.com_cobalt_field_addthispro.ini</filename>
+		</files>
+
+	</fileset>
+		
+</extension>

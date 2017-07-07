@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/**
+ * @encoding     UTF-8
+ * @version      addtocart.xml 14 бер 2014 8:36:15 alexander.khmelnitskiy
+ * @package      alexander.khmelnitskiy.ua
+ * @copyright    Copyright (C) 2014 Alexandr Khmelnytsky (http://alexander.khmelnitskiy.ua). All rights reserved.
+ * @license      GNU/GPL, see http://www.gnu.org/licenses/gpl.html
+ * @author       Khmelnytsky Alexandr (info@alexander.khmelnitskiy.ua)
+ */-->
+<extension version="3.0" type="file" method="upgrade">
+	<name>Cobalt - Field - AK Image</name>
+	<author>Idea by AsmuZ. Made by Alexander Khmelnitskiy</author>
+	<license>GPL GNU</license>
+	<authorEmail>info@alexander.khmelnitskiy</authorEmail>
+	<authorUrl>http://alexander.khmelnitskiy.ua</authorUrl>
+	<creationDate>August 2014</creationDate>
+	<copyright>(c) 2014 alexander.khmelnitskiy.ua</copyright>
+	<version>1.0</version>
+	<description>
+            <![CDATA[
+            Cobalt - Field - AK Image by <a href="http://alexander.khmelnitskiy.ua" target="_blank">alexander.khmelnitskiy.ua</a><br /><br />Idea by <a href="http://asmuz.ru" target="_blank">www.AsmuZ.ru</a>
+            ]]>
+        </description>
+	<fileset>
+            <files target="components/com_cobalt/fields">
+                    <folder>akimage</folder>
+            </files>
+            <files folder="akimage/language" target="language/en-GB">
+                <filename>en-GB.com_cobalt_field_akimage.ini</filename>
+            </files>
+	    <files folder="akimage/language" target="language/ru-RU">
+		<filename>ru-RU.com_cobalt_field_akimage.ini</filename>
+	    </files>
+	</fileset>
+</extension>
