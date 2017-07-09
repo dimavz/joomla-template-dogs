@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template">
-	<name>PRO_DOGS</name>
+	<name>PRODOGSINFO</name>
 	<version>1.0.0</version>
 	<creationDate>07.07.2017</creationDate>
 	<author>Dmitry Zatulenka</author>
 	<authorMail>zatulenko@gmail.com</authorMail>
 	<authorUrl>http://prodogs.info</authorUrl>
 	<copyright>Copyright (C) ProDogs.Info</copyright>
-	<license>TPL_PRO_DOGS_INFO_LICENCE</license>
-	<description>TPL_PRO_DOGS_INFO_DESCRIPTION</description>
+	<license>TPL_PRODOGSINFO_LICENCE</license>
+	<description>TPL_PRODOGSINFO_DESCRIPTION</description>
 	
 	<files>
 		
@@ -54,7 +54,7 @@
         <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs_info.ini</language>
         <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs_info.sys.ini</language>
         
-		<language tag="en-GB">en-GB/en-GB.tpl_prodogs_info.ini</language>
+				<language tag="en-GB">en-GB/en-GB.tpl_prodogs_info.ini</language>
         <language tag="en-GB">en-GB/en-GB.tpl_prodogs_info.sys.ini</language>
 	</languages>
 	
@@ -64,7 +64,7 @@
 			
 				<field name="site_logo" 
 					type="media" 
-					label="TPL_PRODOGSINFO_FIELD_SITELOGO" 
+					label="TPL_PRODOGSINFO_FIELD_SITELOGO"
 					description="TPL_PRODOGSINFO_FIELD_SITELOGO_DESC">
 				</field>
 				
