@@ -64,20 +64,20 @@
 			
 				<field name="site_logo" 
 					type="media" 
-					label="TPL_PRO_DOGS_INFO_FIELD_SITELOGO" 
-					description="TPL_PRO_DOGS_INFO_FIELD_SITELOGO_DESC">
+					label="TPL_PRODOGSINFO_FIELD_SITELOGO" 
+					description="TPL_PRODOGSINFO_FIELD_SITELOGO_DESC">
 				</field>
 				
 				<field name="site_name" 
 					type="text" 
-					label="TPL_PRO_DOGS_INFO_FIELD_SITENAME" 
-					description="TPL_PRO_DOGS_INFO_FIELD_SITENAME_DESC">
+					label="TPL_PRODOGSINFO_FIELD_SITENAME" 
+					description="TPL_PRODOGSINFO_FIELD_SITENAME_DESC">
 				</field>
 				
 				<field name="site_desc" 
 					type="textarea" 
-					label="TPL_PRO_DOGS_INFO_FIELD_SITEDESC" 
-					description="TPL_PRO_DOGS_INFO_FIELD_SITEDESC_DESC">
+					label="TPL_PRODOGSINFO_FIELD_SITEDESC" 
+					description="TPL_PRODOGSINFOFIELDSITEDESC_DESC">
 				</field>
 				
 			</fieldset>
