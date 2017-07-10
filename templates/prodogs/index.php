@@ -6,17 +6,20 @@ $site_logo = $templateparams->get('site_logo');
 $site_name = $templateparams->get('site_name');
 $site_desc = $templateparams->get('site_desc');
 //print_r($templateparams);
+
 //stylesheets
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap.min.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap-theme.min');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/fancybox/jquery.fancybox.css');
-$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel/owl.carousel.css');
+$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.carousel.css');
+$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.theme.default.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/countdown/jquery.countdown.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/fonts.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/font-awesome.min.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/custom.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/main.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/media.css');
+$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/favicon.png');
 if ($doc->countModules('position-5'))
 {
@@ -29,10 +32,10 @@ if ($doc->countModules('position-7'))
 //scripts
 //$doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
 //$doc->addScript(JUri::base().'templates/'.$doc->template.'/js/common.js');
-unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
-unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
-unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
-unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
+// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
+// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
+// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
+// unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +186,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 				<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="logo_img wow bounceInDown" data-wow-delay="0.5s">
 						<a href="/">
-							<img src="images/logo.png" alt="Сообщество любителей собак. Всё о собаках.">
+							<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/logo.png" alt="Сообщество любителей собак. Всё о собаках.">
 						</a>
 					</div>
 				</div>
@@ -317,7 +320,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
 							<a href="">
-								<img src="/images/slider/slide_1.jpg" alt="">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="">
 							</a>
 							<div class="carousel-caption">
 								<h3>
@@ -335,7 +338,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="/images/slider/slide_2.jpg" alt="">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="">
 							</a>
 							<div class="carousel-caption">
 								<h3><a href="">Заголовок слайда 2</a></h3>
@@ -349,7 +352,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="/images/slider/slide_3.jpg" alt="">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="">
 							</a>
 							<div class="carousel-caption">
 								<h3><a href="">Заголовок слайда 3</a></h3>
@@ -363,7 +366,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="/images/slider/slide_1.jpg" alt="">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="">
 							</a>
 							<div class="carousel-caption">
 								<h3><a href="">Заголовок слайда 4</a></h3>
@@ -377,7 +380,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="/images/slider/slide_2.jpg" alt="">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="">
 							</a>
 							<div class="carousel-caption">
 								<h3><a href="">Заголовок слайда 5</a></h3>
@@ -403,14 +406,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 			</div><!-- /.main_slider -->
 			<div class="row">
 				<div id="top_banners" class="owl-carousel owl-theme">
-					<div class="item"><a href="#"><img src="/images/baners/chappi.jpg" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/darling1.gif" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/hills.jpg" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/logo2.jpg.png" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/Orijen_Logo.jpg" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/Pedigree11.jpg" alt="Alt"></a></div>
-					<div class="item"><a href="#"><img src="/images/baners/Proplan_Logo_140x97.JPG" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/chappi.jpg" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/darling1.gif" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/hills.jpg" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/logo2.jpg.png" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Orijen_Logo.jpg" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Pedigree11.jpg" alt="Alt"></a></div>
+					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Proplan_Logo_140x97.JPG" alt="Alt"></a></div>
 				</div><!-- end /.owl-carousel owl-theme -->
 				<div class="owl-controls">
 					<div class="owl-nav">
@@ -437,7 +440,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 													VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/haski.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/haski.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -459,14 +462,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div><!-- /.post_content -->
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
-										<div class="col-sm-4 col-xs-6">
+											</div><!-- /.col-sm-4 col-xs-4 -->
+											<div class="col-sm-4 col-xs-6">
 												<div class="post_widget">
 													<div class="price">$700</div>
 													<div class="vip">VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/laika2.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/laika2.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -487,14 +490,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div>
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
-										<div class="col-sm-4 col-xs-6">
+											</div><!-- /.col-sm-4 col-xs-4 -->
+											<div class="col-sm-4 col-xs-6">
 												<div class="post_widget">
 													<div class="price">$400</div>
 													<div class="vip">VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/ovcharka2.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/ovcharka2.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -515,14 +518,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div>
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
-										<div class="col-sm-4 col-xs-6">
+											</div><!-- /.col-sm-4 col-xs-4 -->
+											<div class="col-sm-4 col-xs-6">
 												<div class="post_widget">
 													<div class="price">$500</div>
 													<div class="vip">VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/rotveiler.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/rotveiler.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -543,14 +546,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div>
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
-										<div class="col-sm-4 col-xs-6">
+											</div><!-- /.col-sm-4 col-xs-4 -->
+											<div class="col-sm-4 col-xs-6">
 												<div class="post_widget">
 													<div class="price">$500</div>
 													<div class="vip">VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/rotveiler2.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/rotveiler2.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -571,14 +574,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div>
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
-										<div class="col-sm-4 col-xs-6">
+											</div><!-- /.col-sm-4 col-xs-4 -->
+											<div class="col-sm-4 col-xs-6">
 												<div class="post_widget">
 													<div class="price">$500</div>
 													<div class="vip">VIP</div>
 													<div class="post_img">
 														<a href="#">
-															<img src="images/ads/haski2.jpg" alt="заголовок статьи" title="Подробнее">
+															<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/ads/haski2.jpg" alt="заголовок статьи" title="Подробнее">
 														</a>
 													</div><!-- end /.post_img -->
 													<div class="post_content">
@@ -599,7 +602,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div>
 													</div>
 												</div><!-- end /.post_widget -->
-										</div><!-- /.col-sm-4 col-xs-4 -->
+											</div><!-- /.col-sm-4 col-xs-4 -->
 										</div><!-- end /.post-row -->
 										<div class="all_dogs">
 											<a class="btn btn-info" href="#" role="button">Смотреть все объявления о продаже щенков...
@@ -621,7 +624,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="article_main_img">
 																<a href="#">
-																	<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.article_main_img -->
 															<div class="article_main_content">
@@ -653,7 +656,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 													<div class="article_widget">
 														<div class="article_img">
 															<a href="#">
-																<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 															</a>
 														</div><!-- end /.article_img -->
 														<div class="article_header">
@@ -676,7 +679,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 													<div class="article_widget">
 														<div class="article_img">
 															<a href="#">
-																<img src="images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
+																<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
 															</a>
 														</div><!-- end /.article_img -->
 														<div class="article_header">
@@ -699,7 +702,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 													<div class="article_widget">
 														<div class="article_img">
 															<a href="#">
-																<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 															</a>
 														</div><!-- end /.article_img -->
 														<div class="article_header">
@@ -740,7 +743,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -756,7 +759,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -772,7 +775,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -788,7 +791,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -809,7 +812,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -825,7 +828,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -841,7 +844,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -857,7 +860,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -878,7 +881,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -894,7 +897,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -910,7 +913,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -926,7 +929,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -956,7 +959,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 												<!-- Wrapper for slides -->
 												<div class="carousel-inner" role="listbox">
 													<div class="item active">
-														<a href="#" id="link_img"><img src="images/slider/slide_1.jpg" alt=""></a>
+														<a href="#" id="link_img"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt=""></a>
 														<div class="carousel-caption">
 															<h3>Внимание розыск!</h3>
 															<div class="caption-content">
@@ -980,7 +983,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div><!-- /.carousel-caption -->
 													</div><!--/.item -->
 													<div class="item">
-														<a href="#"><img src="images/slider/slide_2.jpg" alt=""></a>
+														<a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt=""></a>
 														<div class="carousel-caption">
 															<h3>Внимание розыск!</h3>
 															<div class="caption-content">
@@ -1005,7 +1008,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														</div><!-- /.carousel-caption -->
 													</div><!--/.item -->
 													<div class="item">
-														<a href="#"><img src="images/slider/slide_3.jpg" alt=""></a>
+														<a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt=""></a>
 														<div class="carousel-caption">
 															<h3>Внимание розыск!</h3>
 															<div class="caption-content">
@@ -1043,11 +1046,11 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 
 												<!-- Indicators -->
 												<ul class="carousel-indicators">
-													<img src="images/slider/slide_1.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="0" class="active">
+													<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="0" class="active">
 
-													<img src="images/slider/slide_2.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="1">
+													<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="1">
 
-													<img src="images/slider/slide_3.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="2">
+													<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="" data-target="#carousel-wanted_pets" data-slide-to="2">
 												</ul>				
 											</div>
 											<!-- Конец слайдера поиска собаки -->
@@ -1063,7 +1066,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -1079,7 +1082,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_2.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -1095,7 +1098,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_3.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -1111,7 +1114,7 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 														<div>
 															<div class="post_img">
 																<a href="#">
-																	<img src="images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
+																	<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/slider/slide_1.jpg" alt="заголовок статьи" title="Подробнее">
 																</a>
 															</div><!-- end /.post_img -->
 															<h3>
@@ -1139,14 +1142,14 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 							</div><!-- /.row -->
 							<div class="row">
 								<div id="bottom_baners" class="owl-carousel owl-theme">
-									<div class="item"><a href="#"><img src="images/baners/chappi.jpg" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/darling1.gif" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/hills.jpg" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/logo2.jpg.png" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/Orijen_Logo.jpg" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/Pedigree11.jpg" alt="Alt"></a></div>
-									<div class="item"><a href="#"><img src="images/baners/Proplan_Logo_140x97.JPG" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/chappi.jpg" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/darling1.gif" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/hills.jpg" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/logo2.jpg.png" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Orijen_Logo.jpg" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Pedigree11.jpg" alt="Alt"></a></div>
+									<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Proplan_Logo_140x97.JPG" alt="Alt"></a></div>
 								</div><!-- end /.owl-carousel owl-theme -->
 								<div class="owl-controls">
 									<div class="owl-nav">
@@ -1324,21 +1327,22 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
 	<script src="libs/respond/respond.min.js"></script>
 	<![endif]-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
 
-  <!-- <script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery/jquery-1.11.1.min.js"></script> -->
-  <script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/common.js"></script>
-  <script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>  
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/fancybox/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/scrollto/jquery.scrollTo.min.js"></script>
-	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/owl-carousel/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/owl-carousel2/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.countdown.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.countdown-ru.js"></script>
-<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/landing-nav/navigation.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/landing-nav/navigation.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/wow.min.js"></script>
+	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/common.js"></script>
 	
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
