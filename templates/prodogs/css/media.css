@@ -1,0 +1,1410 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	.logo_text{
+		display: block;
+		float: left;
+		margin-top: -55px;
+		/*width: 705px;*/
+		height: 250px;
+	}
+	.greeting h3 {
+		font-size: 44px;
+		/*margin-top: 80px;*/
+	}
+	/* Форма поиска */ 
+	.top_search{
+		left: 300px;
+	}
+	.top_login a {
+		font-size: 16px;
+	}
+	.main_menu{
+		width: 970px;
+	}
+	.main_subscribe label{
+		font-size: 15px;
+	}
+
+	/*Стиль слайдера*/
+
+	.main_slider img{
+		width: 350px;
+		height: 200px !important;
+	}
+
+	.main_slider .carousel-caption{
+		/*position: absolute;*/
+		top:-35px;
+		left: 430px;
+		text-align: left;
+		width: 500px;
+	}
+
+	.main_slider .carousel-caption .item_text{
+		text-align: left;
+		width: 430px;
+		height: 90px;
+		overflow: hidden;
+	}
+
+	.main_slider .item h3{
+		font-size: 18px;
+		color: #3779BF;
+		height: 40px;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.main_slider .item p{
+		color: #000;
+		font-size: 14px;
+	}
+
+	.main_slider .carousel-caption a.btn {
+		margin-top: 10px;
+	}
+	/* Конец стиль слайдера*/
+
+	/* Cтили модуля объявлений*/
+	.post_widget {
+		height: 338px;
+	}
+	.post_content {
+		top: 220px;
+	}
+	.post_content .geo a {
+		font-size: 0.9em;
+	}
+	.post_content .cont {
+		font-size: .9em;
+	}
+	/* Конец стилей модуля объявлений*/
+
+	/* Cтили модуля новостей*/
+	.article_main_widget {
+		height: 300px;
+	}
+	.article_main_widget h3 {
+		font-size: 1em;
+	}
+	.article_main_header .data span.day {
+		font-size: 22px;
+	}
+	.article_main_header .data span.month {
+		font-size: 14px;
+	}
+	.article_widget {
+		height: 80px;
+	}
+	.article_img {
+		height: 80px;
+		width: 130px;
+	}
+	.article_img a {
+		height: 80px;
+		width: 130px;
+		display: block;
+	}
+	.article_img img {
+		padding: 3px 5px 5px 3px;
+
+	}
+	.article_header {
+		position: absolute;
+		top: 0;
+		left: 160px;
+		height: 80px;
+		overflow: hidden;
+		padding: 5px;
+		transition: all 0.5s ease 0s;
+	}
+	.article_header .article_data {
+		padding-left: 5px;
+	}
+	.article_widget h3 {
+		font-size: 1em;
+		height:85px;
+	}
+	.article_post {
+		height: 80px;
+		padding: 3px;
+		font-size: .8em;
+		overflow: hidden;
+	}
+
+	/* Конец стилей модуля новостей*/
+
+	/* Стили слайдера розыска */
+	#carousel-wanted_pets .carousel-inner .item img {
+		height: 310px;
+		margin: 0;
+		padding: 15px;
+		width: 450px;
+	}
+
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption {
+		width: 450px;
+	}
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption h3 {
+		margin-left: -20px;
+	}
+	.caption-content{
+		margin-left: -20px;
+		height: 220px;
+	}
+
+	.contact-info{
+		margin-left: -30px;
+	}
+
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption a.btn {
+		margin-left: -20px;
+	}
+
+	#carousel-wanted_pets.carousel.slide > ul.carousel-indicators {
+		top: 320px;
+	}
+
+	#carousel-wanted_pets.carousel.slide ul.carousel-indicators img{
+		width: 130px;
+		height: 80px;
+	}
+
+	#carousel-wanted_pets .carousel-control.right {
+		left: 88%;
+	}
+
+	/* Конец стилей слайдера розыска */
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	.logo_img {
+		width: 200px;
+		height: 200px;
+	}
+	.logo_img img {
+		width: 200px;
+		height: 200px;
+	}
+
+	/* Форма поиска */ 
+	.top_search{
+		left: 210px;
+	}
+
+	.logo_text{
+		display: block;
+		float: left;
+		margin-top: -75px;
+		width: 100%;
+		height: 200px;
+	}
+
+	.top_brand h1 {
+		font-size: 42px;
+		margin-top: -12px;
+	}
+
+	.top_login{
+		display: none;
+		position: absolute;
+		right: 5px;
+		top:45px;
+		background-color: #505559;
+		height: 40px;
+		/*width: 200px;*/
+		padding: 10px;
+		text-align: center;
+		z-index: 40;
+		border-radius:0.3em;
+	}
+	.top_links{
+		padding-top: 0px;
+	}
+
+	
+	.main_subscribe h2 {
+		color: #3797bf;
+		font-size: 17px;
+		margin-top: 0;
+		padding: 5px;
+	}
+	.main_subscribe label {
+		display: none;
+	}
+	.form-control{
+		width: 180px;
+	}
+	.main_adsense {
+		height: 170px;
+		margin-top: 20px;
+		padding: 10px;
+	}
+	.main_menu{
+		width: 750px;
+	}
+	.main_menu a {
+		padding: 10px 8px;
+	}
+	.main_menu ul li {
+		font-size: 15px;
+	}
+
+	.main_menu ul li span.header {
+		padding: 10px 10px;
+	}
+
+	/* Cтили модуля объявлений*/
+	.article_main_widget {
+		height: 384px;
+	}
+	.article_main_widget > div {
+		height: 384px;
+		top: 0;
+	}
+	.article_main_content {
+		top: 83%;
+	}
+	.post_widget {
+		height: 287px;
+	}
+	.post_content {
+		top: 170px;
+	}
+	.post_content .geo a {
+		font-size: 0.9em;
+	}
+	.post_content .cont {
+		font-size: .9em;
+	}
+	.post_content .header .breed {
+		font-size: 0.85em;
+		padding: 0px;
+	}
+	.article_widget {
+		height: 150px;
+	}
+	.article_img {
+		height: 150px;
+		width: 250px;
+	}
+	.article_img a {
+		height: 150px;
+		width: 250px;
+	}
+	.article_header {
+		height: 150px;
+		left: 260px;
+	}
+	.article_header h3 {
+		margin-top: 0px;
+	}
+	.article_widget h3 {
+		height: 140px;
+		font-size: 1.2em;
+		width: 95%;
+	}
+	.article_post{
+		height: 150px;
+		font-size: 1em;
+	}
+
+	/* Конец стилей модуля объявлений*/
+
+	.footer_left_block h3{
+		display: block;
+		padding: 15px;
+		border: 1px solid;
+		height: 80px;
+	}
+
+	.footer_left_block h3:hover {
+		background-color: #31B0D5;
+		color: #fff;
+	}
+
+	.footer_left_block ul{
+		display: none;
+	}
+	
+	.footer_center_block {
+		text-align: left;
+	}
+
+	.footer_center_block h3{
+		display: block;
+		padding: 15px;
+		border: 1px solid;
+		height: 80px;
+	}
+
+	.footer_center_block h3:hover{
+		background-color: #31B0D5;
+		color: #fff;
+	}
+
+	.rec_content{
+		display: none;
+	}
+
+	.footer_right_block {
+		width: 100%;
+	}
+
+	
+	.footer_right_block h3{
+		display: block;
+		padding: 15px;
+		border: 1px solid;
+		height: 80px;
+	}
+
+	.footer_right_block h3:hover{
+		background-color: #31B0D5;
+		color: #fff;
+	}
+
+	.contacts_content{
+		display: none;
+	}
+
+	.footer_subscribe form{
+		margin-left: 0px;
+	}
+
+	/*Стиль слайдера*/
+
+	.main_slider img{
+		width: 250px;
+		height: 150px !important;
+	}
+
+	.main_slider .carousel-caption{
+		/*position: absolute;*/
+		top:-40px;
+		left: 320px;
+		text-align: left;
+		width: 350px;
+	}
+
+	.main_slider .carousel-caption .item_text{
+		text-align: left;
+		width: 350px;
+		height: 80px;
+		overflow: hidden;
+	}
+
+	.main_slider .item h3{
+		font-size: 16px;
+		height: 35px;
+		overflow: hidden;
+	}
+
+	.main_slider .item p{
+		color: #000;
+		font-size: 12px;
+	}
+
+	.main_slider .carousel-caption a.btn {
+		margin-top: -5px;
+		padding-left: 15px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		padding-right: 15px;
+	}
+	/* Конец стиль слайдера*/
+
+	/* Стили слайдера модуля Розыска*/
+	#carousel-wanted_pets.carousel.slide {
+		height: 350px;
+	}
+	#carousel-wanted_pets .carousel-inner .item{
+		height: 350px;
+	}
+	#carousel-wanted_pets .carousel-inner .item img{
+		margin: 0px;
+		padding: 15px;
+		height: 200px;
+		width: 330px;
+	}
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption h3 {
+		margin-left: -20px;
+		padding-top: 10px;
+		padding-bottom: 15px;
+	}
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption{
+		width: 350px;
+	}
+	.caption-content{
+		margin-left: -20px;
+		width: 100%;
+		height: 190px;
+		overflow: hidden;
+	}
+	#carousel-wanted_pets .carousel-inner .item .carousel-caption a.btn {
+		margin-top: 35px;
+		margin-left: -20px;
+	}
+	#carousel-wanted_pets .carousel-control.left {
+		height: 250px;
+		width: 60px;
+	}
+	#carousel-wanted_pets .carousel-control.right {
+		height: 250px;
+		width: 60px;
+		left:92%;
+	}
+	.contact-info {
+		position: absolute;
+		margin-left: -350px;
+		width: 300px;
+		bottom: 65px;
+		display: block;
+		height: 80px;
+	}
+	.phone {
+		display: block;
+		width: 300px;
+		height: 25px;
+	}
+	#carousel-wanted_pets .contact-info .skype {
+		display: block;
+		float: left;
+		width: 300px;
+		height: 25px;
+	}
+	.mail {
+		display: block;
+		float: left;
+		width: 300px;
+		height: 25px;
+	}
+	#carousel-wanted_pets.carousel.slide > ul.carousel-indicators {
+		top: 270px;
+		left: 2%;
+	}
+	#carousel-wanted_pets.carousel.slide ul.carousel-indicators img {
+		height: 60px;
+		width: 100px;
+	}
+	/* Конец стилей слайдера модуля Розыска*/
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.logo_text{
+		display: block;
+		float: left;
+		margin-top: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.top_login{
+		display: none;
+		position: absolute;
+		right: -30px;
+		top:45px;
+		background-color: #505559;
+		height: 40px;
+		/*width: 200px;*/
+		padding: 10px;
+		text-align: center;
+	}
+
+	.top_links{
+		padding-right: 0px;
+		margin-right: -25px;
+	}
+
+	.top_search{
+		display: none;
+	}
+	
+	.top_search button {
+		background-color: transparent;
+		border: medium none;
+		height: 30px;
+		margin-top: -10px;
+		position: relative;
+		width: 35px;
+		z-index: 40;
+	}
+	.top_search button span {
+		top: 3px;
+	}
+	.logo_title h1 {
+		color: yellow;
+		font-family: "RobotoRegular", sans-serif;
+		font-size: 58px;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+	}
+
+	.form-control{
+		width: 100%;
+	}
+	.main_adsense {
+		color: #000;
+		height: 200px;
+		padding: 10px;
+		background-color: #fff;
+		margin-top: 0px;
+		margin-right: -15px;
+		margin-left: -15px;
+		margin-bottom: 10px;
+	}
+
+	.main_menu ul{
+		display: none;
+		position: absolute;
+		margin-top: 40px;
+		background-color: #3797BF;
+		z-index: 11;
+		width: 100%;
+	}
+
+	.main_menu ul li{
+		display: block;
+		float: none;
+		background-color: #3797BF;
+		z-index: 10;
+	}
+
+	.greeting{
+		text-align: center;
+	}
+	.greeting h3 {
+		margin-top: 10px;
+	}
+	.logo_title{
+		text-align: center;
+	}
+	.logo_img{
+		text-align: center;
+	}
+
+	/*Адаптация рекламного банера*/
+	.owl-item .item{
+		padding: 0 15%;
+	}
+
+	/* Cтили модуля объявлений*/
+	.article_main_widget {
+		height: 384px;
+	}
+	.post_widget {
+		height: 367px;
+	}
+	.post_content {
+		top: 250px;
+	}
+	/* Конец стилей модуля объявлений*/
+
+	.footer_left_block h3{
+		height: 50px;
+	}
+
+	.footer_center_block h3{
+		height: 50px;
+	}
+
+	.footer_right_block h3{
+		height: 50px;
+	}
+
+	.footer_left_block a{
+		display: block;
+	}
+
+	/*Стиль слайдера*/
+
+	.main_slider img{
+		width: 350px;
+		height: 200px !important;
+	}
+
+	.main_slider .carousel-caption{
+		/*position: absolute;*/
+		top:-35px;
+		left: 370px;
+		text-align: left;
+		width: 310px;
+	}
+
+	.main_slider .carousel-caption .item_text{
+		text-align: left;
+		width: 310px;
+		height: 115px;
+		overflow: hidden;
+	}
+
+	.main_slider .item h3{
+		font-size: 16px;
+		height: 35px;
+		overflow: hidden;
+	}
+
+	.main_slider .item p{
+		color: #000;
+		font-size: 12px;
+	}
+
+	.main_slider .carousel-caption a.btn {
+		margin-top: 5px;
+		padding-left: 15px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		padding-right: 15px;
+	}
+	/* Конец стиль слайдера*/
+	
+}
+
+@media only screen and (max-width : 715px) {
+	/*Стиль слайдера*/
+
+	.main_slider img{
+		width: 100%;
+		height: 100% !important;
+	}
+
+	.main_slider .carousel-inner .item .carousel-caption{
+		position: relative;
+		margin: 0;
+		padding: 0;
+		/*top:300px;
+		left: 50px;*/
+		/*text-align: center;*/
+		width: 100%;
+	}
+
+	/*.main_slider .carousel-inner .item .carousel-caption h3{
+		position: absolute;
+		bottom: 10px;
+		left: -350px;
+		height: 100%;
+		}*/
+
+		.main_slider .carousel-caption .item_text{
+			display:none;
+		}
+
+		.main_slider .carousel-inner .item .carousel-caption h3{
+			display: block;
+			padding-top: 5px;
+			vertical-align: bottom;
+			font-size: 16px;
+			height: 60px;
+			overflow: hidden;
+			position: absolute;
+			bottom: -45px;
+			left: -370px;
+			text-align: center;
+			width: 100%;
+			background-color: yellow;
+			opacity: 0.5;
+		}
+
+		.main_slider .item p{
+			color: #000;
+			font-size: 12px;
+		}
+
+		.main_slider .carousel-caption a.btn {
+			display: none;
+		}
+
+		.carousel-indicators{
+			left: 65%;
+			width: 30%;
+		}
+		/* Конец стиль слайдера*/
+
+	}
+	@media only screen and (max-width : 700px) {
+		/* Начало стилей слайдера банеров*/
+		.owl-item .item{
+			padding: 0 10%;
+		}
+		/* Конец стилей слайдера банеров*/
+	}
+
+	@media only screen and (max-width : 618px) {
+		.pages ul li {
+			padding: 3px;
+		}
+	}
+
+	@media only screen and (max-width : 600px) {
+		/* Начало стилей слайдера банеров*/
+		.owl-item .item{
+			padding: 0 5%;
+		}
+		/* Конец стилей слайдера банеров*/
+
+		/* Cтили модуля объявлений*/
+		.post_widget {
+			height: 298px;
+		}
+		.post_content {
+			top: 180px;
+		}
+		.article_main_widget {
+			height: 320px;
+		}
+		.article_main_widget > div {
+			height: 320px;
+		}
+		.article_main_content {
+			top: 80%;
+		}
+		.article_widget h3 {
+			width: 75%;
+		}
+		.article_post {
+			font-size: 1.1em;
+			height: 150px;
+		}
+		/* Конец стилей модуля объявлений*/
+	}
+
+	
+
+	/* Для настройки отображения навигатора страниц */
+	@media only screen and (max-width : 580px) {
+		/* Начало стилей слайдера банеров*/
+		.owl-item .item{
+			padding: 0;
+		}
+		/* Конец стилей слайдера банеров*/
+		.form_find {
+			left: -20px;
+			top: 40px;
+		}
+
+		
+
+		.pages ul li a{
+			display: block;
+			/*background-color: #43484C;*/
+			padding: 5px;
+			text-align: center;
+			color: #fff;
+			border: 1px solid #337ab7;
+			font-size: 14px;
+			width: 30px;
+		}
+
+		.pages ul li a.active{
+			color: yellow;
+			background-color:#337ab7;
+			border: 1px dashed yellow;
+		}
+
+		.pages ul li a.first {
+			border: 1px solid #337ab7;
+			border-radius: 2em;
+			color: #fff;
+			display: block;
+			font-size: 14px;
+			padding: 5px;
+			text-align: center;
+			width: 30px;
+		}
+
+		.pages ul li a.end {
+			border: 1px solid #337ab7;
+			border-radius: 2em;
+			color: #fff;
+			display: block;
+			font-size: 14px;
+			padding: 5px;
+			text-align: center;
+			width: 30px;
+		}
+
+		.pages ul li a:hover{
+			text-decoration: none;
+			color: yellow;
+			background-color:#337ab7;
+			border: 1px solid yellow;
+		}
+
+		/* Слайдер */
+		.carousel-indicators{
+			left: 65%;
+			width: 30%;
+		}
+
+		/* Стили слайдера модуля розыска */
+
+		#carousel-wanted_pets.carousel.slide{
+			height: 780px;
+			position: relative;
+		}
+		#carousel-wanted_pets .carousel-inner{
+			height: 100%;
+		}
+
+		#carousel-wanted_pets .carousel-inner .item{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+		#carousel-wanted_pets .carousel-inner .item img{
+			margin: 0 auto;
+			padding:5px;
+			height: 300px;
+			width: 100%;
+		}
+		#carousel-wanted_pets .carousel-inner .item .carousel-caption{
+			display: inline-block;
+			height: 300px;
+			width: 95%;
+			position: static;
+			margin-top: 100px;
+		}
+		.contact-info{
+			margin-left: 23px;
+			width: 100%;
+		}
+
+		#carousel-wanted_pets.carousel.slide > ul.carousel-indicators {
+			background-color: transparent;
+			display: block;
+			left: 15%;
+			margin: 0;
+			top: 320px;
+			width: 450px;
+		}
+
+		/*#carousel-wanted_pets .carousel-inner .item .carousel-caption a.btn{
+			margin-top: 20px;
+			}*/
+
+			#carousel-wanted_pets .carousel-control.left {
+				height: 290px;
+				left: 1%;
+				top: 5px;
+				width: 50px;
+			}
+
+			#carousel-wanted_pets .carousel-control.right {
+				height: 290px;
+				top:5px;
+				left: 90%;
+				width: 50px;
+			}
+
+			#carousel-wanted_pets.carousel.slide ul.carousel-indicators img {
+				height: 70px;
+				width: 114px;
+			}
+
+			/* Конец стилей слайдера модуля розыска */
+		}
+
+		/* Для настройки отображения логотипа */
+		@media only screen and (max-width : 545px) {
+			/* Начало стилей слайдера банеров*/
+			/*.owl-item !important {
+				width: 201px;
+				}*/
+				.owl-item .item {
+					padding: 1 5%;
+				}
+				/* Конец стилей слайдера банеров*/
+
+				.logo_img{
+					width: 150px;
+					height: 150px;
+				}
+
+				.logo_img img{
+					width: 150px;
+					height: 150px;
+				}
+
+				.logo_text {
+					height: 150px;
+				}
+
+				.logo_title h1 {
+					font-size: 38px;
+				}
+				.greeting h3 {
+					font-size: 35px;
+				}
+
+				.main_menu ul li{
+					background-color: #3797bf;
+					display: block;
+					float: none;
+					margin-left: 10px;
+					z-index: 10;
+				}
+
+				.greeting{
+					text-align: center;
+				}
+				.logo_title{
+					text-align: center;
+				}
+				.logo_img{
+					width: 100%;
+					text-align: center;
+				}
+
+				.block_sidebar .col-xs-6{
+					width: 100%;
+				}
+			}
+
+			/* Extra Small Devices, Phones */
+			@media only screen and (max-width : 480px) {
+
+				/* Начало стилей слайдера банеров*/
+				.owl-item .item {
+					padding: 0 23%;
+				}
+				/* Конец стилей слайдера банеров*/
+				.logo_text{
+					display: block;
+					float: left;
+					margin-top: 0px;
+					width: 100%;
+					height: 150px;
+					margin: 0 auto;
+				}
+
+				.greeting{
+					text-align: center;
+				}
+				.logo_title{
+					text-align: center;
+				}
+				.logo_img{
+					width: 100%;
+					text-align: center;
+				}
+				/* Слайдер */
+				.carousel-indicators{
+					left: 63%;
+					width: 35%;
+				}
+
+				/* Cтили модуля новостей*/
+				.post_widget {
+					height: 272px;
+				}
+				.post_content {
+					top: 155px;
+				}
+				.article_main_content {
+					top: 73%;
+				}
+				.article_main_widget {
+					height: 243px;
+				}
+				.article_main_widget > div {
+					height: 243px;
+				}
+				.article_widget {
+					height: 250px;
+					width: 100%;
+					overflow: hidden;
+				}
+				.article_img {
+					height: 250px;
+					width: 100%;
+					overflow: hidden;
+				}
+				.article_img a {
+					height: 100%;
+					width: 100%;
+				}
+				.article_header {
+					height: 110px;
+					width: 100%;
+					left: 0px;
+					top: 145px;
+					background-color: #3797BF;
+					opacity: .7;
+					color: #fff;
+				}
+				.article_header .article_data {
+					color: yellow;
+				}
+				.article_widget:hover{
+					border: 1px solid #31b0d5;
+					overflow: hidden;
+				}
+				.article_widget:hover .article_header{
+					top:0;
+					opacity: .7;
+					text-align: center;
+				}
+				.article_widget:hover .article_img{
+					opacity: .1;
+				}
+				.article_widget:hover .article_post{
+					top:110px;
+					opacity: .7;
+				}
+
+				.article_widget h3 {
+					width: 99%;
+					height: 95px;
+					font-size: 1em;
+				}
+				.article_widget h3 > a {
+					color: #fff;
+				}
+				.article_widget h3 > a:hover {
+					color: yellow;
+				}
+				.article_post {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					height: 135px;
+					opacity: 1;
+					overflow: hidden;
+					padding: 7px;
+					transition: all 0.5s ease 0s;
+				}
+				/* Конец стилей модуля новостей*/
+
+				/* Стили слайдера модуля розыска */
+
+				#carousel-wanted_pets .carousel-inner .item img{
+					margin: 0 auto;
+					padding:5px;
+					height: 250px;
+					width: 100%;
+				}
+
+				#carousel-wanted_pets.carousel.slide > ul.carousel-indicators {
+					background-color: transparent;
+					display: block;
+					left: 10%;
+					margin: 0;
+					top: 280px;
+					width: 400px;
+				}
+
+		/*#carousel-wanted_pets .carousel-inner .item .carousel-caption a.btn{
+			margin-top: 20px;
+			}*/
+
+			#carousel-wanted_pets .carousel-control.left {
+				height: 240px;
+				left: 1%;
+				top: 5px;
+				width: 50px;
+			}
+
+			#carousel-wanted_pets .carousel-control.right {
+				height: 240px;
+				top:5px;
+				left: 87%;
+				width: 50px;
+			}
+
+			#carousel-wanted_pets.carousel.slide ul.carousel-indicators img {
+				height: 70px;
+				width: 114px;
+			}
+
+			/* Конец стилей слайдера модуля розыска */
+
+		}
+		@media only screen and (max-width : 442px) {
+			.greeting h3 {
+				font-size: 30px;
+			}
+			.pages ul li {
+				padding: 1px;
+			}
+		}
+
+		/* Изменение отображения логотипа */ 
+		@media only screen and (max-width : 410px) {
+			.top_header .container .row .col-md-5.col-sm-5.col-xs-8{
+				text-align: center;
+				width: 100%;
+			}
+			.top_header .container .row .col-md-3.col-sm-3.col-xs-4{
+				width: 100%;
+			}
+
+			.top_header .container .row .col-md-3.col-sm-2.col-xs-8{
+				width: 100%;
+			}
+		}
+
+		/* Изменение размеров панели навигации страниц */
+		@media only screen and (max-width : 396px) {
+			.owl-item .item {
+				padding: 0 5%;
+				margin-left: 0px;
+			}
+
+			.form_find {
+				left: -55px;
+				top: 40px;
+			}
+
+			/* Cтили модуля объявлений*/
+			.post_widget {
+				height: 353px;
+			}
+			.post_content {
+				top: 235px;
+			}
+			/* Конец стилей модуля объявлений*/
+
+			.pages ul li{
+				padding: 0px;
+			}
+
+			.pages ul li a.first {
+				width: 28px;
+			}
+
+			.pages ul li a{
+				width: 28px;
+			}
+
+			.pages ul li a.end {
+				width: 28px;
+			}
+
+			.post-row .col-xs-6 {
+				width: 100%;
+			}
+			.post-row{
+				padding-bottom: 95px;	
+			}
+			/* Элементы управления слайдера*/
+			.carousel-indicators{
+				left: 60%;
+				width: 40%;
+			}
+		}
+
+		@media only screen and (max-width : 347px) {
+			.owl-item .item {
+				padding: 0;
+				margin-left: 0px;
+			}
+			.carousel-indicators{
+				left: 55%;
+				width: 50%;
+			}
+			.top_login{
+				width: 250px;
+				padding: 10px;
+				text-align: center;
+			}
+		}
+
+		/* Custom, iPhone Retina */
+		@media only screen and (max-width : 320px) {
+			.owl-item .item {
+				padding: 0;
+			}
+			/* Cтили модуля объявлений*/
+			.post_widget {
+				height: 298px;
+			}
+			.post_content {
+				top: 180px;
+			}
+			/* Конец стилей модуля объявлений*/
+
+			/* Cтили модуля новостей*/
+			.article_main_content {
+				top: 56%;
+				background-color: #fff;
+				opacity: .8;
+				border-left:1px solid #3797BF;
+				border-right:1px solid #3797BF;
+				border-bottom:1px solid #3797BF;
+				margin-top: -5px;
+			}
+			.article_main_widget {
+				height: 256px;
+			}
+			.article_main_widget h3 {
+				font-size: 0.9em;
+				text-align: left;
+			}
+			.article_main_widget h3 a{
+				color: #fff;
+				height: 95px;
+				overflow: hidden;
+			}
+			.article_main_widget h3 a:hover{
+				color:yellow;
+			}
+			.article_main_header {
+				height: 110px;
+				overflow: hidden;
+				background-color: #3797BF;
+				margin-left: -5px;
+				margin-right: -5px;
+				padding-left: 5px;
+				padding-right: 5px;
+				/*position: relative;*/
+			}
+			.article_main_header h3 {
+				/*position: absolute;
+				top: 0;
+				left: 0;*/
+				width: 100%;
+				height: 100%;
+			}
+			.article_main_header .data {
+				/*position: absolute;
+				top: 0px;
+				left: 0px;*/
+				background-color: #3779bf;
+				float: left;
+				height: 30px;
+				margin-top: 0px;
+				padding-top: 1px;
+				opacity: 1;
+				text-align: center;
+				width: 100%;
+				display: inline-block;
+			}
+			.article_main_header .data span.day {
+				float: none;
+				font-size: 1em;
+			}
+			.article_main_header .data span.month {
+				float: none;
+				font-size: 1em;
+				margin: 0;
+				color: yellow;
+			}
+			.article_main_header .data span.year {
+				float: none;
+				font-size: 1em;
+				margin: 0;
+			}
+			.article_main_post{
+				font-size: .9em;
+				background-color: #fff;
+			}
+			.article_img {
+				height: 145px;
+			}
+			.article_widget h3 {
+				font-size: 0.9em;
+			}
+			.article_post{
+				font-size: .9em;
+			}
+
+			/* Конец стилей модуля новостей*/
+
+			.post_image img{
+				max-width: 200px;
+				max-height: 200px;
+				margin-right: 10px;
+				margin-bottom: 20px;
+			}
+
+			.post_metainfo li{
+				display: block;
+				float: none;
+				margin: 0 auto;
+				font-size: 0.85em;
+				line-height: 2.1em;
+			}
+			/* Элементы управления слайдера*/
+			.carousel-indicators{
+				left: 55%;
+				width: 50%;
+			}
+			.post_category span.category {
+				height: 60px;
+				width: 90%;
+			}
+			.pages ul li a.first {
+				width: 25px;
+				font-size: .7em;
+			}
+
+			.pages ul li a{
+				width: 25px;
+				font-size: .7em;
+			}
+
+			.pages ul li a.end {
+				width: 25px;
+				font-size: .7em;
+			}
+		}
+
+
+
+
+		/*==========  Mobile First Method  ==========*/
+
+		/* Custom, iPhone Retina */
+		@media only screen and (min-width : 320px) {
+
+		}
+
+		/* Extra Small Devices, Phones */
+		@media only screen and (min-width : 480px) {
+
+		}
+
+		/* Small Devices, Tablets */
+		@media only screen and (min-width : 768px) {
+			.top_links{
+				display: inline-block !important;
+			}
+		/*	.main_menu ul{
+				display: inline-block;
+				}*/
+
+				.top_main_menu{
+					display: none !important;
+				}
+			}
+
+			/* Medium Devices, Desktops */
+			@media only screen and (min-width : 992px) {
+				.footer_left_block ul{
+					display: block !important;
+				}
+
+				.rec_content{
+					display: block !important;
+				}
+
+				.contacts_content{
+					display: block !important;
+				}
+
+				.top_login{
+					display: inline-block !important;
+				}
+				.form_find{
+					display: inline-block !important;
+				}
+			}
+
+			/* Large Devices, Wide Screens */
+			@media only screen and (min-width : 1200px) {
+
+			}
