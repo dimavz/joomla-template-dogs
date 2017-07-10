@@ -44,7 +44,6 @@
 		<position>position-15</position>
 		<position>position-16</position>
 		<position>position-17</position>
-		<position>position-18</position>
 	</positions>
 	<languages folder="language">
         <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs.ini</language>
