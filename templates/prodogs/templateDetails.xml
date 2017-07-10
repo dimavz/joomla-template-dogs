@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.0" type="template">
-	<name>PRODOGSINFO</name>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+	<name>prodogs</name>
 	<version>1.0.0</version>
 	<creationDate>07.07.2017</creationDate>
 	<author>Dmitry Zatulenka</author>
-	<authorMail>zatulenko@gmail.com</authorMail>
+	<authorEmail>zatulenko@gmail.com</authorEmail>
 	<authorUrl>http://prodogs.info</authorUrl>
 	<copyright>Copyright (C) ProDogs.Info</copyright>
 	<license>TPL_PRODOGSINFO_LICENCE</license>
 	<description>TPL_PRODOGSINFO_DESCRIPTION</description>
-	
 	<files>
-		
 		<folder>css</folder>
 		<folder>fonts</folder>
 		<folder>html</folder>
@@ -25,9 +24,7 @@
 		<filename>templateDetails.xml</filename>
 		<filename>template_thumbnail.png</filename>
 		<filename>template_preview.png</filename>
-		
 	</files>
-	
 	<positions>
 		<position>position-0</position>
 		<position>position-1</position>
@@ -49,13 +46,12 @@
 		<position>position-17</position>
 		<position>position-18</position>
 	</positions>
-	
 	<languages folder="language">
-        <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs_info.ini</language>
-        <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs_info.sys.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.tpl_prodogs.sys.ini</language>
         
-				<language tag="en-GB">en-GB/en-GB.tpl_prodogs_info.ini</language>
-        <language tag="en-GB">en-GB/en-GB.tpl_prodogs_info.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_prodogs.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_prodogs.sys.ini</language>
 	</languages>
 	
 	<config>		
@@ -64,7 +60,7 @@
 			
 				<field name="site_logo" 
 					type="media" 
-					label="TPL_PRODOGSINFO_FIELD_SITELOGO"
+					label="TPL_PRODOGSINFO_FIELD_SITELOGO" 
 					description="TPL_PRODOGSINFO_FIELD_SITELOGO_DESC">
 				</field>
 				
@@ -77,7 +73,7 @@
 				<field name="site_desc" 
 					type="textarea" 
 					label="TPL_PRODOGSINFO_FIELD_SITEDESC" 
-					description="TPL_PRODOGSINFOFIELDSITEDESC_DESC">
+					description="TPL_PRODOGSINFO_FIELD_SITEDESC_DESC">
 				</field>
 				
 			</fieldset>
