@@ -1,15 +1,16 @@
 <?php defined("_JEXEC") or die();?>
 <?php
 $templateparams = JFactory::getApplication()->getTemplate(true)->params;
-$doc = JFactory::getDocument();
 $site_logo = $templateparams->get('site_logo');
 $site_name = $templateparams->get('site_name');
 $site_desc = $templateparams->get('site_desc');
 //print_r($templateparams);
 
-//stylesheets
+$doc = JFactory::getDocument();
+
+//Подключение стилей (stylesheets)
+$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/favicon.png');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap.min.css');
-$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap-theme.min');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/fancybox/jquery.fancybox.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.carousel.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.theme.default.css');
@@ -20,22 +21,25 @@ $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/custom.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/main.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/media.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.css');
-$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/favicon.png');
-if ($doc->countModules('position-5'))
-{
-	$showMainMenu = TRUE;
-}
-if ($doc->countModules('position-7'))
-{
-	$showSlider = TRUE;
-}
-//scripts
-//$doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
-//$doc->addScript(JUri::base().'templates/'.$doc->template.'/js/common.js');
-// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
-// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
-// unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
-// unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
+
+
+
+// if ($doc->countModules('position-5'))
+// {
+// 	$showMainMenu = TRUE;
+// }
+// if ($doc->countModules('position-7'))
+// {
+// 	$showSlider = TRUE;
+// }
+
+// Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
+unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
+unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
+unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
+unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-core.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 ?>
 
 <!DOCTYPE html>
@@ -226,7 +230,9 @@ if ($doc->countModules('position-7'))
 				</div>
 			</div><!-- /.row -->
 			<div class="row">
+				<jdoc:include type="modules" name="position-4" style="default" />
 				<nav class="main_menu hidden-xs affix" data-spy="affix" data-offset-top="250">
+
 					<ul>
 						<li class="home active">
 							<a href="/" title="Главная">
@@ -1330,6 +1336,7 @@ if ($doc->countModules('position-7'))
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 
+	<!-- Подключение скриптов (Scripts) -->
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
@@ -1343,6 +1350,7 @@ if ($doc->countModules('position-7'))
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/landing-nav/navigation.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/wow.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/js/common.js"></script>
+
 	
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
