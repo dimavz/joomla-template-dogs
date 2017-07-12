@@ -1,0 +1,104 @@
+.i-hoverme{
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+		opacity: 0.5 !important;
+}
+
+.color-black{
+    color: black !important;
+}
+
+.color-gray {
+    color: #808080 !important;
+}
+
+.color-silver{
+    color: #C0C0C0 !important;
+}
+
+.color-white{
+    color: white !important;
+}
+
+.color-brown{
+    color: brown !important;
+}
+
+.color-red{
+    color: red !important;
+}
+
+.color-mistyrose{
+    color: #FFE4E1 !important;
+}
+
+.color-chocolate{
+    color: chocolate !important;
+}
+
+.color-darkorange{
+    color: darkorange !important;
+}
+
+.color-orange{
+    color: orange !important;
+}
+
+.color-gold{
+    color: gold !important;
+}
+
+.color-olive{
+    color: olive !important;
+}
+
+.color-yellow{
+    color: yellow !important;
+}
+
+.color-yellowgreen{
+    color: yellowgreen !important;
+}
+
+.color-greenyellow{
+    color: greenyellow !important;
+}
+
+.color-darkgreen{
+    color: darkgreen !important;
+}
+
+.color-green{
+    color: green !important;
+}
+
+.color-lime{
+    color: lime !important;
+}
+
+.color-turquoise{
+    color: turquoise !important;
+}
+
+.color-cyan{
+    color: cyan !important;
+}
+
+.color-royalblue{
+    color: royalblue !important;
+}
+
+.color-darkblue{
+    color: darkblue !important;
+}
+
+.color-blue{
+    color: blue !important;
+}
+
+.color-purple{
+    color: purple !important;
+}
+
+.color-pink{
+    color: pink !important;
+}

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="file" method="upgrade">
-	<name>Cobalt - Additional Templates</name>
-	<author>MintJoomla</author>
+	<name>TWS Framework</name>
+	<author>JoomBoost</author>
 	<license>GPL GNU</license>
-	<authorEmail>support@mintjoomla.com</authorEmail>
-	<authorUrl>http://www.mintjoomla.com</authorUrl>
-	<creationDate>March 2012</creationDate>
-	<copyright>(c) 2012 MintJoomla</copyright>
-	<version>8.1090</version>
-	<version>8.1034</version>
-	<description>Cobalt 8 - Additional templates</description>
-
+	<authorEmail>support@joomboost.com</authorEmail>
+	<authorUrl>http://www.joomboost.com</authorUrl>
+	<creationDate>07/02/2013</creationDate>
+	<copyright>(c) 2014 JoomBoost</copyright>
+	<version>2</version>
+	<description><![CDATA[<div class="well"><p>TWS Framework installed !</p>
+This is our own framework for all our custom Cobalt addons.
+</div>]]>
+	</description>
 	<fileset>
 		<files folder="site" target="components/com_cobalt/">
-			<folder>views</folder>
+			<folder>library</folder>
 		</files>
 	</fileset>
 </extension>
