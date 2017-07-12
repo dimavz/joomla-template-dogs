@@ -28,17 +28,22 @@ if ($tagId = $params->get('tag_id', ''))
 		$class .= ' home';
 	}
 
-	if ($item->id == $default_id)
+	// if ($item->id == $default_id)
+	// {
+		// $class .= ' active';
+	// }
+
+/* 	if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 	{
 		$class .= ' active';
 	}
-
-	if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
-	{
-		$class .= ' active';
-	}
-
+	 */
 	if (in_array($item->id, $path))
+	{
+		$class .= ' active';
+	}
+
+	/* if (in_array($item->id, $path))
 	{
 		$class .= ' active';
 	}
@@ -54,7 +59,7 @@ if ($tagId = $params->get('tag_id', ''))
 		{
 			$class .= ' active';
 		}
-	} 
+	}  */
 
 	/* if ($item->type === 'separator')
 	{
@@ -70,8 +75,14 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		$class .= ' parent';
 	}*/
+	if ($class !=""){
+		echo '<li class="' . $class . '">';
+	}
+	else{
+		echo '<li>';
+	}
 
-	echo '<li class="' . $class . '">';
+	//echo '<li class="' . $class . '">';
 
 	switch ($item->type) :
 		case 'separator':
