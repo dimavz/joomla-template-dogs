@@ -27,10 +27,10 @@ if ($doc->countModules('position-4'))
 {
 	$showMainMenu = TRUE;
 }
-// if ($doc->countModules('position-7'))
-// {
-// 	$showSlider = TRUE;
-// }
+if ($doc->countModules('position-5'))
+{
+	$showSlider = TRUE;
+}
 
 // Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
@@ -243,7 +243,9 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 	</header>
 	<section class="content">
 		<div class="container">
+			<?php if($showSlider):?>
 			<jdoc:include type="modules" name="position-5"/>
+		<?php endif;?>
 			<div class="row">
 				<div id="top_banners" class="owl-carousel owl-theme">
 					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/chappi.jpg" alt="Alt"></a></div>
