@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>Cobalt Carousel Pro</name>
+    <author>JoomBoost</author>
+    <creationDate>08/27/2014</creationDate>
+    <copyright>Copyright (C) 2012 - 2014 JoomBoost (http://www.joomboost.com). All rights reserved.</copyright>
+    <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+    <authorEmail>support@joomboost.com</authorEmail>
+    <authorUrl>http://www.joomboost.com</authorUrl>
+	<version>1.0</version>
+    <description><![CDATA[
+            <script src="../modules/mod_cobalt_carousel_pro/assets/js/modStyler.js" type="text/javascript"></script>
+            <link rel="stylesheet" href="../modules/mod_cobalt_carousel_pro/assets/css/modStyler.css" type="text/css">
+         <p class="well">Create beautiful responsive carousel slider for your Cobalt CCK records with touch enabled feature.<br><br>
+    <a href="http://www.joomboost.com/browse-products/item/3-modules/55-cobalt-carousel-pro.html" class="btn btn-default">Homepage</a> <a href="http://www.joomboost.com/support/docs/category-items/3-joomboost-documentation/38-cobalt-addons.html" class="btn btn-default">Docs</a> <a href="hhttp://www.joomboost.com/support/changelogs/category-items/2-joomboost-changelogs/40-cobalt-carousel-pro.html" class="btn btn-default">ChangeLogs</a> <a href="http://www.joomboost.com/support/forums/categories/listings/cobalt-modules.html" class="btn btn-default">Forum</a>
+    </p>]]></description>
+    <files>
+        <filename module="mod_cobalt_carousel_pro">mod_cobalt_carousel_pro.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>assets</folder>
+    </files>
+    <languages folder="languages">
+        <language tag="en-GB">en-GB.mod_cobalt_carousel_pro.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/mint/forms/fields/">
+                <field name="@spacer1" type="spacer" label="CHOOSE_SECTION" description="CHOOSE_TYPE_DESC" class="myHeadGroup"/>
+                <field name="section_id" type="meresourcessection" required="true" select="1" type_elem_name="types"
+                       default="" label="SECTION"
+                       description="Select the Home section which will for this module."/>
+                <field name="types" type="mertype" size="10" required="true" default="" multi="0" label="TYPE"/>
+                <field label="PICTURE_FIELD" name="picture_field" type="text"/>
+                <field label="DESCRIPTION_FIELD" name="desc_field" type="text"/>
+                <field name="@spacer2" type="spacer" label="RECORDS_FILTER" description="CHOOSE_TYPE_DESC" class="myHeadGroup"/>
+                <field name="orderby" type="list" default="r.ctime DESC" label="Primary Order" description="">
+                    <option value="r.ctime ASC">Oldest first</option>
+                    <option value="r.ctime DESC">Most recent first</option>
+                    <option value="r.mtime DESC">Last Modified First</option>
+                    <option value="r.mtime ASC">First Modified First</option>
+                    <option value="r.title ASC">Title Alphabetical</option>
+                    <option value="r.title DESC">Title Reverse-Alphabetical</option>
+                    <option value="name ASC">Author Alphabetical</option>
+                    <option value="name DESC">Author Reverse-Alphabetical</option>
+                    <option value="r.hits DESC">Most Hits</option>
+                    <option value="r.hits ASC">Least Hits</option>
+                    <option value="r.votes_result DESC">Most Rated</option>
+                    <option value="r.votes_result ASC">Least Rated</option>
+                    <option value="r.comments DESC">Most Commented</option>
+                    <option value="r.comments ASC">Least Commented</option>
+                    <option value="r.favorite_num DESC">Most Favorited</option>
+                    <option value="r.favorite_num ASC">Least Favorited</option>
+                    <option value="RAND() ">Random</option>
+                </field>
+                <field name="view_what" type="list" default="" label="What to show">
+                    <option value="all">Any article</option>
+                    <option value="exclude_featured">Excluding featured</option>
+                    <option value="only_featured">Only featured</option>
+                    <option value="only_expired">Only expired</option>
+                    <option value="only_future">Only future</option>
+                </field>
+                <field name="@spacer4" type="spacer" label="CAROUSEL_CONFIG" description="CAROUSEL_CONFIG_DESC" class="myHeadGroup"/>
+                <field label="Items" name="cItems" type="text" default="5" description="CITEMS_DESC"/>
+                <field name="auto_play" type="list" default="5000" label="AUTO_PLAY" description="AUTO_PLAY_DESC">
+                    <option value="false">Disable</option>
+                    <option value="1000">1 Second</option>
+                    <option value="2000">2 Seconds</option>
+                    <option value="3000">3 Seconds</option>
+                    <option value="4000">4 Seconds</option>
+                    <option value="5000">5 Seconds</option>
+                    <option value="6000">6 Seconds</option>
+                    <option value="7000">7 Seconds</option>
+                    <option value="8000">8 Seconds</option>
+                    <option value="9000">9 Seconds</option>
+                    <option value="10000">10 Seconds</option>
+                    <option value="11000">11 Seconds</option>
+                    <option value="12000">12 Seconds</option>
+                    <option value="13000">13 Seconds</option>
+                    <option value="14000">14 Seconds</option>
+                    <option value="15000">15 Seconds</option>
+                    <option value="16000">16 Seconds</option>
+                    <option value="17000">17 Seconds</option>
+                    <option value="18000">18 Seconds</option>
+                    <option value="19000">19 Seconds</option>
+                    <option value="20000">20 Seconds</option>
+                    <option value="22000">21 Seconds</option>
+                    <option value="23000">22 Seconds</option>
+                </field>   
+                <field name="lazy_load" type="radio" class="btn-group" default="0" label="LAZY_LOAD" description="LOAD_LAZY_DESC">
+                    <option value="0">Disable</option>
+                    <option value="1">Enable</option>
+                </field>                
+                <field name="nav" type="radio" class="btn-group" default="0" label="NAVIGATION" description="NAVIGATION_DESC">
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+                <field name="caption" type="radio" class="btn-group" default="0" label="CAPTION">
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+                <field name="desc" type="radio" class="btn-group" default="0" label="Description Field">
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+                <field name="hoverstop" type="radio" class="btn-group" default="0" label="STOPHOVER" description="STOPHOVER_DESC">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="scrollperpage" type="radio" class="btn-group" default="0" label="SCROLLPERPAGE" description="SCROLLPERPAGEDESC">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="mousedrag" type="radio" class="btn-group" default="1" label="MOUSEDRAG" description="MOUSEDRAG_DESC">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="touchdrag" type="radio" class="btn-group" default="1" label="TOUCHDRAG" description="TOUCHDRAG_DESC">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="@spacer3" type="spacer" label="RECORDS_LIMIT" description="CHOOSE_TYPE_DESC" class="myHeadGroup"/>
+                <field label="Categories IDs" name="catids" type="text"/>
+                <field name="cat_restrict" type="list" default="0" label="Category limit">
+                    <option value="0">No</option>
+                    <option value="1">Current category</option>
+                    <option value="2">Current category tree</option>
+                </field>
+                <field name="user_restrict" type="radio" default="0" label="User limit">
+                    <option value="0">Do not restrict</option>
+                    <option value="1">Restrict currently logged in user</option>
+                    <option value="2">Restrict current user's homepage</option>
+                    <option value="3">Restrict current user's homepage or curently logged in</option>
+                    <option value="4">Restrict curently logged in or current user's homepage</option>
+                </field>
+                <field label="Limit" name="limit" type="text" size="3" default="5"/>
+                <field name="lang_mode" type="list" default="0" label="Language mode">
+                    <option value="0">Articles on any language</option>
+                    <option value="1">Articles on current language</option>
+                </field>
+                <field name="@spacer6" type="spacer" label="OTHER_PARAMS" description="OTHER_PARAMS_DESC" class="myHeadGroup"/>
+                <field label="Title Characters Limit" name="titlelimit" type="text" default="20"/>
+                <field label="Description Characters Limit" name="desclimit" type="text" default="100"/>
+                <field name="force_itemid" type="menuitem" default="0" label="Override article menu ID" >
+                    <option value="">- Use default -</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL"
+                       description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL"
+                       description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                       description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field name="cachemode" type="hidden" default="itemid">
+                    <option value="itemid"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -22,12 +22,11 @@ $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/main.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/media.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.css');
 
-
-
-// if ($doc->countModules('position-5'))
-// {
-// 	$showMainMenu = TRUE;
-// }
+//Проверяем выводиться ли какие либо модули в позиции 4
+if ($doc->countModules('position-4'))
+{
+	$showMainMenu = TRUE;
+}
 // if ($doc->countModules('position-7'))
 // {
 // 	$showSlider = TRUE;
@@ -152,7 +151,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 								<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
 							</button>
 							<a href="/">
-								<h1 class="hidden-xs wow fadeInDown">ProDogs.Info</h1>
+								<h1 class="hidden-xs wow fadeInDown"><?php echo $site_name ?  $site_name : 'ProDogs.Info.'?></h1>
 							</a>
 						</div>
 						<div class="top_search">
@@ -189,18 +188,24 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 			<div class="row">
 				<div class="col-md-3 col-sm-3 col-xs-4">
 					<div class="logo_img wow bounceInDown" data-wow-delay="0.5s">
-						<a href="/">
-							<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/logo.png" alt="Сообщество любителей собак. Всё о собаках.">
-						</a>
+						<?php if($site_logo) :?>
+							<a href="<?php echo JUri::base();?>">
+								<img src="<?php echo $site_logo ?>" alt="<?php echo $site_desc ?  $site_desc : 'Сообщество любителей собак. Всё о собаках.' ?>">
+							</a>
+						<?php else:?>
+							<a href="<?php echo JUri::base();?>">
+								<img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/logo.png" alt="<?php echo $site_desc ?  $site_desc : 'Сообщество любителей собак. Всё о собаках.' ?>">
+							</a>
+						<?php endif;?>
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-8">
 					<div class="logo_text">
 						<div class="logo_title visible-xs-block">
-							<a href="/"><h1>ProDogs.Info</h1></a>
+							<a href="/"><h1><?php echo $site_name ?  $site_name : 'ProDogs.Info.'?></h1></a>
 						</div>
 						<div class="greeting wow flipInX">
-							<h3>Сайт для любителей собак. Всё о собаках.</h3> 
+							<h3><?php echo $site_desc ?  $site_desc : 'Сообщество любителей собак. Всё о собаках.' ?></h3> 
 						</div>
 					</div><!-- /.logo_text -->
 				</div>
@@ -229,14 +234,17 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 					</div><!-- /.main_subscribe -->
 				</div>
 			</div><!-- /.row -->
-			<div class="row">
-				<jdoc:include type="modules" name="position-4" style="default" />
-			</div><!-- /.row -->
+			<?php if($showMainMenu):?>
+				<div class="row">
+					<jdoc:include type="modules" name="position-4" style="default"/>
+				</div><!-- /.row -->
+			<?php endif;?>
 		</div><!-- /.container -->
 	</header>
 	<section class="content">
 		<div class="container">
 			<div class="main_slider"><!-- Блок слайдера -->
+				<jdoc:include type="modules" name="position-5"/>
 				<div id="carousel-main" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">

@@ -1,0 +1,22 @@
+#cobaltCarousel .item{
+  margin: 3px !important;
+}
+
+#cobaltCarousel .item img{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+#cobaltCarousel .item .recordCaption{
+	background-color: #F7F5F5;
+	padding: 8px 5px;
+	text-align: center;
+}
+
+#cobaltCarousel .item .recordDesc{
+	background-color: #F7F5F5;
+	padding: 8px 10px;
+	padding-bottom: 10px;
+	text-align: justify;
+}

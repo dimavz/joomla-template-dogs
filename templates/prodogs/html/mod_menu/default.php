@@ -38,6 +38,7 @@ if ($tagId = $params->get('tag_id', ''))
 		$class .= ' active';
 	}
 	 */
+	// Если ID входит в путь ссылки, то делаем ссылку активной
 	if (in_array($item->id, $path))
 	{
 		$class .= ' active';
