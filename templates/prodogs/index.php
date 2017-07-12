@@ -1032,30 +1032,9 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 						<div class="footer_topline">
 							<div class="container">
 								<div class="row">
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="footer_left_block wow fadeInDown" data-wow-delay="0.2s">
-											<h3 class="add_ad" role="button">Подать объявление</h3>
-											<ul>
-												<li><a href="#">Продать/Купить Хаски</a></li>
-												<li><a href="#">Дрессировка собак</a></li>
-												<li><a href="#">Гроуминг и стрижки собак</a></li>
-												<li><a href="#">Знакомство для вязки</a></li>
-												<li><a href="#">Медицина и ветеринария</a></li>
-												<li><a href="#">Розыск собаки</a></li>
-												<li><a href="#">Ищу хозяина</a></li>
-												<li><a href="#">Прочее</a></li>
-											</ul>
-										</div><!-- /.footer_left_block -->
-									</div>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="footer_center_block wow fadeInDown"data-wow-delay="0.4s">
-											<h3 class="reclama" role="button">Разместить рекламу</h3>
-											<div class="rec_content">
-												<p>Здесь Вы можете узнать <a href="">условия и тарифы по размещению рекламы</a> на нашем сайте.</p>
-												<p>Если у вас возникли дополнительные вопросы или предложения по размещению рекламы, то свяжитесь с нами по указанным контактам и мы постараемся максимально быстро ответить на них.</p>
-											</div>
-										</div><!-- /.footer_center_block -->
-									</div><!-- /.col-md-4 col-sm-4 col-xs-12 -->
+								<jdoc:include type="modules" name="position-14" style="footer_left_block"/>
+								<jdoc:include type="modules" name="position-15" style="footer_center_block"/>
+								<jdoc:include type="modules" name="position-16" style="footer_right_block"/>
 									<div class="col-md-4 col-sm-4 col-xs-12">
 										<div class="footer_right_block wow fadeInDown" data-wow-delay="0.6s">
 											<h3 class="contacts" role="button">Контакты</h3>
