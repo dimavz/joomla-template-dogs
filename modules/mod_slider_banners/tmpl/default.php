@@ -9,4 +9,22 @@
 
 defined('_JEXEC') or die;
 ?>
-<?php echo $module->content; ?>
+<div class="row">
+	<div id="top_banners" class="owl-carousel owl-theme">
+		<?php foreach($list_images as $img): ?>
+			<div class="item">
+				<a href="#">
+					<img src="<?php echo $img ?>" alt=""/>
+				</a>
+			</div>
+		<?php endforeach; ?>
+	</div><!-- end /.owl-carousel owl-theme -->
+	<div class="owl-controls">
+		<div class="owl-nav">
+			<a class="owl-prev"><i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+			</a>
+			<a class="owl-next"><i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
+			</a>
+		</div>				
+	</div><!-- end /.owl-controls -->
+</div><!-- end /.row -->
