@@ -58,3 +58,18 @@ function modChrome_footer_right_block($module, &$params, &$attribs)
 		echo '</div>';
 	}
 }
+function modChrome_footer_bottomline($module, &$params, &$attribs)
+{
+	if($module->content){
+		echo '<div class="footer_bottomline">
+						<div class="conteiner">
+							<div class="row">
+								<div class="col-md-12">';
+			echo $module->content;
+			echo '</div>
+					</div>
+						</div>
+							</div>';
+
+	}
+}

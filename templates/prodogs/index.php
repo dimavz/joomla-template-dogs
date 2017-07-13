@@ -35,6 +35,10 @@ if ($doc->countModules('position-14 or position-15 or position-16'))
 {
 	$showFooterModules = TRUE;
 }
+if ($doc->countModules('position-17'))
+{
+	$showFooterBottomLine = TRUE;
+}
 
 // Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
@@ -1047,15 +1051,9 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 							</div><!-- /.footer_topline -->
 						<?php endif;?>
 					</div>
-					<div class="footer_bottomline">
-						<div class="conteiner">
-							<div class="row">
-								<div class="col-md-12">
-									<span>Все права защищены. 2016 год.</span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php if($showFooterBottomLine):?>
+					<jdoc:include type="modules" name="position-17" style="footer_bottomline"/>
+				<?php endif;?>
 				</footer>
 				<button id="top" class="up" data-spy="affix" data-offset-top="50" title="Наверх"><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
 				</button>
