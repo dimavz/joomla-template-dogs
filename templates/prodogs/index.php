@@ -248,9 +248,11 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 	<section class="content">
 		<div class="container">
 			<?php if($showSlider):?>
-			<jdoc:include type="modules" name="position-5"/>
-		<?php endif;?>
+				<jdoc:include type="modules" name="position-5"/>
+			<?php endif;?>
+
 			<div class="row">
+				<jdoc:include type="modules" name="position-6" style="default"/>
 				<div id="top_banners" class="owl-carousel owl-theme">
 					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/chappi.jpg" alt="Alt"></a></div>
 					<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
@@ -1034,16 +1036,16 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 							</div>
 						</div>
 						<?php if($showFooterModules):?>
-						<div class="footer_topline">
-							<div class="container">
-								<div class="row">
-								<jdoc:include type="modules" name="position-14" style="footer_left_block"/>
-								<jdoc:include type="modules" name="position-15" style="footer_center_block"/>
-								<jdoc:include type="modules" name="position-16" style="footer_right_block"/>
-								</div><!-- /.row -->
-							</div><!-- /.container -->
-						</div><!-- /.footer_topline -->
-					<?php endif;?>
+							<div class="footer_topline">
+								<div class="container">
+									<div class="row">
+										<jdoc:include type="modules" name="position-14" style="footer_left_block"/>
+										<jdoc:include type="modules" name="position-15" style="footer_center_block"/>
+										<jdoc:include type="modules" name="position-16" style="footer_right_block"/>
+									</div><!-- /.row -->
+								</div><!-- /.container -->
+							</div><!-- /.footer_topline -->
+						<?php endif;?>
 					</div>
 					<div class="footer_bottomline">
 						<div class="conteiner">
