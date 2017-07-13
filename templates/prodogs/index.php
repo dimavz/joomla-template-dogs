@@ -31,6 +31,10 @@ if ($doc->countModules('position-5'))
 {
 	$showSlider = TRUE;
 }
+if ($doc->countModules('position-14 or position-15 or position-16'))
+{
+	$showFooterModules = TRUE;
+}
 
 // Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
@@ -1029,6 +1033,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 								</div>
 							</div>
 						</div>
+						<?php if($showFooterModules):?>
 						<div class="footer_topline">
 							<div class="container">
 								<div class="row">
@@ -1038,6 +1043,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 								</div><!-- /.row -->
 							</div><!-- /.container -->
 						</div><!-- /.footer_topline -->
+					<?php endif;?>
 					</div>
 					<div class="footer_bottomline">
 						<div class="conteiner">
