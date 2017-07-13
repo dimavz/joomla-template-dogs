@@ -12,8 +12,8 @@ $doc = JFactory::getDocument();
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/favicon.png');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap.min.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/fancybox/jquery.fancybox.css');
-$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.carousel.css');
-$doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.theme.default.css');
+// $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.carousel.css');
+// $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/owl-carousel2/assets/owl.theme.default.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/libs/countdown/jquery.countdown.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/fonts.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/font-awesome.min.css');
@@ -159,7 +159,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 								<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
 							</button>
 							<a href="/">
-								<h1 class="hidden-xs wow fadeInDown"><?php echo $site_name ?  $site_name : 'ProDogs.Info.'?></h1>
+								<h1 class="hidden-xs wow fadeInDown"><?php echo $site_name ?  $site_name : 'ProDogs.Info'?></h1>
 							</a>
 						</div>
 						<div class="top_search">
@@ -210,7 +210,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 				<div class="col-md-5 col-sm-5 col-xs-8">
 					<div class="logo_text">
 						<div class="logo_title visible-xs-block">
-							<a href="/"><h1><?php echo $site_name ?  $site_name : 'ProDogs.Info.'?></h1></a>
+							<a href="/"><h1><?php echo $site_name ?  $site_name : 'ProDogs.Info'?></h1></a>
 						</div>
 						<div class="greeting wow flipInX">
 							<h3><?php echo $site_desc ?  $site_desc : 'Сообщество любителей собак. Всё о собаках.' ?></h3> 
@@ -1113,7 +1113,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/fancybox/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/scrollto/jquery.scrollTo.min.js"></script>
-	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/owl-carousel2/owl.carousel.min.js"></script>
+	<!-- <script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/owl-carousel2/owl.carousel.min.js"></script> -->
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.countdown.min.js"></script>
 	<script type="text/javascript" src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/libs/countdown/jquery.countdown-ru.js"></script>
