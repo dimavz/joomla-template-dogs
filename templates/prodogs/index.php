@@ -1035,57 +1035,6 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 								<jdoc:include type="modules" name="position-14" style="footer_left_block"/>
 								<jdoc:include type="modules" name="position-15" style="footer_center_block"/>
 								<jdoc:include type="modules" name="position-16" style="footer_right_block"/>
-									<div class="col-md-4 col-sm-4 col-xs-12">
-										<div class="footer_right_block wow fadeInDown" data-wow-delay="0.6s">
-											<h3 class="contacts" role="button">Контакты</h3>
-											<div class="contacts_content">
-												<div class="skype">
-													<i class="fa fa-skype" aria-hidden="true"></i>
-													<span>pro-dogs</span>
-												</div>
-												<div class="mobile">
-													<i class="fa fa-mobile" aria-hidden="true"></i>
-													<span>+375 (29) 608-89-63</span>
-												</div>
-												<div class="email">
-													<i class="fa fa-envelope" aria-hidden="true"></i>
-													<span>info@pro-dogs.by</span>
-												</div>
-												<div class="soc_buttons">
-													<a href="#" title="Фэйсбук">
-														<span class="fa-stack fa-lg">
-															<i class="fa fa-square-o fa-stack-2x" ></i>
-															<i class="fa fa-facebook fa-stack-1x btn-primary"></i>
-														</span>
-													</a>
-													<a href="#" title="Твиттер">
-														<span class="fa-stack fa-lg">
-															<i class="fa fa-square-o fa-stack-2x"></i>
-															<i class="fa fa-twitter fa-stack-1x btn-info"></i>
-														</span>
-													</a>
-													<a href="#" title="Гугл Плюс">
-														<span class="fa-stack fa-lg">
-															<i class="fa fa-square-o fa-stack-2x"></i>
-															<i class="fa fa-google-plus fa-stack-1x btn-danger"></i>
-														</span>
-													</a>
-													<a href="#" title="В контакте">
-														<span class="fa-stack fa-lg">
-															<i class="fa fa-square-o fa-stack-2x"></i>
-															<i class="fa fa-vk fa-stack-1x btn-success"></i>
-														</span>
-													</a>
-													<a href="#" title="Одноклассники">
-														<span class="fa-stack fa-lg">
-															<i class="fa fa-square-o fa-stack-2x"></i>
-															<i class="fa fa-odnoklassniki fa-stack-1x btn-warning"></i>
-														</span>
-													</a>
-												</div><!-- /.soc_buttons --> 
-											</div><!-- /.contacts_content -->
-										</div><!-- /.footer_right_block -->
-									</div>
 								</div><!-- /.row -->
 							</div><!-- /.container -->
 						</div><!-- /.footer_topline -->
