@@ -175,10 +175,11 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 								<h1 class="hidden-xs wow fadeInDown"><?php echo $site_name ?  $site_name : 'ProDogs.Info'?></h1>
 							</a>
 						</div>
-						<div class="top_search">
+
+						<!-- <div class="top_search">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							<div class="form_find">
-								<form class="form-inline ">
+								<form class="form-inline">
 									<div class="form-group">
 										<label class="sr-only" for="InputSearch">Поиск</label>
 										<div class="input-group">
@@ -188,7 +189,9 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 									</div>
 								</form>
 							</div>
-						</div><!-- /.top_search -->
+						</div> -->
+						<!-- /.top_search -->
+						<jdoc:include type="modules" name="position-0"/>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-9">
 						<div class="top_links">
@@ -231,6 +234,7 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 					</div><!-- /.logo_text -->
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-12">
+				<jdoc:include type="modules" name="position-3" style="default"/>
 					<div class="main_subscribe wow slideInDown">
 						<h2>Подписка на новости</h2>
 						<form class="form-horizontal">
@@ -277,6 +281,7 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 			
 			<div class="row">
 				<div class="modules">
+				<jdoc:include type="component" />
 					<div class="dogs-row">
 						<h2>Объявления о продаже щенков</h2>
 						<div class="post-row">
