@@ -23,7 +23,7 @@ $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/media.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.css');
 
 //Подключение скриптов (scripts)
-$doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
+// $doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
 
 //Проверяем выводиться ли какие либо модули в позиции 4
 if ($doc->countModules('position-4'))
@@ -54,6 +54,8 @@ unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-core.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
+unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/owl.carousel.min.js']);
+
 ?>
 
 <!DOCTYPE html>
@@ -264,7 +266,9 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 			<?php endif;?>
 
 			<?php if($showSliderBanners):?>
+				<div class="row">
 					<jdoc:include type="modules" name="position-6"/>
+				</div><!-- end /.row -->
 				<?php endif;?>
 			
 			<div class="row">

@@ -27,10 +27,9 @@ else
 {
 	
 }
-/* $doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.carousel.min.css');
-$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.theme.default.min.css');
-$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/font-awesome.min.css');*/
-$doc->addScript(JUri::base().'modules/mod_slider_banners/assets/js/owl.carousel.min.js'); 
+//$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.carousel.min.css');
+//$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.theme.default.min.css');
+//$doc->addScript(JUri::base().'modules/mod_slider_banners/assets/js/owl.carousel.min.js'); 
 
 require JModuleHelper::getLayoutPath('mod_slider_banners',$params->get('layout','default'));
 

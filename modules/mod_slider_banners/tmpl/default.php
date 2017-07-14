@@ -9,12 +9,11 @@
 
 defined('_JEXEC') or die;
 ?>
-<div class="row">
-	<div id="top_banners" class="owl-carousel owl-theme">
+	<div  class="owl-carousel owl-theme"><!-- Вырезал id="top_banners" -->
 		<?php foreach($list_images as $img): ?>
 			<div class="item">
 				<a href="#">
-					<img src="<?php echo $img ?>" alt=""/>
+					<img src="<?php echo $img ?>" alt="Alt"/>
 				</a>
 			</div>
 		<?php endforeach; ?>
@@ -27,4 +26,3 @@ defined('_JEXEC') or die;
 			</a>
 		</div>				
 	</div><!-- end /.owl-controls -->
-</div><!-- end /.row -->
