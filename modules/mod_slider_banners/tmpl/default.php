@@ -10,13 +10,20 @@
 defined('_JEXEC') or die;
 ?>
 	<div  class="owl-carousel owl-theme"><!-- Вырезал id="top_banners" -->
-		<?php foreach($list_images as $img): ?>
-			<div class="item">
-				<a href="#">
-					<img src="<?php echo $img ?>" alt="Alt"/>
-				</a>
-			</div>
-		<?php endforeach; ?>
+				<?php foreach($list_images as $img): ?>
+					<?php if(is_array($img) ): ?>
+						<div class="item">
+							<a href="<?php $img['link']; ?>">
+								<img src="<?php echo $img['src'] ?>" alt="Alt"/>
+							</a>
+						</div>
+					<?php else: ?>
+						<div class="item">
+							<img src="<?php echo $img ?>" alt="Alt"/>	
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>		
+		
 	</div><!-- end /.owl-carousel owl-theme -->
 	<div class="owl-controls">
 		<div class="owl-nav">

@@ -36,7 +36,11 @@ if ($doc->countModules('position-5'))
 }
 if ($doc->countModules('position-6'))
 {
-	$showSliderBanners = TRUE;
+	$showTopSliderBanners = TRUE;
+}
+if ($doc->countModules('position-12'))
+{
+	$showBottomSliderBanners = TRUE;
 }
 if ($doc->countModules('position-14 or position-15 or position-16'))
 {
@@ -265,11 +269,11 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 				<jdoc:include type="modules" name="position-5"/>
 			<?php endif;?>
 
-			<?php if($showSliderBanners):?>
+			<?php if($showTopSliderBanners):?>
 				<div class="row">
 					<jdoc:include type="modules" name="position-6"/>
 				</div><!-- end /.row -->
-				<?php endif;?>
+			<?php endif;?>
 			
 			<div class="row">
 				<div class="modules">
@@ -983,30 +987,12 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 
 					</div><!-- /.modules -->
 				</div><!-- /.row -->
+					<?php if($showBottomSliderBanners):?>
 				<div class="row">
-					<div id="bottom_baners" class="owl-carousel owl-theme">
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/chappi.jpg" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Canidae_Logo.jpg" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/darling1.gif" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/hills.jpg" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/logo2.jpg.png" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Orijen_Logo.jpg" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Pedigree11.jpg" alt="Alt"></a></div>
-						<div class="item"><a href="#"><img src="<?php echo JUri::base();?>templates/<?php echo $doc->template; ?>/images/baners/Proplan_Logo_140x97.JPG" alt="Alt"></a></div>
-					</div><!-- end /.owl-carousel owl-theme -->
-					<div class="owl-controls">
-						<div class="owl-nav">
-							<a id="ban_prev" class="owl-prev"><i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
-							</a>
-							<a id="ban_next" class="owl-next"><i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
-							</a>
-						</div>
-								<!-- <div class="btn-control">
-									<button class="play btn btn-info">Старт</button>
-									<button class="stop btn btn-info">Стоп</button>
-								</div> -->
-							</div><!-- end /.owl-controls -->	
-						</div>
+					<jdoc:include type="modules" name="position-12"/>
+				</div><!-- end /.row -->
+				<?php endif;?>
+
 
 						<!-- /.conteiner -->
 					</div>
