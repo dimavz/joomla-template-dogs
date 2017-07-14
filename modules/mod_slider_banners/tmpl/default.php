@@ -13,9 +13,13 @@ defined('_JEXEC') or die;
 				<?php foreach($list_images as $img): ?>
 					<?php if(is_array($img) ): ?>
 						<div class="item">
-							<a href="<?php $img['link']; ?>">
+							<?php if($img['link']!=''): ?>
+							<a href="<?php echo $img['link']; ?>">
 								<img src="<?php echo $img['src'] ?>" alt="Alt"/>
 							</a>
+							<?php else: ?>
+								<img src="<?php echo $img['src'] ?>" alt="Alt"/>
+							<?php endif; ?>
 						</div>
 					<?php else: ?>
 						<div class="item">

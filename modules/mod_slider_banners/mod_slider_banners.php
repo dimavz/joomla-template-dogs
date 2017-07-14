@@ -13,7 +13,13 @@ require_once(__DIR__.'/helper.php');
 
 $list_images=array();
 
-if($params->get('images_folder')!= -1){
+//print_r($params);
+
+if($params->get('image1')!=''){
+	$list_images = listImagesHelper::getImages($params);
+}
+else{
+	if($params->get('images_folder')!= -1){
 	//echo 'Пользователь выбрал папку';
 	//echo $params->get('images_folder');
 	$folder_images = listImagesHelper::getImagesFromFolder($params->get('images_folder'));
@@ -23,10 +29,8 @@ if($params->get('images_folder')!= -1){
 		array_push($list_images,$img);
 	}
 }
-else
-{
-	
 }
+	
 //$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.carousel.min.css');
 //$doc->addStyleSheet(JUri::base().'modules/mod_slider_banners/assets/css/owl.theme.default.min.css');
 //$doc->addScript(JUri::base().'modules/mod_slider_banners/assets/js/owl.carousel.min.js'); 
