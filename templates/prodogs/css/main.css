@@ -879,6 +879,17 @@ ul.profil_menu li i{
 				box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 			}
 
+			.body_panel ul li.active a {
+				background-color: #3779BF;
+				color: yellow;
+				text-decoration: none;
+				border-bottom: 1px dashed yellow;
+				-webkit-transition:all .35s ;
+				-o-transition:all .35s ;
+				transition:all .35s ;
+				box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+			}
+
 			.wrap_panel{
 				margin-bottom: 30px;
 				height: 100%;

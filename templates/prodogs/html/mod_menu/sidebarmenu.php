@@ -17,26 +17,35 @@ if ($tagId = $params->get('tag_id', ''))
 }
 
 // The menu class is deprecated. Use nav instead
+$class = '';
 ?>
-<div class="col-xs-6 col-md-12">
-	<div class="wrap_panel">
+<ul>
 <?php foreach ($list as $i => &$item)
 {
-	// Если ID входит в путь ссылки, то делаем ссылку активной
 	if (in_array($item->id, $path))
 	{
 		$class .= ' active';
+		echo '<li class="' . $class . '">';
 	}
+	else
+	{
+		echo '<li>';
+	}
+
+	switch ($item->type) :
+		case 'separator':
+		case 'component':
+		case 'heading':
+		case 'url':
+			require JModuleHelper::getLayoutPath('mod_menu', 'sidebarmenu_' . $item->type);
+			break;
+
+		default:
+			require JModuleHelper::getLayoutPath('mod_menu', 'sidebarmenu_url');
+			break;
+	endswitch;
+
 	
-		echo '<div class="header_panel">';
-		echo '<h3 class="title_panel">';
-		echo $item->title;
-		echo '</h3></div>';										
-
-	//require JModuleHelper::getLayoutPath('mod_menu', 'usermenu_url');
-	print_r($item);
-
+	echo '</li>';
 }
-?>
-</div><!-- wrap_panel -->
-</div><!-- col-xs-6 col-md-12 -->
+?></ul>

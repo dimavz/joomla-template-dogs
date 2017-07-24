@@ -12,9 +12,45 @@ defined('_JEXEC') or die;
 /*
  * none (output raw module content)
  */
-function modChrome_empty($module, &$params, &$attribs)
+function modChrome_default($module, &$params, &$attribs)
 {
 	if($module->content){
+
+		if ($module->showtitle)
+		{
+			echo "<h".$headerLevel.">";
+			echo $module->title; 
+			echo "</h".$headerLevel.">";
+		}
+		echo $module->content;
+	}
+}
+
+function modChrome_sidebarmenu($module, &$params, &$attribs)
+{
+	if($module->content){
+
+		echo "<div class='col-xs-6 col-md-12'>";
+		echo "<div class='wrap_panel'>";
+
+		if ($module->showtitle)
+		{
+			echo "<div class='header_panel'>"; 
+			echo "<h3 class='title_panel'>".$module->title."</h3>";
+			echo "</div>";
+		}
+		echo "<div class='body_panel'>";
+		echo $module->content;
+		echo "</div>"; //body_panel
+		echo "</div>"; //wrap_panel
+		echo "</div>"; //col-xs-6 col-md-12
+	}
+}
+
+function modChrome_empty($module, &$params, &$attribs)
+{
+	if($module->content)
+	{
 		echo $module->content;
 	}
 }

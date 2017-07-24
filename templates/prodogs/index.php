@@ -314,16 +314,14 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 							<div class="block_sidebar">
 								<?php if ($doc->countModules('position-8') > 2) :?>
 									<div class="row">
-										<jdoc:include type="modules" name="position-8"/>
+										<jdoc:include type="modules" name="position-8" style="sidebarmenu" />
 									</div>
 									<div class="clearfix"></div>
 								<?php else :?>
 									<div class="row">
-										<jdoc:include type="modules" name="position-8"/>
+										<jdoc:include type="modules" name="position-8" style="sidebarmenu" />
 									</div>
 								<?php endif;?>
-
-							<jdoc:include type="modules" name="position-8"/>
 							</div><!-- /.block_sidebar -->
 						<?php endif;?>
 					</div>

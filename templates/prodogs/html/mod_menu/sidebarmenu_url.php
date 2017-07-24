@@ -10,7 +10,6 @@
 defined('_JEXEC') or die;
 
 $attributes = array();
-//print_r($item);
 
 if ($item->anchor_title)
 {
@@ -26,10 +25,18 @@ if ($item->anchor_rel)
 {
 	$attributes['rel'] = $item->anchor_rel;
 }
-else{
-		$linktype = $item->title;
-	}
 
+$linktype = $item->title;
+
+if ($item->menu_image)
+{
+	$linktype = JHtml::_('image', $item->menu_image, $item->title);
+
+	if ($item->params->get('menu_text', 1))
+	{
+		$linktype .= '<span class="image-title">' . $item->title . '</span>';
+	}
+}
 
 if ($item->browserNav == 1)
 {
