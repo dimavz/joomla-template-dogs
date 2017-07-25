@@ -1089,15 +1089,20 @@ ul.profil_menu li i{
 				color: red;
 			}
 			.post_category span.category{
-				position: relative;
+				/*position: relative;*/
 				height: 40px;
-				width: 70%;
+				/*width: 70%;*/
 				float: left;
 			}
+			
+			.post_category span.category i{
+				color:#31B0D5;
+			}
+
 			.post_category span.category a{
-				position: absolute;
+				/*position: absolute;*/
 				top: 5px;
-				left: 5px;
+				/*left: 5px;*/
 				height: 30px;
 				color:#31B0D5;
 			}

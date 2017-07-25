@@ -28,8 +28,8 @@ function modChrome_default($module, &$params, &$attribs)
 
 function modChrome_sidebarmenu($module, &$params, &$attribs)
 {
-	if($module->content){
-
+	if($module->content)
+	{
 		echo "<div class='col-xs-6 col-md-12'>";
 		echo "<div class='wrap_panel'>";
 
@@ -44,6 +44,7 @@ function modChrome_sidebarmenu($module, &$params, &$attribs)
 		echo "</div>"; //body_panel
 		echo "</div>"; //wrap_panel
 		echo "</div>"; //col-xs-6 col-md-12
+		//print_r($params);
 	}
 }
 

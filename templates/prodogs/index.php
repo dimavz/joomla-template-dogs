@@ -30,7 +30,11 @@ $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.c
 //Подключение скриптов (scripts)
 // $doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
 
-//Проверяем выводиться ли какие либо модули в позиции 4
+//Проверяем выводиться ли какие либо модули
+if ($doc->countModules('position-3'))
+{
+	$showSubscribe = TRUE;
+}
 if ($doc->countModules('position-4'))
 {
 	$showMainMenu = TRUE;
@@ -51,6 +55,15 @@ if ($doc->countModules('position-8'))
 {
 	$showSidebar = TRUE;
 }
+if ($doc->countModules('position-9'))
+{
+	$showUpBlockAds = TRUE;
+}
+if ($doc->countModules('position-10'))
+{
+	$showDownBlockAds = TRUE;
+}
+
 if ($doc->countModules('position-12'))
 {
 	$showBottomSliderBanners = TRUE;
@@ -75,6 +88,7 @@ unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-core.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/owl.carousel.min.js']);
 
+//print_r($doc->params);
 ?>
 
 <!DOCTYPE html>
@@ -248,8 +262,14 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 						</div>
 					</div><!-- /.logo_text -->
 				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<jdoc:include type="modules" name="position-3" style="default"/>
+				<?php if($showSubscribe):?>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="main_subscribe wow slideInDown">
+								<jdoc:include type="modules" name="position-3" style="default"/>
+							</div><!-- /.main_subscribe -->
+						</div><!-- /.col-md-4 col-sm-4 col-xs-12 -->
+				<?php endif;?>
+				<!-- <div class="col-md-4 col-sm-4 col-xs-12">
 					<div class="main_subscribe wow slideInDown">
 						<h2>Подписка на новости</h2>
 						<form class="form-horizontal">
@@ -272,7 +292,7 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 							</div>
 						</form>
 					</div><!-- /.main_subscribe -->
-				</div>
+				<!-- </div> --> 
 			</div><!-- /.row -->
 			<?php if($showMainMenu):?>
 				<div class="row">
@@ -304,15 +324,25 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 					<?php endif;?>
 
 					<div class="col-md-9 col-md-push-3">
-						<div class="block_ads"></div>
+						<?php if($showUpBlockAds):?>
+							<div class="block_ads">
+								<jdoc:include type="modules" name="position-9" />
+							</div>
+						<?php endif;?>
+						
+						<jdoc:include type="message" />
 						<jdoc:include type="component" />
-						<div class="block_ads"></div>
+						<?php if($showDownBlockAds):?>
+							<div class="block_ads">
+								<jdoc:include type="modules" name="position-10" />
+							</div>
+						<?php endif;?>
 					</div>
 					
 					<div class="col-md-3 col-md-pull-9">
 						<?php if($showSidebar):?>
 							<div class="block_sidebar">
-								<?php if ($doc->countModules('position-8') > 2) :?>
+								<?php if ($doc->countModules('position-8') >=2) :?>
 									<div class="row">
 										<jdoc:include type="modules" name="position-8" style="sidebarmenu" />
 									</div>
@@ -338,6 +368,7 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 			<?php else :?>
 				<div class="row">
 					<div class="modules">
+					<jdoc:include type="message" />
 						<div class="dogs-row">
 							<h2>Объявления о продаже щенков</h2>
 							<div class="post-row">
