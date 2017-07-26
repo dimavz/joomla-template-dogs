@@ -156,7 +156,7 @@ if(!class_exists('CarticleHelper'))
 
 						if($params->get('tmpl_core.item_author') && $item->user_id)
 						{
-							$author['author'] = JText::sprintf( 'CWRITTENBY',CCommunityHelper::getName($item->user_id, $obj->section));
+							$author['author'] = JText::sprintf('CWRITTENBY', CCommunityHelper::getName($item->user_id, $obj->section));
 						}
 						if($params->get('tmpl_core.item_author_filter'))
 						{
@@ -273,7 +273,7 @@ if(!class_exists('CarticleHelper'))
 										<?php endif; ?>
 
 										<?php if(isset($details['follow_num'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/lupa.png" alt="Оценок" title="Оценок" width="24px" height="24px">
+											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/star.png" alt="Оценок" title="Оценок" width="24px" height="24px">
 												<span title="Оценок">
 													<?php echo $details['follow_num']; ?>
 												</span>
