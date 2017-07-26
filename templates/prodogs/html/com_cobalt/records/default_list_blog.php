@@ -206,14 +206,6 @@ if(!class_exists('CarticleHelper'))
 						<!-- Конец формирования метаинформации о статье-->
 
 
-						<!-- Начало вывода Метаинформации о статье -->
-						<div class="post_metainfo">
-							<ul>
-								
-							</ul>
-						</div>
-						<!-- Конец вывода Метаинформации о статье -->
-
 						<?php if($author || $details || $time): ?>
 
 							<!-- Начало вывода мета-информации о статье -->
@@ -292,24 +284,28 @@ if(!class_exists('CarticleHelper'))
 
 									<?php if($author): ?>
 										<?php if(isset($author['author'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/autor.png" alt="Автор" title="Автор" width="24px" height="24px">
-												<span id="autor" title="Автор">
-													<?php echo $author['author']; ?>
+											<li>
+												<?php if($params->get('tmpl_core.item_author_avatar')):?>
+													<img class="img-polaroid" src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 24), $params->get('tmpl_core.item_author_avatar_height', 24));?>" />
+													<span id="autor" title="Автор">
+														<?php echo $author['author']; ?>
 														<?php if(isset($author['author_filter'])): ?>
 															<?php echo $author['author_filter']; ?>
 														<?php endif; ?>
-												</span>
+													</span>
+												<?php else:?>
+													<img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/autor.png" alt="Автор" title="Автор" width="24px" height="24px">
+													<span id="autor" title="Автор">
+														<?php echo $author['author']; ?>
+														<?php if(isset($author['author_filter'])): ?>
+															<?php echo $author['author_filter']; ?>
+														<?php endif; ?>
+													</span>
+												<?php endif;?>
 											</li>
 										<?php endif; ?>
 
 									<?php endif; ?> <!-- end if $author-->
-
-									<?php if($params->get('tmpl_core.item_author_avatar')):?>
-										<div class="pull-right">
-											<img class="img-polaroid" src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 40), $params->get('tmpl_core.item_author_avatar_height', 40));?>" />
-										</div>
-									<?php endif;?>
-
 								</ul>
 							</div><!-- /.post_metainfo -->
 						<?php endif;?>
