@@ -74,12 +74,16 @@ if(!class_exists('CarticleHelper'))
 						<?php echo HTMLFormatHelper::repost($item, $obj->section);?>
 						<?php echo HTMLFormatHelper::compare($item, $obj->submission_types[$item->type_id], $obj->section);?>
 						<?php if($item->controls):?>
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-mini">
-								<?php echo HTMLFormatHelper::icon('gear.png');  ?>
-							</a>
-							<ul class="dropdown-menu">
-								<?php echo list_controls($item->controls);?>
-							</ul>
+							<div class="btn-group" role="group" data-toggle="tooltip" data-placement="top" title="Параметры">
+								<button button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-cog" aria-hidden="true"></i>
+									<span class="caret"></span>
+								</button>
+
+								<ul class="dropdown-menu">
+									<?php echo list_controls($item->controls);?>
+								</ul>
+							</div>
 						<?php endif;?>
 					</div>
 				</div><!-- /.post_category -->
@@ -91,7 +95,9 @@ if(!class_exists('CarticleHelper'))
 						</div>
 					<?php endif;?>
 				</div>
-
+			
+				<?php //print_r ($item);?>
+				
 				<div class="post_info">
 					<?php foreach ($item->fields_by_id AS $field):?>
 						<?php if (isset($field->value['image'])) :?>
