@@ -95,231 +95,255 @@ if(!class_exists('CarticleHelper'))
 						</div>
 					<?php endif;?>
 				</div>
-			
+
 				<?php //print_r ($item);?>
 				
 				<div class="post_info">
-					<?php foreach ($item->fields_by_id AS $field):?>
-						<?php if (isset($field->value['image'])) :?>
-							<div class="post_image">
-									<!-- <a href="#" title="Название статьи" alt="Название статьи">
-											<img class="img-thumbnail" src="<?php echo $field->value['image'] ?>" alt="" title="">
-										</a> -->
-										<?php echo $field->result; ?>
-									</div>
-									<?php break;?>
-								<?php endif;?>
-							<?php endforeach;?>	
-
-							<div class="post_text">
-								<dl class="dl-horizontal text-overflow">
-									<?php foreach ($item->fields_by_id AS $field):?>
-										<?php if(in_array($field->key, $this->exclude)) continue; ?>
-										<?php if (isset($field->value['image'])) :?>
-											<?php continue;?>
-										<?php endif;?>
-										<?php if($field->params->get('core.show_lable') > 1):?>
-											<dt id="<?php echo $field->id;?>-lbl" for="field_<?php echo $field->id;?>" class="<?php echo $field->class;?>" >
-												<?php echo $field->label; ?>
-												<?php if($field->params->get('core.icon')):?>
-													<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
-												<?php endif;?>
-											</dt>
-										<?php endif;?>
-										<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
-											<?php echo $field->result; ?>
-										</dd>
-									<?php endforeach;?>
-								</dl>
-							</div><!-- /.post_text -->
-
-							<!-- Вывод кнопки Читать далее -->
-							<?php if($params->get('tmpl_core.item_readon')): ?>
-								<a href="<?php echo JRoute::_($item->url);?>">
-									<button class="seemore btn btn-info">
-										<?php echo JText::_('CREADMORE'); ?>
-									</button>
-								</a>
+					<!-- Вывод полей без группировки -->
+					<?php if($item->fields_by_groups[null]):?>
+						<?php foreach ($item->fields_by_groups[null] as $field_id => $field):?>
+							<?php if (isset($field->value['image'])) :?>
+								<div class="post_image">
+									<?php echo $field->result; ?>
+								</div>
+								<?php continue;?>
 							<?php endif;?>
-							<!-- Конец кнопки Читать далее -->
 
-						</div><!-- /.post_info -->
+							<dt id="<?php echo 'dt-'.$field_id; ?>" class="<?php echo $field->class;?>">
+								<?php if($field->params->get('core.show_lable') > 1):?>
+									<label id="<?php echo $field->id;?>-lbl">
+										<?php echo $field->label; ?>
+										<?php if($field->params->get('core.icon')):?>
+											<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+										<?php endif;?>
+									</label>
+									<?php if($field->params->get('core.label_break') > 1):?>
+									<?php endif;?>
+								<?php endif;?>
+							</dt>
+							<dd id="<?php echo 'dd-'.$field_id; ?>" class="<?php echo $field->fieldclass;?><?php echo ($field->params->get('core.label_break') > 1 ? ' line-brk' : NULL) ?>">
+								<?php echo $field->result; ?>
+							</dd>
+						<?php endforeach;?>
+					<?php endif;?>
+					<!-- Конец Вывода полей без группировки -->
 
-						<!-- Начало вывода Тэгов -->
-						<div class="post_tags">
+					<div class="post_text">
+						<!-- Вывод полей с группировкой -->
+						<?php if(isset($item->fields_by_groups)):?>
+							<?php //echo "Ветка отработала";?>
+							<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
+								<?php echo '<ul>' ;?>
+								<?php if(!empty($group_name)):?>
+									<?php echo $group_name;?>
+									<?php foreach ($fields as $field_id => $field):?>
+										<?php if($field->params->get('core.show_lable') > 1):?>
+											<?php echo '<li>' ;?>
+											<?php echo $field->label; ?>
+											<?php if($field->params->get('core.icon')):?>
+												<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+											<?php endif;?>
 
-						</div>
-						<!-- Конец вывода Тэгов -->
-
-						<!-- Конец вывода основного содержания статьи-->
-
-						<!-- Начало формирования метаинформации о статье-->
-
-						<?php
-						$author = array();
-						$details = array();
-						$time = array();
-
-						if($params->get('tmpl_core.item_author') && $item->user_id)
-						{
-							$author['author'] = JText::sprintf( 'CWRITTENBY',CCommunityHelper::getName($item->user_id, $obj->section));
-						}
-						if($params->get('tmpl_core.item_author_filter'))
-						{
-							$author['author_filter'] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $obj->section, array('nohtml' => 1))), $obj->section);
-						}
-						if($params->get('tmpl_core.item_ctime'))
-						{
-							$time['ctime'] = JText::sprintf('CONDATE', JHtml::_('date', $item->created, $params->get('tmpl_core.item_time_format')));
-						}
-
-						if($params->get('tmpl_core.item_mtime'))
-						{
-							$time['mtime'] = sprintf('%s: %s', JText::_('CCHANGEON'), JHtml::_('date', $item->modify, $params->get('tmpl_core.item_time_format')));
-						}
-
-						if($params->get('tmpl_core.item_extime'))
-						{
-							$time['extime'] = sprintf('%s: %s', JText::_('CEXPIREON'), $item->expire ? JHtml::_('date', $item->expire, $params->get('tmpl_core.item_time_format')) : JText::_('CNEVER'));
-						}
-
-						if($params->get('tmpl_core.item_type'))
-						{
-							$details['type'] = sprintf('%s: %s %s', JText::_('CTYPE'), $item->type_name, ($params->get('tmpl_core.item_type_filter') ? FilterHelper::filterButton('filter_type', $item->type_id, NULL, JText::sprintf('CSHOWALLTYPEREC', $item->type_name), $obj->section) : NULL));
-						}
-						if($params->get('tmpl_core.item_hits'))
-						{
-							$details['hits'] = sprintf('%s: %s', JText::_('CHITS'), $item->hits);
-						}
-						if($params->get('tmpl_core.item_comments_num'))
-						{
-							$details['comments_num'] = sprintf('%s: %s', JText::_('CCOMMENTS'), CommentHelper::numComments($obj->submission_types[$item->type_id], $item));
-						}
-						if($params->get('tmpl_core.item_vote_num'))
-						{
-							$details['vote_num'] = sprintf('%s: %s', JText::_('CVOTES'), $item->votes);
-						}
-						if($params->get('tmpl_core.item_favorite_num'))
-						{
-							$details['favorite_num'] = sprintf('%s: %s', JText::_('CFAVORITED'), $item->favorite_num);
-						}
-						if($params->get('tmpl_core.item_follow_num'))
-						{
-							$details['follow_num'] = sprintf('%s: %s', JText::_('CFOLLOWERS'), $item->subscriptions_num);
-						}
-						?>
-
-						<!-- Конец формирования метаинформации о статье-->
-
-
-						<?php if($author || $details || $time): ?>
-
-							<!-- Начало вывода мета-информации о статье -->
-
-							<div class="post_metainfo">
-								<ul>
-									<?php if($time): ?>
-										<?php if(isset($time['ctime'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar.png" alt="Дата публикации" title="Дата публикации" width="24px" height="24px">
-												<span title="Дата публикации">
-													<?php echo $time['ctime']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($time['mtime'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Дата редактирования" title="Дата редактирования" width="24px" height="24px">
-												<span id="data_edit" title="Дата редактирования">
-													<?php echo $time['mtime']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($time['extime'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Заканчивается" title="Заканчивается" width="24px" height="24px">
-												<span id="data_edit" title="Заканчивается">
-													<?php echo $time['extime']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-									<?php endif; ?> <!-- end if $time -->
-
-									<?php if($details): ?>
-										<?php if(isset($details['hits'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/eye.png" alt="Просмотров" title="Просмотров" width="24px" height="24px">
-												<span title="Просмотров">
-													<?php echo $details['hits']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($details['comments_num'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/comments.png" alt="Комментариев" title="Комментариев" width="24px" height="24px">
-												<span title="Комментариев">
-													<?php echo $details['comments_num']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($details['favorite_num'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/favorite.png" alt="В избранном" title="В избранном" width="24px" height="24px">
-												<span title="В избранном">
-													<?php echo $details['favorite_num']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($details['vote_num'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/star.png" alt="Оценок" title="Оценок" width="24px" height="24px">
-												<span title="Оценок">
-													<?php echo $details['vote_num']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-										<?php if(isset($details['follow_num'])): ?>
-											<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/lupa.png" alt="Оценок" title="Оценок" width="24px" height="24px">
-												<span title="Оценок">
-													<?php echo $details['follow_num']; ?>
-												</span>
-											</li>
-										<?php endif; ?>
-
-									<?php endif; ?> <!-- end if $details -->
-
-									<?php if($author): ?>
-										<?php if(isset($author['author'])): ?>
-											<li>
-												<?php if($params->get('tmpl_core.item_author_avatar')):?>
-													<img class="img-polaroid" src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 24), $params->get('tmpl_core.item_author_avatar_height', 24));?>" />
-													<span id="autor" title="Автор">
-														<?php echo $author['author']; ?>
-														<?php if(isset($author['author_filter'])): ?>
-															<?php echo $author['author_filter']; ?>
-														<?php endif; ?>
-													</span>
-												<?php else:?>
-													<img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/autor.png" alt="Автор" title="Автор" width="24px" height="24px">
-													<span id="autor" title="Автор">
-														<?php echo $author['author']; ?>
-														<?php if(isset($author['author_filter'])): ?>
-															<?php echo $author['author_filter']; ?>
-														<?php endif; ?>
-													</span>
-												<?php endif;?>
-											</li>
-										<?php endif; ?>
-
-									<?php endif; ?> <!-- end if $author-->
-								</ul>
-							</div><!-- /.post_metainfo -->
+											<?php echo $field->result; ?>
+											<?php echo '</li>' ;?>
+										<?php endif;?>
+									<?php endforeach;?>
+								<?php endif;?>
+								<?php echo '</ul>' ;?>	
+							<?php endforeach;?>
+							
 						<?php endif;?>
-						<!-- Конец вывода мета-информации о статье -->
 
-					</div><!-- end class="post" -->
 
-					<?php
+					</div><!-- /.post_text -->
+
+					<!-- Вывод кнопки Читать далее -->
+					<?php if($params->get('tmpl_core.item_readon')): ?>
+						<a href="<?php echo JRoute::_($item->url);?>">
+							<button class="seemore btn btn-info">
+								<?php echo JText::_('CREADMORE'); ?>
+							</button>
+						</a>
+					<?php endif;?>
+					<!-- Конец кнопки Читать далее -->
+
+				</div><!-- /.post_info -->
+
+				<!-- Начало вывода Тэгов -->
+				<div class="post_tags">
+
+				</div>
+				<!-- Конец вывода Тэгов -->
+
+				<!-- Конец вывода основного содержания статьи-->
+
+				<!-- Начало формирования метаинформации о статье-->
+
+				<?php
+				$author = array();
+				$details = array();
+				$time = array();
+
+				if($params->get('tmpl_core.item_author') && $item->user_id)
+				{
+					$author['author'] = JText::sprintf( 'CWRITTENBY',CCommunityHelper::getName($item->user_id, $obj->section));
+				}
+				if($params->get('tmpl_core.item_author_filter'))
+				{
+					$author['author_filter'] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $obj->section, array('nohtml' => 1))), $obj->section);
+				}
+				if($params->get('tmpl_core.item_ctime'))
+				{
+					$time['ctime'] = JText::sprintf('CONDATE', JHtml::_('date', $item->created, $params->get('tmpl_core.item_time_format')));
+				}
+
+				if($params->get('tmpl_core.item_mtime'))
+				{
+					$time['mtime'] = sprintf('%s: %s', JText::_('CCHANGEON'), JHtml::_('date', $item->modify, $params->get('tmpl_core.item_time_format')));
+				}
+
+				if($params->get('tmpl_core.item_extime'))
+				{
+					$time['extime'] = sprintf('%s: %s', JText::_('CEXPIREON'), $item->expire ? JHtml::_('date', $item->expire, $params->get('tmpl_core.item_time_format')) : JText::_('CNEVER'));
+				}
+
+				if($params->get('tmpl_core.item_type'))
+				{
+					$details['type'] = sprintf('%s: %s %s', JText::_('CTYPE'), $item->type_name, ($params->get('tmpl_core.item_type_filter') ? FilterHelper::filterButton('filter_type', $item->type_id, NULL, JText::sprintf('CSHOWALLTYPEREC', $item->type_name), $obj->section) : NULL));
+				}
+				if($params->get('tmpl_core.item_hits'))
+				{
+					$details['hits'] = sprintf('%s: %s', JText::_('CHITS'), $item->hits);
+				}
+				if($params->get('tmpl_core.item_comments_num'))
+				{
+					$details['comments_num'] = sprintf('%s: %s', JText::_('CCOMMENTS'), CommentHelper::numComments($obj->submission_types[$item->type_id], $item));
+				}
+				if($params->get('tmpl_core.item_vote_num'))
+				{
+					$details['vote_num'] = sprintf('%s: %s', JText::_('CVOTES'), $item->votes);
+				}
+				if($params->get('tmpl_core.item_favorite_num'))
+				{
+					$details['favorite_num'] = sprintf('%s: %s', JText::_('CFAVORITED'), $item->favorite_num);
+				}
+				if($params->get('tmpl_core.item_follow_num'))
+				{
+					$details['follow_num'] = sprintf('%s: %s', JText::_('CFOLLOWERS'), $item->subscriptions_num);
+				}
+				?>
+
+				<!-- Конец формирования метаинформации о статье-->
+
+
+				<?php if($author || $details || $time): ?>
+
+					<!-- Начало вывода мета-информации о статье -->
+
+					<div class="post_metainfo">
+						<ul>
+							<?php if($time): ?>
+								<?php if(isset($time['ctime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar.png" alt="Дата публикации" title="Дата публикации" width="24px" height="24px">
+										<span title="Дата публикации">
+											<?php echo $time['ctime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($time['mtime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Дата редактирования" title="Дата редактирования" width="24px" height="24px">
+										<span id="data_edit" title="Дата редактирования">
+											<?php echo $time['mtime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($time['extime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Заканчивается" title="Заканчивается" width="24px" height="24px">
+										<span id="data_edit" title="Заканчивается">
+											<?php echo $time['extime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $time -->
+
+							<?php if($details): ?>
+								<?php if(isset($details['hits'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/eye.png" alt="Просмотров" title="Просмотров" width="24px" height="24px">
+										<span title="Просмотров">
+											<?php echo $details['hits']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['comments_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/comments.png" alt="Комментариев" title="Комментариев" width="24px" height="24px">
+										<span title="Комментариев">
+											<?php echo $details['comments_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['favorite_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/favorite.png" alt="В избранном" title="В избранном" width="24px" height="24px">
+										<span title="В избранном">
+											<?php echo $details['favorite_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['vote_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/star.png" alt="Оценок" title="Оценок" width="24px" height="24px">
+										<span title="Оценок">
+											<?php echo $details['vote_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['follow_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/lupa.png" alt="Оценок" title="Оценок" width="24px" height="24px">
+										<span title="Оценок">
+											<?php echo $details['follow_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $details -->
+
+							<?php if($author): ?>
+								<?php if(isset($author['author'])): ?>
+									<li>
+										<?php if($params->get('tmpl_core.item_author_avatar')):?>
+											<img class="img-polaroid" src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 24), $params->get('tmpl_core.item_author_avatar_height', 24));?>" />
+											<span id="autor" title="Автор">
+												<?php echo $author['author']; ?>
+												<?php if(isset($author['author_filter'])): ?>
+													<?php echo $author['author_filter']; ?>
+												<?php endif; ?>
+											</span>
+										<?php else:?>
+											<img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/autor.png" alt="Автор" title="Автор" width="24px" height="24px">
+											<span id="autor" title="Автор">
+												<?php echo $author['author']; ?>
+												<?php if(isset($author['author_filter'])): ?>
+													<?php echo $author['author_filter']; ?>
+												<?php endif; ?>
+											</span>
+										<?php endif;?>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $author-->
+						</ul>
+					</div><!-- /.post_metainfo -->
+				<?php endif;?>
+				<!-- Конец вывода мета-информации о статье -->
+
+			</div><!-- end class="post" -->
+
+			<?php
 		} // end function display
 	} // end class CarticleHelper
 } //end if
@@ -422,4 +446,3 @@ $helper->exclude = $exclude;
 		</ul>
 	</div>
 <?php endif;?>
-
