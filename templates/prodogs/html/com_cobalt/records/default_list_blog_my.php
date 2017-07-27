@@ -125,73 +125,34 @@ if(!class_exists('CarticleHelper'))
 								<?php echo $field->result; ?>
 							</dd>
 						<?php endforeach;?>
-						<?php unset($item->fields_by_groups[null]);?>
 					<?php endif;?>
 					<!-- Конец Вывода полей без группы -->
 
-					<!-- Вывод полей с группой -->
 					<div class="post_text">
-						<!-- Формируем ТАБЫ -->
+						<!-- Вывод полей с группой -->
 						<?php if(isset($item->fields_by_groups)):?>
-							<?php $countTab = 1; /*Счётчик табов*/ ?>
-							<?php echo '<ul class="nav nav-tabs" role="tablist">' ;?>
+							<?php //echo "Ветка отработала";?>
 							<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
-
+								<?php echo '<ul>' ;?>
 								<?php if(!empty($group_name)):?>
-									<?php if($countTab == 1):?>
-										<?php echo '<li class="active" role="presentation">';?>
-										<?php echo '<a href="#tab'.$countTab.'" role="tab" data-toggle="tab">';?>
-										<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
-											<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
-										<?php endif; ?>
-										<?php echo $group_name;?>
-										<?php echo '</a>';?>
-										<?php echo '</li>' ;?>
-									<?php else:?>
-										<?php echo '<li role="presentation">';?>
-										<?php echo '<a href="#tab'.$countTab.'" role="tab" data-toggle="tab">';?>
-										<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
-											<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
-										<?php endif; ?>
-										<?php echo $group_name;?>
-										<?php echo '</a>';?>
-										<?php echo '</li>' ;?>
-									<?php endif;?>
-								<?php endif;?>
-								<?php $countTab++; /*Увеличиваем Счётчик табов*/ ?>	
-							<?php endforeach;?>
-							<?php echo '</ul>' ;?>
-						<?php endif;?>
-						<!-- Конец формирования ТАБОВ -->
-
-						<!-- Формируем поля ТАБОВ -->
-						<div class="tab-content">
-							<?php if(isset($item->fields_by_groups)):?>
-								<?php $countContentTab = 1; /*Счётчик контента*/ ?>
-								<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
-									<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
-									<?php if(!empty($group_name)):?>
-										<?php echo '<ul>' ;?>
-										<?php foreach ($fields as $field_id => $field):?>
-											<?php if($field->params->get('core.show_lable') > 1):?>
-												<?php echo '<li>' ;?>
-												<?php echo $field->label; ?>
-												<?php if($field->params->get('core.icon')):?>
-													<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
-												<?php endif;?>
-												<?php echo $field->result; ?>
-												<?php echo '</li>' ;?>
+									<?php echo $group_name;?>
+									<?php foreach ($fields as $field_id => $field):?>
+										<?php if($field->params->get('core.show_lable') > 1):?>
+											<?php echo '<li>' ;?>
+											<?php echo $field->label; ?>
+											<?php if($field->params->get('core.icon')):?>
+												<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
 											<?php endif;?>
-										<?php endforeach;?>
-										<?php echo '</ul>' ;?>
-									<?php endif;?>
-									<?php echo '</div>' ;?>
-									<?php $countContentTab++; /*Увеличение Счётчика  контента*/ ?>
-								<?php endforeach;?>
-							<?php endif;?>
-						</div><!-- /.tab-content -->
-						<!-- Конец формирования полей ТАБОВ -->
 
+											<?php echo $field->result; ?>
+											<?php echo '</li>' ;?>
+										<?php endif;?>
+									<?php endforeach;?>
+								<?php endif;?>
+								<?php echo '</ul>' ;?>	
+							<?php endforeach;?>
+							
+						<?php endif;?>
 					</div><!-- /.post_text -->
 					<!-- Конец вывода полей с группой -->
 
