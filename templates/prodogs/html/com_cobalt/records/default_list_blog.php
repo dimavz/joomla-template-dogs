@@ -16,6 +16,8 @@ if(!class_exists('CarticleHelper'))
 	{
 
 		var $k = 0;
+		var $countTab =1;
+		var $countContentTab = 1;
 
 		public function isnext($obj)
 		{
@@ -133,23 +135,25 @@ if(!class_exists('CarticleHelper'))
 					<div class="post_text">
 						<!-- Формируем ТАБЫ -->
 						<?php if(isset($item->fields_by_groups)):?>
-							<?php $countTab = 1; /*Счётчик табов*/ ?>
+							<?php $countTab = $this->countTab; /*Счётчик табов*/ ?>
 							<?php echo '<ul class="nav nav-tabs" role="tablist">' ;?>
+							<?php $fl = true ; // Флаг активности таба?>
 							<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
 
 								<?php if(!empty($group_name)):?>
-									<?php if($countTab == 1):?>
-										<?php echo '<li class="active" role="presentation">';?>
-										<?php echo '<a href="#tab'.$countTab.'" role="tab" data-toggle="tab">';?>
+									<?php if($fl):?>
+										<?php echo '<li role="presentation" class="active">';?>
+										<?php echo '<a href="#tab'.$countTab.'" aria-controls="tab'.$countTab.'" role="tab" data-toggle="tab" aria-expanded="true">';?>
 										<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
 											<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
 										<?php endif; ?>
 										<?php echo $group_name;?>
 										<?php echo '</a>';?>
 										<?php echo '</li>' ;?>
+										<?php $fl = false;?>
 									<?php else:?>
 										<?php echo '<li role="presentation">';?>
-										<?php echo '<a href="#tab'.$countTab.'" role="tab" data-toggle="tab">';?>
+										<?php echo '<a href="#tab'.$countTab.'" aria-controls="tab'.$countTab.'" role="tab" data-toggle="tab" aria-expanded="false">';?>
 										<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
 											<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
 										<?php endif; ?>
@@ -159,6 +163,7 @@ if(!class_exists('CarticleHelper'))
 									<?php endif;?>
 								<?php endif;?>
 								<?php $countTab++; /*Увеличиваем Счётчик табов*/ ?>	
+								<?php $this->countTab = $countTab; /*Увеличиваем Счётчик табов*/ ?>	
 							<?php endforeach;?>
 							<?php echo '</ul>' ;?>
 						<?php endif;?>
@@ -167,26 +172,53 @@ if(!class_exists('CarticleHelper'))
 						<!-- Формируем поля ТАБОВ -->
 						<div class="tab-content">
 							<?php if(isset($item->fields_by_groups)):?>
-								<?php $countContentTab = 1; /*Счётчик контента*/ ?>
+								<?php $countContentTab = $this->countContentTab; /*Счётчик контента*/ ?>
+								<?php $fl_cont = true ; // Флаг активности контента таба?>
 								<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
-									<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
-									<?php if(!empty($group_name)):?>
-										<?php echo '<ul>' ;?>
-										<?php foreach ($fields as $field_id => $field):?>
-											<?php if($field->params->get('core.show_lable') > 1):?>
-												<?php echo '<li>' ;?>
-												<?php echo $field->label; ?>
-												<?php if($field->params->get('core.icon')):?>
-													<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+									<?php if($fl_cont):?>
+										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
+										<?php if(!empty($group_name)):?>
+											<?php echo '<ul>' ;?>
+											<?php foreach ($fields as $field_id => $field):?>
+												<?php if($field->params->get('core.show_lable') > 1):?>
+													<?php echo '<li>' ;?>
+													<?php echo $field->label; ?>
+													<?php if($field->params->get('core.icon')):?>
+														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+													<?php endif;?>
+													<?php echo $field->result; ?>
+													<?php echo '</li>' ;?>
+												<?php else:?>
+													<?php echo '<li>' ;?>
+														<?php echo $field->result; ?>
+													<?php echo '</li>' ;?>
 												<?php endif;?>
-												<?php echo $field->result; ?>
-												<?php echo '</li>' ;?>
-											<?php endif;?>
-										<?php endforeach;?>
-										<?php echo '</ul>' ;?>
+											<?php endforeach;?>
+											<?php echo '</ul>' ;?>
+										<?php endif;?>
+										<?php echo '</div>' ;?>
+										<?php $fl_cont = false; ?>
+									<?php else:?>
+										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade" role="tabpanel">' ;?>
+										<?php if(!empty($group_name)):?>
+											<?php echo '<ul>' ;?>
+											<?php foreach ($fields as $field_id => $field):?>
+												<?php if($field->params->get('core.show_lable') > 1):?>
+													<?php echo '<li>' ;?>
+													<?php echo $field->label; ?>
+													<?php if($field->params->get('core.icon')):?>
+														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+													<?php endif;?>
+													<?php echo $field->result; ?>
+													<?php echo '</li>' ;?>
+												<?php endif;?>
+											<?php endforeach;?>
+											<?php echo '</ul>' ;?>
+										<?php endif;?>
+										<?php echo '</div>' ;?>
 									<?php endif;?>
-									<?php echo '</div>' ;?>
 									<?php $countContentTab++; /*Увеличение Счётчика  контента*/ ?>
+									<?php $this->countContentTab = $countContentTab; /*Увеличение Счётчика  контента*/ ?>
 								<?php endforeach;?>
 							<?php endif;?>
 						</div><!-- /.tab-content -->
@@ -429,25 +461,25 @@ $helper->exclude = $exclude;
 
 
 <?php if($leading && $helper->isnext($this)):?>
-	<div class="items-leading">
-		<?php for($i = 0; $i < $leading; $i++): ?>
-			<div class="leading-<?php echo $i;?>">
-				<?php echo $helper->display($this);?>
-			</div>
-		<?php endfor;?>
-	</div>
+
+	<?php for($i = 0; $i < $leading; $i++): ?>
+
+		<?php echo $helper->display($this);?>
+
+	<?php endfor;?>
+
 <?php endif;?>
-<div class="clearfix"></div>
+
 
 <?php if($intro && $helper->isnext($this)):?>
 	<?php for($r = 0; $r < $rows; $r++):?>
-		<div class="row-fluid">
-			<?php for($c = 0; $c < $cols; $c++):?>
-				<div class="span<?php echo round((12 / $cols));?>">
-					<?php echo $helper->display($this);?>
-				</div>
-			<?php endfor;?>
-		</div>
+
+		<?php for($c = 0; $c < $cols; $c++):?>
+
+			<?php echo $helper->display($this);?>
+
+		<?php endfor;?>
+
 	<?php endfor;?>
 <?php endif;?>
 
