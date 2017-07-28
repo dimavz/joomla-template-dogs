@@ -2182,4 +2182,8 @@ ul.profil_menu li i{
 .alpha-index .alpha-set span{
 	color:#3797BF;
 }
+.alpha-index .alpha-set span.label-warning{
+	background-color: #3779BF;
+	color:yellow;
+}
 /* Конец списка статей Кобальта Блог*/
