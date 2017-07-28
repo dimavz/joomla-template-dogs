@@ -2179,4 +2179,7 @@ ul.profil_menu li i{
 .navbar-inner ul.nav li{
 	display: inline-block;
 }
+.alpha-index .alpha-set span{
+	color:#3797BF;
+}
 /* Конец списка статей Кобальта Блог*/
