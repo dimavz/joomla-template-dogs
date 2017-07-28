@@ -641,8 +641,6 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 <?php endif;?>
 
 
-
-
 <?php if($markup->get('filters.worns') && count($this->worns)):?>
 <div class="filter-worns">
 	<?php foreach ($this->worns AS $worn):?>
@@ -672,17 +670,7 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 
 	<?php echo $this->loadTemplate('list_'.$this->list_template);?>
 
-	
-
-<?php elseif($this->worns):?>
-	<h4 align="center"><?php echo JText::_('CNORECFOUNDSEARCH');?></h4>
-<?php else:?>
-	<?php if(((!empty($this->category->id) && $this->category->params->get('submission')) || (empty($this->category->id) && $this->section->params->get('general.section_home_items'))) && !$this->input->get('view_what')):?>
-		<h4 align="center" class="no-records" id="no-records<?php echo $this->section->id; ?>"><?php echo JText::_('CNOARTICLESHERE');?></h4>
-	<?php endif;?>
-<?php endif;?>
-
-<?php if ($this->tmpl_params['list']->def('tmpl_core.item_pagination', 1)) : ?>
+	<?php if ($this->tmpl_params['list']->def('tmpl_core.item_pagination', 1)) : ?>
 		<form method="post">
 			<div style="text-align: center;">
 				<small>
@@ -703,3 +691,11 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 			<?php endif; ?>
 		</form>
 	<?php endif; ?>
+
+<?php elseif($this->worns):?>
+	<h4 align="center"><?php echo JText::_('CNORECFOUNDSEARCH');?></h4>
+<?php else:?>
+	<?php if(((!empty($this->category->id) && $this->category->params->get('submission')) || (empty($this->category->id) && $this->section->params->get('general.section_home_items'))) && !$this->input->get('view_what')):?>
+		<h4 align="center" class="no-records" id="no-records<?php echo $this->section->id; ?>"><?php echo JText::_('CNOARTICLESHERE');?></h4>
+	<?php endif;?>
+<?php endif;?>

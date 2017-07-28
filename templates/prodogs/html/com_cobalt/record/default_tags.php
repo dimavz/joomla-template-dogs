@@ -76,11 +76,17 @@ defined('_JEXEC') or die();
 				}
 
 			</style>
-			<div id="tag-list-<?php echo $this->item->id ?>" class="tag_list">
+			<div id="tag-list-<?php echo $this->item->id ?>" class="post_tags">
 				<span class="tag_list_item"><?php echo JText::_('CTAGS'); ?> <?php echo HTMLFormatHelper::icon('price-tag.png'); ?></span>
+				<ul>
 				<?php foreach($tags AS $tag): ?>
-					<span class="label label-default tag_list_item"><a href="<?php echo $tag['link'] ?>" <?php echo $tag['attr'] ?>><?php echo $tag['tag'] ?></a></span>
+					<a href="<?php echo $tag['link'] ?>"
+					<?php echo $tag['attr'] ?>><li> <?php echo $tag['tag'] ?>
+					<i class="fa fa-tag fa-lg" aria-hidden="true"></i>
+					</li>
+					</a>
 				<?php endforeach; ?>
+				</ul>
 			</div>
 			<div class="clearfix"></div>
 			<br>
