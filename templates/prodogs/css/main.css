@@ -2171,3 +2171,12 @@ ul.profil_menu li i{
 
 /* Конец стилей слайдера модуля поиска собаки  */
 
+/* Список статей Кобальта Блог*/
+.navbar-inner{
+	border: 1px dotted #3797BF;
+}
+
+.navbar-inner ul.nav li{
+	display: inline-block;
+}
+/* Конец списка статей Кобальта Блог*/

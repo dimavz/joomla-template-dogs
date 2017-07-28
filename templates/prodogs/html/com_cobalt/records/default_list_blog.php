@@ -130,13 +130,13 @@ if(!class_exists('CarticleHelper'))
 						<?php unset($item->fields_by_groups[null]);?>
 					<?php endif;?>
 					<!-- Конец Вывода полей без группы -->
-
+					<div class="clearfix"></div>
 					<!-- Вывод полей с группой -->
 					<div class="post_text">
 						<!-- Формируем ТАБЫ -->
 						<?php if(isset($item->fields_by_groups)):?>
 							<?php $countTab = $this->countTab; /*Счётчик табов*/ ?>
-							<?php echo '<ul class="nav nav-tabs" role="tablist">' ;?>
+							<?php echo '<ul class="nav nav-tabs nav-justified" role="tablist">' ;?>
 							<?php $fl = true ; // Флаг активности таба?>
 							<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
 
@@ -178,42 +178,42 @@ if(!class_exists('CarticleHelper'))
 									<?php if($fl_cont):?>
 										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
 										<?php if(!empty($group_name)):?>
-											<?php echo '<ul>' ;?>
+											<?php //echo '<ul>' ;?>
 											<?php foreach ($fields as $field_id => $field):?>
 												<?php if($field->params->get('core.show_lable') > 1):?>
-													<?php echo '<li>' ;?>
+													<?php echo '<p>' ;?>
 													<?php echo $field->label; ?>
 													<?php if($field->params->get('core.icon')):?>
 														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
 													<?php endif;?>
 													<?php echo $field->result; ?>
-													<?php echo '</li>' ;?>
+													<?php echo '</p>' ;?>
 												<?php else:?>
-													<?php echo '<li>' ;?>
+													<?php echo '<p>' ;?>
 														<?php echo $field->result; ?>
-													<?php echo '</li>' ;?>
+													<?php echo '</p>' ;?>
 												<?php endif;?>
 											<?php endforeach;?>
-											<?php echo '</ul>' ;?>
+											<?php //echo '</ul>' ;?>
 										<?php endif;?>
 										<?php echo '</div>' ;?>
 										<?php $fl_cont = false; ?>
 									<?php else:?>
 										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade" role="tabpanel">' ;?>
 										<?php if(!empty($group_name)):?>
-											<?php echo '<ul>' ;?>
+											<?php //echo '<ul>' ;?>
 											<?php foreach ($fields as $field_id => $field):?>
 												<?php if($field->params->get('core.show_lable') > 1):?>
-													<?php echo '<li>' ;?>
+													<?php echo '<p>' ;?>
 													<?php echo $field->label; ?>
 													<?php if($field->params->get('core.icon')):?>
 														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
 													<?php endif;?>
 													<?php echo $field->result; ?>
-													<?php echo '</li>' ;?>
+													<?php echo '</p>' ;?>
 												<?php endif;?>
 											<?php endforeach;?>
-											<?php echo '</ul>' ;?>
+											<?php //echo '</ul>' ;?>
 										<?php endif;?>
 										<?php echo '</div>' ;?>
 									<?php endif;?>
