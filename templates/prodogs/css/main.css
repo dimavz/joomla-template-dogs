@@ -2191,4 +2191,10 @@ ul.profil_menu li i{
 	background-color: #3779BF;
 	color:yellow;
 }
+.pagination {
+  border-radius: 4px;
+  margin: 20px 0;
+  padding-left: 0;
+  display: block;
+}
 /* Конец списка статей Кобальта Блог*/

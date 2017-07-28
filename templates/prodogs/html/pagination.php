@@ -1,20 +1,6 @@
 <?php
 defined('JPATH_PLATFORM') or die;
-// function pagination_list_render($list)
-// {
-// 	$html ='';
-// 	$html .= '<ul>';
-// 	$html .= $list['start']['data'];
-// 	$html .= $list['previous']['data'];
-// 	foreach($list['pages'] as $page)
-// 	{
-// 		$html .= $page['data'];
-// 	}
-// 	$html .= $list['next']['data'];
-// 	$html .= $list['end']['data'];
-// 	$html .= '</ul>';
-// 	return $html;
-// }
+
 // главная функция этого файла, имя этой функции изменять нельзя
 function pagination_list_render($list){
     $html = '';
@@ -62,17 +48,16 @@ function pagination_list_render($list){
     		}
     	 
     } 
-    // if($current < ($countPages - 1)) //
-    // {
-    // 	$html .= $list['pages'][$current+2]['data'];
-    // 	//$html .= '<li><span>...</span></li>';
-    // 	$html .= $list['next']['data'];	
-    // } 
+    
     if($current < $countPages)
     {
     	$html .= $list['end']['data'];
     } 
-    return '<ul>'.$html.'</ul>';
+    return '<div class="pag_block">
+									<div class="pages">
+										<div class="wraper_ul"><ul>'.$html.'</div>
+									</div>
+								</div></ul>';
 }
 // конец главной функции
 function pagination_item_active($item)
