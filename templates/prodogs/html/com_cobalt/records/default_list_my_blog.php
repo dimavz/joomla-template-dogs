@@ -341,7 +341,7 @@ if(!class_exists('CarticleHelper'))
 
 							<?php if($details): ?>
 								<?php if(isset($details['hits'])): ?>
-									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/eye.png" alt="Просмотров" title="Просмотров" width="24px" height="24px">
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/eye_24x24.png" alt="Просмотров" title="Просмотров" width="24px" height="24px">
 										<span title="Просмотров">
 											<?php echo $details['hits']; ?>
 										</span>
@@ -515,4 +515,3 @@ $helper->exclude = $exclude;
 		</ul>
 	</div>
 <?php endif;?>
-</div><!-- end class="list_posts"> -->

@@ -700,3 +700,4 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 		<h4 align="center" class="no-records" id="no-records<?php echo $this->section->id; ?>"><?php echo JText::_('CNOARTICLESHERE');?></h4>
 	<?php endif;?>
 <?php endif;?>
+
