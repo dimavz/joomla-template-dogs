@@ -198,7 +198,7 @@ class CobaltTableRecord extends JTable
 		}
 		else
 		{
-			if(strtotime($post['extime']) > time())
+			if(strtotime(@$post['extime']) > time())
 			{
 				$this->exalert = 0;
 			}

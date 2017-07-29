@@ -8,9 +8,15 @@
  */
 
 defined('_JEXEC') or die();
+/*$doc = JFactory::getDocument();
+$doc->addStyleSheet('components/com_cobalt/views/tools/tmpl/ladda-bootstrap/ladda-themeless.min.css');
+$doc->addScript('components/com_cobalt/views/tools/tmpl/ladda-bootstrap/spin.min.js');
+$doc->addScript('components/com_cobalt/views/tools/tmpl/ladda-bootstrap/ladda.min.js');*/
 ?>
 <form action="<?php echo $this->action; ?>" method="post" name="adminForm" id="adminForm">
-	<input align="right" type="button" class="btn btn-primary" onclick="javascript:submitbutton('tools.apply')" value="<?php echo JText::_('CRUNTOOL')?>" class="button" style="float: right;" />
+	<button align="right" data-style="expand-left" class="btn btn-primary ladda-button" onclick="javascript:submitbutton('tools.apply')" style="float: right;">
+		<span class="ladda-label"><?php echo JText::_('CRUNTOOL')?></span>
+	</button>
 
 	<br style="clear: both;" />	
 	<br />	

@@ -2,7 +2,7 @@
 <extension type="package" version="3.0" method="upgrade">
 	<name>Cobalt - Package - All</name>
 	<packagename>cobaltpack</packagename>
-	<version>8.740</version>
+	<version>8.742</version>
 	<url>http://www.mintjoomla.com</url>
 	<packager>MintJoomla</packager>
 	<packagerurl>http://www.mintjoomla.com</packagerurl>
@@ -108,15 +108,15 @@
 
 	<files folder="package">
 		<file type="file" id="mint">uploads_dir.zip</file>
-		<file type="component" id="com_cobalt">com_cobalt.j3.v.8.740.zip</file>
+		<file type="component" id="com_cobalt">com_cobalt.j3.v.8.742.zip</file>
 		<file type="library" id="mint">pkg_mint.j3.libraries.v.8.111.zip</file>
 		<file type="module" client="site" id="mod_cobalt_category">mod_cobalt_category.j3.v.8.45.zip</file>
-		<file type="module" client="site" id="mod_cobalt_filters">mod_cobalt_filters.j3.v.8.51.zip</file>
+		<file type="module" client="site" id="mod_cobalt_filters">mod_cobalt_filters.j3.v.8.52.zip</file>
 		<file type="module" client="site" id="mod_cobalt_followers">mod_cobalt_followers.j3.v.8.25.zip</file>
 		<file type="module" client="site" id="mod_cobalt_ifollow">mod_cobalt_ifollow.j3.v.8.25.zip</file>
 		<file type="module" client="site" id="mod_cobalt_notifications">mod_cobalt_notifications.j3.v.8.29.zip</file>
 		<file type="module" client="site" id="mod_cobalt_participants">mod_cobalt_participants.j3.v.8.18.zip</file>
-		<file type="module" client="site" id="mod_cobalt_records">mod_cobalt_records.j3.v.8.67.zip</file>
+		<file type="module" client="site" id="mod_cobalt_records">mod_cobalt_records.j3.v.8.68.zip</file>
 		<file type="module" client="site" id="mod_cobalt_sectionstatistics">mod_cobalt_sectionstatistics.j3.v.8.28.zip</file>
 		<file type="module" client="site" id="mod_cobalt_submitbutton">mod_cobalt_submitbutton.j3.v.8.37.zip</file>
 		<file type="module" client="site" id="mod_cobalt_tagcloud">mod_cobalt_tagcloud.j3.v.8.40.zip</file>
@@ -179,6 +179,6 @@
 		<file type="file" id="mint">field_cobalt.j3.textarea.v.8.52.zip</file>
 		<file type="file" id="mint">field_cobalt.j3.uploads.v.8.28.zip</file>
 		<file type="file" id="mint">field_cobalt.j3.url.v.8.70.zip</file>
-		<file type="file" id="mint">field_cobalt.j3.video.v.8.84.zip</file>
+		<file type="file" id="mint">field_cobalt.j3.video.v.8.85.zip</file>
 	</files>
 </extension>
