@@ -106,7 +106,16 @@ if($params->get('view_what', 'all') == 'field_value')
 	$query->select('record_id');
 	$query->from('#__js_res_record_values');
 	$query->where('field_key = ' . $db->quote($params->get('field_src')));
-	$query->where('field_value ' . str_replace('{0}', str_replace('[USERNAME]', $user->get('username'), $params->get('field_value')), $params->get('fvco', "= '{0}'")));
+	$query->where('field_value ' . str_replace(
+			'{0}',
+			str_replace(
+				'[USERNAME]',
+				$user->get('username'),
+				$params->get('field_value')
+			),
+			$params->get('fvco', "= '{0}'")
+		)
+	);
 
 	$db->setQuery($query);
 	$ids   = $db->loadColumn();

@@ -72,8 +72,6 @@ if(!JFactory::getApplication()->isAdmin())
 	$document->addScript(JRoute::_('index.php?option=com_cobalt&task=ajax.mainJS&Itemid=1'));
 }
 
-$document->addScript(JURI::root(TRUE) . '/components/com_cobalt/library/js/felixrating.js');
-
 if(JFile::exists(JPATH_ROOT . '/components/com_cobalt/library/css/custom.css'))
 {
 	$document->addStyleSheet(JURI::root(TRUE) . '/components/com_cobalt/library/css/custom.css');

@@ -44,16 +44,16 @@
 					<?php foreach ($this->embed AS $embed):?>
 						<div class="element-box">
 							<textarea style="" name="jform[fields][<?php echo $this->id; ?>][embed][]" cols="50" rows="5"
-							id="<?php echo $this->formControl.$this->name;?>" ><?php echo $embed;?>
-							</textarea><img align="absmiddle" src="<?php echo JURI::root(TRUE)?>/media/mint/icons/16/cross-button.png"
-							class="link_delete" onclick="Cobalt.deleteFormElement('embed', this);">
+							id="<?php echo $this->formControl.$this->name;?>" ><?php echo $embed;?></textarea>
+							<img align="absmiddle" src="<?php echo JURI::root(TRUE)?>/media/mint/icons/16/cross-button.png"
+							class="link_delete" onclick="Cobalt.deleteFormElement<?php echo $this->id; ?>('embed', this);">
 						</div>
 					<?php endforeach;?>
 				</div>
 
 				<?php if(!$this->only_one):?>
 					<div id="embed-button">
-						<button class="btn" type="button" onclick="Cobalt.addFormElement('embed', <?php echo $this->id; ?>);">
+						<button class="btn" type="button" onclick="Cobalt.addFormElement<?php echo $this->id; ?>('embed', <?php echo $this->id; ?>);">
 							<img src="<?php echo JURI::root(TRUE); ?>/media/mint/icons/16/plus-button.png" align="absmiddle">
 							<?php echo JText::_('F_ADDEMBEDE'); ?>
 						</button>
@@ -80,14 +80,14 @@
 				<div id="input_links">
 					<?php foreach ($this->link AS $link):?>
 						<div class="element-box">
-							<input name="jform[fields][<?php echo $this->id;?>][link][]" type="text" value="<?php echo $link; ?>"  id="<?php echo $this->formControl.$this->name;?>" /><img align="absmiddle" src="<?php echo JURI::root(TRUE)?>/media/mint/icons/16/cross-button.png" class="link_delete" onclick="Cobalt.deleteFormElement('link', this);">
+							<input name="jform[fields][<?php echo $this->id;?>][link][]" type="text" value="<?php echo $link; ?>"  id="<?php echo $this->formControl.$this->name;?>" /><img align="absmiddle" src="<?php echo JURI::root(TRUE)?>/media/mint/icons/16/cross-button.png" class="link_delete" onclick="Cobalt.deleteFormElement<?php echo $this->id; ?>('link', this);">
 						</div>
 					<?php endforeach;?>
 				</div>
 
 				<?php if(!$this->only_one):?>
 					<div id="link-button">
-						<button class="btn" type="button" onclick="Cobalt.addFormElement('link', <?php echo $this->id; ?>);">
+						<button class="btn" type="button" onclick="Cobalt.addFormElement<?php echo $this->id; ?>('link', <?php echo $this->id; ?>);">
 							<img src="<?php echo JURI::root(TRUE); ?>/media/mint/icons/16/plus-button.png" align="absmiddle">
 							<?php echo JText::_('F_ONEMOREVIDEO'); ?>
 						</button>
@@ -106,7 +106,7 @@
 	lnk_count = <?php echo (int)count($this->link);?>;
 	emb_count = <?php echo (int)count($this->embed);?>;
 
-	Cobalt.addFormElement = function (type, id)
+	Cobalt.addFormElement<?php echo $this->id; ?> = function (type, id)
 	{
 		if(type == 'embed')
 		{
@@ -160,14 +160,14 @@
 			}).appendTo(input_div);
 
 		close_link.on('click', function(){
-			Cobalt.deleteFormElement(type, this);
+			Cobalt.deleteFormElement<?php echo $this->id; ?>(type, this);
 		});
 
 		$("#"+central_div).append(input_div);
 
 	}
 
-	Cobalt.deleteFormElement = function (type, second)
+	Cobalt.deleteFormElement<?php echo $this->id; ?> = function (type, second)
 	{
 		if(type == 'embed')
 		{

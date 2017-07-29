@@ -190,7 +190,7 @@ if(!class_exists('CarticleHelper'))
 													<?php echo '</p>' ;?>
 												<?php else:?>
 													<?php echo '<p>' ;?>
-														<?php echo $field->result; ?>
+													<?php echo $field->result; ?>
 													<?php echo '</p>' ;?>
 												<?php endif;?>
 											<?php endforeach;?>
@@ -257,11 +257,12 @@ if(!class_exists('CarticleHelper'))
 				if($params->get('tmpl_core.item_author') && $item->user_id)
 				{
 					$author['author'] = JText::sprintf( 'CWRITTENBY',CCommunityHelper::getName($item->user_id, $obj->section));
+					if($params->get('tmpl_core.item_author_filter'))
+					{
+						$author['author_filter'] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $obj->section, array('nohtml' => 1))), $obj->section);
+					}
 				}
-				if($params->get('tmpl_core.item_author_filter'))
-				{
-					$author['author_filter'] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $obj->section, array('nohtml' => 1))), $obj->section);
-				}
+				
 				if($params->get('tmpl_core.item_ctime'))
 				{
 					$time['ctime'] = JText::sprintf(JHtml::_('date', $item->created, $params->get('tmpl_core.item_time_format')));
@@ -307,7 +308,9 @@ if(!class_exists('CarticleHelper'))
 
 
 				<?php if($author || $details || $time): ?>
-
+					<?php //print_r($author); ?>
+					<?php //print_r($details); ?>
+					<?php //print_r($time); ?>
 					<!-- Начало вывода мета-информации о статье -->
 
 					<div class="post_metainfo">

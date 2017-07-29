@@ -13,7 +13,10 @@ class RatingHelp
 
 	public static function loadFile()
 	{
-		JFactory::getDocument()->addScriptDeclaration(
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root(TRUE) . '/components/com_cobalt/library/js/felixrating.js');
+
+		$document->addScriptDeclaration(
 			"function FileRatingCallBack( vote, ident )
 			{
 				jQuery.ajax({
@@ -71,6 +74,9 @@ class RatingHelp
 
 	public static function loadRating($tmpl_name, $current, $prod_id, $index = 0, $callbackfunction, $rating_active, $record_id = '')
 	{
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root(TRUE) . '/components/com_cobalt/library/js/felixrating.js');
+
 		$tmpl_name = explode('.', $tmpl_name);
 		$tmpl_name = $tmpl_name[0];
 
@@ -101,6 +107,9 @@ class RatingHelp
 		{
 			return FALSE;
 		}
+
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root(TRUE) . '/components/com_cobalt/library/js/felixrating.js');
 
 		$options = $type->params->get('properties.rate_multirating_options');
 		$options = explode("\n", $options);
@@ -149,6 +158,9 @@ class RatingHelp
 
 	public static function loadFormMultiratings($record, $type, $section, $active = 1)
 	{
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root(TRUE) . '/components/com_cobalt/library/js/felixrating.js');
+
 		$options = $type->params->get('properties.rate_multirating_options');
 		$options = explode("\n", $options);
 		ArrayHelper::clean_r($options);

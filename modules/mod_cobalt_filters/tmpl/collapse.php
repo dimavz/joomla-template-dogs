@@ -141,7 +141,9 @@ defined('_JEXEC') or die('Restricted access');
 	<input type="hidden" name="view" value="records">
 	<input type="hidden" name="section_id" value="<?php echo $section->id;?>">
 	<input type="hidden" name="cat_id" value="<?php echo $cat_id;?>">
-	<input type="hidden" name="user_id" value="<?php echo ($user_id ? $user_id.':admin' : 0);?>">
+	<?php if($user_id > 0): ?>
+		<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+	<?php endif; ?>
 	<input type="hidden" name="view_what" value="<?php echo $vw;?>">
 	<input type="hidden" name="task" value="records.filters">
 	<input type="hidden" name="limitstart" value="0">

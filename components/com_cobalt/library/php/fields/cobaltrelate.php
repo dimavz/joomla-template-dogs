@@ -39,79 +39,87 @@ class CFormFieldRelate extends CFormField
 
 		settype($types, 'array');
 
-		$query = $db->getQuery(TRUE);
-		$query->from('#__js_res_record');
-		if(CStatistics::hasUnPublished($section_id))
+		//if(in_array($type, array(5, 2)))
 		{
-			$query->where('published = 1');
+			$list = array();
 		}
-		$query->where('hidden = 0');
-		$query->where('section_id = ' . (int)$section_id);
-		$query->where("type_id IN(" . implode(',', $types) . ")");
-
-		if($app->input->getInt('id') && $app->input->getCmd('option') == 'com_cobalt' && $app->input->getCmd('view') == 'form')
+		//else
 		{
-			$query->where('id != ' . $app->input->getInt('id'));
-		}
-		if(!in_array($section->params->get('general.show_restrict'), $user->getAuthorisedViewLevels()) && !MECAccess::allowRestricted($user, $section))
-		{
-			$query->where("(access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") OR user_id = " . $user->get('id') . ")");
-		}
-
-		if(!in_array($section->params->get('general.show_future_records'), $user->getAuthorisedViewLevels()))
-		{
-			$query->where("ctime < " . $db->quote(JFactory::getDate()->toSql()));
-		}
-
-		if(!in_array($section->params->get('general.show_past_records'), $user->getAuthorisedViewLevels()))
-		{
-			$query->where("(extime = '0000-00-00 00:00:00' OR extime > '" . JFactory::getDate()->toSql() . "')");
-		}
-
-		if(!in_array($this->params->get('params.strict_to_user'), $user->getAuthorisedViewLevels()) && $this->user_strict)
-		{
-			if($this->params->get('params.strict_to_user_mode') > 1 && $app->input->getInt('id'))
+			$query = $db->getQuery(TRUE);
+			$query->from('#__js_res_record');
+			if(CStatistics::hasUnPublished($section_id))
 			{
-				$record = JTable::getInstance('Record', 'CobaltTable');
-				$record->load($app->input->getInt('id'));
-				$user_id = $record->user_id;
-				if(!$user_id && $this->params->get('params.strict_to_user_mode') == 3)
+				$query->where('published = 1');
+			}
+			$query->where('hidden = 0');
+			$query->where('section_id = ' . (int)$section_id);
+			$query->where("type_id IN(" . implode(',', $types) . ")");
+
+			if($app->input->getInt('id') && $app->input->getCmd('option') == 'com_cobalt' && $app->input->getCmd('view') == 'form')
+			{
+				$query->where('id != ' . $app->input->getInt('id'));
+			}
+			if(!in_array($section->params->get('general.show_restrict'), $user->getAuthorisedViewLevels()) && !MECAccess::allowRestricted($user, $section))
+			{
+				$query->where("(access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") OR user_id = " . $user->get('id') . ")");
+			}
+
+			if(!in_array($section->params->get('general.show_future_records'), $user->getAuthorisedViewLevels()))
+			{
+				$query->where("ctime < " . $db->quote(JFactory::getDate()->toSql()));
+			}
+
+			if(!in_array($section->params->get('general.show_past_records'), $user->getAuthorisedViewLevels()))
+			{
+				$query->where("(extime = '0000-00-00 00:00:00' OR extime > '" . JFactory::getDate()->toSql() . "')");
+			}
+
+			if(!in_array($this->params->get('params.strict_to_user'), $user->getAuthorisedViewLevels()) && $this->user_strict)
+			{
+				if($this->params->get('params.strict_to_user_mode') > 1 && $app->input->getInt('id'))
+				{
+					$record = JTable::getInstance('Record', 'CobaltTable');
+					$record->load($app->input->getInt('id'));
+					$user_id = $record->user_id;
+					if(!$user_id && $this->params->get('params.strict_to_user_mode') == 3)
+					{
+						$user_id = $user->get('id');
+					}
+				}
+				else
 				{
 					$user_id = $user->get('id');
 				}
+				$query->where('user_id = ' . ($user_id ? $user_id : 1));
 			}
-			else
+
+			if($this->type == 'parent' && !$this->isFilter)
 			{
-				$user_id = $user->get('id');
+				$table = JTable::getInstance('Field', 'CobaltTable');
+				$table->load($this->params->get('params.child_field'));
+				$child = new \Joomla\Registry\Registry($table->params);
+
+				if($child->get('params.multi_parent') == 0)
+				{
+					$query->where("id NOT IN(SELECT record_id FROM #__js_res_record_values WHERE field_id = " . $table->id . ")");
+				}
 			}
-			$query->where('user_id = ' . ($user_id ? $user_id : 1));
-		}
 
-		if($this->type == 'parent' && !$this->isFilter)
-		{
-			$table = JTable::getInstance('Field', 'CobaltTable');
-			$table->load($this->params->get('params.child_field'));
-			$child = new \Joomla\Registry\Registry($table->params);
-
-			if($child->get('params.multi_parent') == 0)
+			$query->select('id as value, title as text');
+			if($this->params->get('params.input_sort'))
 			{
-				$query->where("id NOT IN(SELECT record_id FROM #__js_res_record_values WHERE field_id = " . $table->id . ")");
+				$query->order($this->params->get('params.input_sort'));
+			}
+
+			$db->setQuery($query);
+			$list = $db->loadObjectList();
+
+			if(count($list) == 0 && empty($this->value))
+			{
+				return NULL;
 			}
 		}
 
-		$query->select('id as value, title as text');
-		if($this->params->get('params.input_sort'))
-		{
-			$query->order($this->params->get('params.input_sort'));
-		}
-
-		$db->setQuery($query);
-		$list = $db->loadObjectList();
-
-		if(count($list) == 0 && empty($this->value))
-		{
-			return NULL;
-		}
 
 		if(count($list) == 1 && $this->type == 'child' && ($this->params->get('params.multi_parent') == 0) && ($this->params->get('core.required') == 1))
 		{
@@ -306,9 +314,11 @@ class CFormFieldRelate extends CFormField
 			}
 		</style>
 		<div id="parent_list<?php echo $this->id; ?>"></div>
-		<a data-toggle="modal" role="button" class="btn btn-small btn-warning" href="#modal<?php echo $this->id; ?>"><?php echo JText::_($this->params->get('params.control_label')) ?></a>
+		<a data-toggle="modal" role="button" class="btn btn-small btn-warning"
+		   href="#modal<?php echo $this->id; ?>"><?php echo JText::_($this->params->get('params.control_label')) ?></a>
 
-		<div style="width:770px;" class="modal hide fade" id="modal<?php echo $this->id; ?>" tabindex="-1" role="dialog">
+		<div style="width:770px;" class="modal hide fade" id="modal<?php echo $this->id; ?>" tabindex="-1"
+			 role="dialog">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3 id="myModalLabel"><?php echo $app->input->get('view') == 'records' ? JText::_('Select Children') : JText::_('FS_ATTACHEXIST'); ?></h3>
@@ -323,7 +333,7 @@ class CFormFieldRelate extends CFormField
 		</div>
 
 		<script type="text/javascript">
-			(function($) {
+			(function ($) {
 
 				window.modal<?php echo $this->id; ?> = $('#modal<?php echo $this->id; ?>');
 				window.elementslist<?php echo $this->id; ?> = $('#parent_list<?php echo $this->id; ?>');
@@ -331,9 +341,9 @@ class CFormFieldRelate extends CFormField
 				window.limit<?php echo $this->id; ?> = <?php echo $this->params->get('params.multi_limit', 0);?>;
 				window.name<?php echo $this->id; ?> = '<?php echo $name; ?>';
 
-				$('#modal<?php echo $this->id;?>').on('show', function() {
+				$('#modal<?php echo $this->id;?>').on('show', function () {
 					var ids = [];
-					$.each(elementslist<?php echo $this->id; ?>.children('div.alert'), function(k, v) {
+					$.each(elementslist<?php echo $this->id; ?>.children('div.alert'), function (k, v) {
 						ids.push($(v).attr('rel'));
 					});
 					console.log(ids.join(','));
@@ -346,23 +356,23 @@ class CFormFieldRelate extends CFormField
 					$(".modal-body").html(iframe);
 				});
 
-				window.list<?php echo $this->id; ?> = function(id, title) {
+				window.list<?php echo $this->id; ?> = function (id, title) {
 					<?php if(!$multi):?>
 					elementslist<?php echo $this->id; ?>.html('');
 					<?php else: ?>
 					lis = elementslist<?php echo $this->id; ?>.children('div.alert');
-					if(lis.length >= limit<?php echo $this->id; ?>) {
+					if (lis.length >= limit<?php echo $this->id; ?>) {
 						alert('<?php echo JText::sprintf('CSELECTLIMIT', $this->params->get('params.multi_limit'));?>');
 						return false;
 					}
 					error = 0;
-					$.each(lis, function(k, v) {
-						if($(v).attr('rel') == id) {
+					$.each(lis, function (k, v) {
+						if ($(v).attr('rel') == id) {
 							alert('<?php echo JText::_('CALREADYSELECTED');?>');
 							error = 1;
 						}
 					});
-					if(error) {
+					if (error) {
 						return false;
 					}
 					<?php endif;?>
@@ -379,10 +389,10 @@ class CFormFieldRelate extends CFormField
 				list<?php echo $this->id; ?>(<?php echo $item->id; ?>, '<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8')?>');
 				<?php endforeach;?>
 
-				window.updatelist<?php echo $this->id; ?> = function(list) {
+				window.updatelist<?php echo $this->id; ?> = function (list) {
 					var elementslist<?php echo $this->id; ?> = $('#parent_list<?php echo $this->id; ?>');
 					elementslist<?php echo $this->id; ?>.empty();
-					$.each(list, function() {
+					$.each(list, function () {
 						elementslist<?php echo $this->id; ?>.append(this);
 					});
 				}

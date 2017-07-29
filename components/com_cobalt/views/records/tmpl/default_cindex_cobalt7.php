@@ -67,7 +67,7 @@ $ind = 0;
 							<img style="cursor: pointer;" id="iconsubcat<?php echo $category->id;?>" src="<?php echo JURI::root()?>media/mint/icons/16/toggle.png" hspace="5" align="absmiddle" />
 						<?php endif;?>
 						<a href="<?php echo JRoute::_($category->link)?>"><?php echo $category->title; ?></a>
-						<?php if($params->get('tmpl_params.cat_nums') && $category->params->get('submission')):?>
+						<?php if($params->get('tmpl_params.cat_nums') && ($category->params->get('submission') || $category->records_num)):?>
 							(<?php echo $category->records_num;?>)
 						<?php endif;?>
 					</<?php echo $this->tmpl_params['cindex']->get('tmpl_params.tag', 'h4')?>>

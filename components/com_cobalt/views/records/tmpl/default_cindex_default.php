@@ -64,7 +64,7 @@ $api = new CobaltApi();
 									<?php echo $category->title; ?>
 								<?php endif;?>
 							</a>
-							<?php if($params->get('tmpl_params.cat_nums') && $category->params->get('submission')):?>
+							<?php if($params->get('tmpl_params.cat_nums') && ($category->params->get('submission') || $category->records_num)):?>
 								<span class="badge badge-info"><?php echo $category->records_num;?></span>
 							<?php endif;?>
 						</<?php echo $params->get('tmpl_core.tag', 'h4')?>>
