@@ -94,7 +94,7 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 				<div class="form-inline navbar-form pull-right search-form">
 					<span style="display: none;">Search box</span>
 					<?php if(in_array($markup->get('filters.show_search'), $this->user->getAuthorisedViewLevels())):?>
-						<input type="text" style="max-width: 100px; min-width: 50px;" placeholder="<?php echo JText::_('CSEARCHPLACEHOLDER');  ?>" name="filter_search"
+						<input type="text" style="max-width: 150px; min-width: 50px;" placeholder="<?php echo JText::_('CSEARCHPLACEHOLDER');  ?>" name="filter_search"
 							   value="<?php echo htmlentities($this->state->get('records.search'), ENT_COMPAT, 'utf-8');?>" />
 					<?php endif;?>
 					<?php if(in_array($markup->get('filters.show_more'), $this->user->getAuthorisedViewLevels())):?>
@@ -672,6 +672,13 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 
 	<?php if ($this->tmpl_params['list']->def('tmpl_core.item_pagination', 1)) : ?>
 		<form method="post">
+			
+			<?php if($this->pagination->getPagesLinks()): ?>
+				<div style="text-align: center;" class="pagination">
+					<?php echo str_replace('<ul>', '<ul class="pagination-list">', $this->pagination->getPagesLinks()); ?>
+				</div>
+				<div class="clearfix"></div>
+			<?php endif; ?>
 			<div style="text-align: center;">
 				<small>
 					<?php if($this->pagination->getPagesCounter()):?>
@@ -683,12 +690,6 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 					<?php //echo $this->pagination->getResultsCounter(); ?>
 				</small>
 			</div>
-			<?php if($this->pagination->getPagesLinks()): ?>
-				<div style="text-align: center;" class="pagination">
-					<?php echo str_replace('<ul>', '<ul class="pagination-list">', $this->pagination->getPagesLinks()); ?>
-				</div>
-				<div class="clearfix"></div>
-			<?php endif; ?>
 		</form>
 	<?php endif; ?>
 

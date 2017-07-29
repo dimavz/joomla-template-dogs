@@ -357,8 +357,8 @@ if(!class_exists('CarticleHelper'))
 								<?php endif; ?>
 
 								<?php if(isset($details['favorite_num'])): ?>
-									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/favorite.png" alt="В избранном" title="В избранном" width="24px" height="24px">
-										<span title="В избранном">
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/bookmark_24x24.png" alt="В закладках" title="В закладках" width="24px" height="24px">
+										<span title="В закладках">
 											<?php echo $details['favorite_num']; ?>
 										</span>
 									</li>
@@ -373,8 +373,8 @@ if(!class_exists('CarticleHelper'))
 								<?php endif; ?>
 
 								<?php if(isset($details['follow_num'])): ?>
-									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/lupa.png" alt="Оценок" title="Оценок" width="24px" height="24px">
-										<span title="Оценок">
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/sled_24x24.png" alt="Следят" title="Следят" width="24px" height="24px">
+										<span title="Следят">
 											<?php echo $details['follow_num']; ?>
 										</span>
 									</li>
@@ -479,7 +479,6 @@ $helper->exclude = $exclude;
 			<?php echo $helper->display($this);?>
 
 		<?php endfor;?>
-
 	<?php endfor;?>
 <?php endif;?>
 
@@ -516,3 +515,4 @@ $helper->exclude = $exclude;
 		</ul>
 	</div>
 <?php endif;?>
+</div><!-- end class="list_posts"> -->
