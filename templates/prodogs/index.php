@@ -28,7 +28,7 @@ $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/media.css');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/animate.min.css');
 
 //Подключение скриптов (scripts)
-// $doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
+//$doc->addScript(JUri::base().'templates/'.$doc->template.'/libs/jquery/jquery-1.11.1.min.js');
 
 //Проверяем выводиться ли какие либо модули
 if ($doc->countModules('position-3'))
@@ -80,12 +80,16 @@ if ($doc->countModules('position-17'))
 
 
 // Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
-unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
+JHtml::_('jquery.framework');
+//unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/core.js']);
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-core.js']);
-//unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
+//unset($doc->_scripts[JURI::root(true). '/media/system/js/modal.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/modal.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 //unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/owl.carousel.min.js']);
 
 //print_r($doc->params);

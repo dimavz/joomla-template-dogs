@@ -177,21 +177,25 @@ if(!class_exists('CarticleHelper'))
 										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
 										<?php if(!empty($group_name)):?>
 											<?php //echo '<ul>' ;?>
-											<?php foreach ($fields as $field_id => $field):?>
-												<?php if($field->params->get('core.show_lable') > 1):?>
-													<?php echo '<p>' ;?>
-													<?php echo $field->label; ?>
-													<?php if($field->params->get('core.icon')):?>
-														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+											<dl class="dl-horizontal text-overflow">
+												<?php foreach ($fields as $field_id => $field):?>
+													<?php if($field->params->get('core.show_lable') > 1):?>
+														<dt id="<?php echo $field->id;?>-lbl" for="field_<?php echo $field->id;?>" class="<?php echo $field->class;?>" >
+															<?php echo $field->label; ?>
+															<?php if($field->params->get('core.icon')):?>
+																<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+															<?php endif;?>
+														</dt>
+														<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+															<?php echo $field->result; ?>
+														</dd>
+													<?php else:?>
+														<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+															<?php echo $field->result; ?>
+														</dd>
 													<?php endif;?>
-													<?php echo $field->result; ?>
-													<?php echo '</p>' ;?>
-												<?php else:?>
-													<?php echo '<p>' ;?>
-													<?php echo $field->result; ?>
-													<?php echo '</p>' ;?>
-												<?php endif;?>
-											<?php endforeach;?>
+												<?php endforeach;?>
+											</dl>
 											<?php //echo '</ul>' ;?>
 										<?php endif;?>
 										<?php echo '</div>' ;?>
@@ -200,17 +204,25 @@ if(!class_exists('CarticleHelper'))
 										<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade" role="tabpanel">' ;?>
 										<?php if(!empty($group_name)):?>
 											<?php //echo '<ul>' ;?>
-											<?php foreach ($fields as $field_id => $field):?>
-												<?php if($field->params->get('core.show_lable') > 1):?>
-													<?php echo '<p>' ;?>
-													<?php echo $field->label; ?>
-													<?php if($field->params->get('core.icon')):?>
-														<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+											<dl class="dl-horizontal text-overflow">
+												<?php foreach ($fields as $field_id => $field):?>
+													<?php if($field->params->get('core.show_lable') > 1):?>
+														<dt id="<?php echo $field->id;?>-lbl" for="field_<?php echo $field->id;?>" class="<?php echo $field->class;?>" >
+															<?php echo $field->label; ?>
+															<?php if($field->params->get('core.icon')):?>
+																<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+															<?php endif;?>
+														</dt>
+														<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+															<?php echo $field->result; ?>
+														</dd>
+													<?php else:?>
+														<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+															<?php echo $field->result; ?>
+														</dd>
 													<?php endif;?>
-													<?php echo $field->result; ?>
-													<?php echo '</p>' ;?>
-												<?php endif;?>
-											<?php endforeach;?>
+												<?php endforeach;?>
+											</dl>
 											<?php //echo '</ul>' ;?>
 										<?php endif;?>
 										<?php echo '</div>' ;?>
@@ -239,29 +251,29 @@ if(!class_exists('CarticleHelper'))
 
 				<!-- Начало вывода Тэгов -->
 				<?php
-						$tags = JHtml::_(
-							'tags.fetch2',
-							$item->tags,
-							$item->id,
-							$item->section_id,
-							$item->category_id,
-							'h1, h2, h3, h4, h5, h6, strong, em, b, i, big',
-							0,0,25
-						);
+				$tags = JHtml::_(
+					'tags.fetch2',
+					$item->tags,
+					$item->id,
+					$item->section_id,
+					$item->category_id,
+					'h1, h2, h3, h4, h5, h6, strong, em, b, i, big',
+					0,0,25
+					);
 					?>
-				<?php if(isset($tags)): ?>
-				<div class="post_tags">
-					<ul>
-						<?php foreach($tags AS $tag): ?>
-							<a href="<?php echo $tag['link'] ?>"
-								<?php echo $tag['attr'] ?>><li> <?php echo $tag['tag'] ?>
-								<i class="fa fa-tag fa-lg" aria-hidden="true"></i>
-							</li>
-						</a>
-					<?php endforeach; ?>
-					</ul>
-				</div>
-			<?php endif; ?>
+					<?php if(isset($tags)): ?>
+						<div class="post_tags">
+							<ul>
+								<?php foreach($tags AS $tag): ?>
+									<a href="<?php echo $tag['link'] ?>"
+										<?php echo $tag['attr'] ?>><li> <?php echo $tag['tag'] ?>
+										<i class="fa fa-tag fa-lg" aria-hidden="true"></i>
+									</li>
+								</a>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
 				<!-- Конец вывода Тэгов -->
 
 				<!-- Конец вывода основного содержания статьи-->

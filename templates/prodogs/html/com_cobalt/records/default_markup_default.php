@@ -94,7 +94,7 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 				<div class="form-inline navbar-form pull-right search-form">
 					<span style="display: none;">Search box</span>
 					<?php if(in_array($markup->get('filters.show_search'), $this->user->getAuthorisedViewLevels())):?>
-						<input type="text" style="max-width: 100px; min-width: 50px;" placeholder="<?php echo JText::_('CSEARCHPLACEHOLDER');  ?>" name="filter_search"
+						<input type="text" style="max-width: 150px; min-width: 50px;" placeholder="<?php echo JText::_('CSEARCHPLACEHOLDER');  ?>" name="filter_search"
 							   value="<?php echo htmlentities($this->state->get('records.search'), ENT_COMPAT, 'utf-8');?>" />
 					<?php endif;?>
 					<?php if(in_array($markup->get('filters.show_more'), $this->user->getAuthorisedViewLevels())):?>
@@ -641,8 +641,6 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 <?php endif;?>
 
 
-
-
 <?php if($markup->get('filters.worns') && count($this->worns)):?>
 <div class="filter-worns">
 	<?php foreach ($this->worns AS $worn):?>
@@ -667,13 +665,21 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 
 
 
+<?php $fl_list_posts = false ;?>
 
 <?php if($this->items):?>
-
+	<?php $fl_list_posts = true ;?>
 	<?php echo $this->loadTemplate('list_'.$this->list_template);?>
-
+	</div><!-- end class="list_posts"> -->
 	<?php if ($this->tmpl_params['list']->def('tmpl_core.item_pagination', 1)) : ?>
 		<form method="post">
+			
+			<?php if($this->pagination->getPagesLinks()): ?>
+				<div style="text-align: center;" class="pagination">
+					<?php echo str_replace('<ul>', '<ul class="pagination-list">', $this->pagination->getPagesLinks()); ?>
+				</div>
+				<div class="clearfix"></div>
+			<?php endif; ?>
 			<div style="text-align: center;">
 				<small>
 					<?php if($this->pagination->getPagesCounter()):?>
@@ -682,15 +688,9 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 					<?php  if ($this->tmpl_params['list']->def('tmpl_core.item_limit_box', 0)) : ?>
 						<?php echo str_replace('<option value="0">'.JText::_('JALL').'</option>', '', $this->pagination->getLimitBox());?>
 					<?php endif; ?>
-					<?php echo $this->pagination->getResultsCounter(); ?>
+					<?php //echo $this->pagination->getResultsCounter(); ?>
 				</small>
 			</div>
-			<?php if($this->pagination->getPagesLinks()): ?>
-				<div style="text-align: center;" class="pagination">
-					<?php echo str_replace('<ul>', '<ul class="pagination-list">', $this->pagination->getPagesLinks()); ?>
-				</div>
-				<div class="clearfix"></div>
-			<?php endif; ?>
 		</form>
 	<?php endif; ?>
 
@@ -700,4 +700,7 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 	<?php if(((!empty($this->category->id) && $this->category->params->get('submission')) || (empty($this->category->id) && $this->section->params->get('general.section_home_items'))) && !$this->input->get('view_what')):?>
 		<h4 align="center" class="no-records" id="no-records<?php echo $this->section->id; ?>"><?php echo JText::_('CNOARTICLESHERE');?></h4>
 	<?php endif;?>
+<?php endif;?>
+<?php if(!$fl_list_posts):?>
+</div><!-- end class="list_posts"> -->
 <?php endif;?>
