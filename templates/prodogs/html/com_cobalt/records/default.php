@@ -14,9 +14,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 </script>
 <?php endif;?>
 
-<!-- <section id="cobalt-section-<?php echo $this->section->id ?>"> -->
-<div class="list_posts">
+<section id="cobalt-section-<?php echo $this->section->id ?>">
 <?php echo $this->loadTemplate('markup_'.$this->section->params->get('general.tmpl_markup'));?>
-<!-- </div>
- --><!-- end class="list_posts"> Закрытие тэга див в файле default_markup_default-->
-<!-- </section> -->
+</section>
