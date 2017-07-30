@@ -7,8 +7,23 @@
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 defined('_JEXEC') or die('Restricted access');
-$params = $this->tmpl_params['list'];
-$fields = $this->fields;
+
+$app = JFactory::getApplication();
+
+$list_items = $this->items;
+
 ?>
 
-<?php print_r($fields); ?>
+	<ul>
+		<?php foreach ($list_items AS $item):?>
+			<pre>
+			 <?php print_r($item);?>
+			</pre>
+			<?php break;?> 
+
+		<?php endforeach;?>
+	</ul>
+
+
+
+

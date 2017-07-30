@@ -8,8 +8,6 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-$doc = JFactory::getDocument();
-
 if(!class_exists('CarticleHelper'))
 {
 	class CarticleHelper
@@ -240,9 +238,30 @@ if(!class_exists('CarticleHelper'))
 				</div><!-- /.post_info -->
 
 				<!-- Начало вывода Тэгов -->
+				<?php
+						$tags = JHtml::_(
+							'tags.fetch2',
+							$item->tags,
+							$item->id,
+							$item->section_id,
+							$item->category_id,
+							'h1, h2, h3, h4, h5, h6, strong, em, b, i, big',
+							0,0,25
+						);
+					?>
+				<?php if(isset($tags)): ?>
 				<div class="post_tags">
-					
+					<ul>
+						<?php foreach($tags AS $tag): ?>
+							<a href="<?php echo $tag['link'] ?>"
+								<?php echo $tag['attr'] ?>><li> <?php echo $tag['tag'] ?>
+								<i class="fa fa-tag fa-lg" aria-hidden="true"></i>
+							</li>
+						</a>
+					<?php endforeach; ?>
+					</ul>
 				</div>
+			<?php endif; ?>
 				<!-- Конец вывода Тэгов -->
 
 				<!-- Конец вывода основного содержания статьи-->
