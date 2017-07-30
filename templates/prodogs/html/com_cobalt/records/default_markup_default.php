@@ -665,11 +665,12 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 
 
 
+<?php $fl_list_posts = false ;?>
 
 <?php if($this->items):?>
-
+	<?php $fl_list_posts = true ;?>
 	<?php echo $this->loadTemplate('list_'.$this->list_template);?>
-
+	</div><!-- end class="list_posts"> -->
 	<?php if ($this->tmpl_params['list']->def('tmpl_core.item_pagination', 1)) : ?>
 		<form method="post">
 			
@@ -700,4 +701,6 @@ $current_user = JFactory::getUser($this->input->getInt('user_id', $this->user->g
 		<h4 align="center" class="no-records" id="no-records<?php echo $this->section->id; ?>"><?php echo JText::_('CNOARTICLESHERE');?></h4>
 	<?php endif;?>
 <?php endif;?>
-
+<?php if(!$fl_list_posts):?>
+</div><!-- end class="list_posts"> -->
+<?php endif;?>

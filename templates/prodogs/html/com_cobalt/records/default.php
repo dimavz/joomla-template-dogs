@@ -17,5 +17,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <!-- <section id="cobalt-section-<?php echo $this->section->id ?>"> -->
 <div class="list_posts">
 <?php echo $this->loadTemplate('markup_'.$this->section->params->get('general.tmpl_markup'));?>
-</div><!-- end class="list_posts"> -->
+<!-- </div>
+ --><!-- end class="list_posts"> Закрытие тэга див в файле default_markup_default-->
 <!-- </section> -->
