@@ -249,7 +249,24 @@ ul.profil_menu li i{
 	}
 
 	.top_login{
-		margin-top: -5px;
+		margin-top: -10px;
+	}
+	.top_login .login-greeting{
+		position: absolute;
+		top: 0px;
+		right: 30px;
+		color:yellow;
+		width: 250px;
+	}
+	.top_login ul.unstyled{
+		list-style-type: none;
+		display: block;
+		position: absolute;
+		top:15px;
+		right: 80px;
+	}
+	.top_login ul.unstyled li a{
+		font-size: 14px;
 	}
 	.top_login a{
 		display: inline-block;
@@ -259,7 +276,12 @@ ul.profil_menu li i{
 	}
 	.top_login a i{
 		padding-right: 5px;
-		font-size: 22px;
+		font-size: 20px;
+	}
+	.logout-button{
+		position: absolute;
+		top: 0px;
+		right: 0px;
 	}
 
 
