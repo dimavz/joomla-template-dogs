@@ -13,6 +13,17 @@ $menu = JFactory::getApplication()->getMenu();
 $activePage = $menu->getActive()->id;
 $defaultPage = $menu->getDefault()->id;
 
+$user = JFactory::getUser();
+
+if ($user->guest)
+{
+	$showGuest=true;
+}
+else
+{
+	$showGuest=false;
+}
+
 //Подключение стилей (stylesheets)
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/favicon.png');
 $doc->addStyleSheet(JUri::base().'templates/'.$doc->template.'/css/bootstrap.min.css');
@@ -80,14 +91,14 @@ if ($doc->countModules('position-17'))
 
 
 // Отключение стандартных скриптов Joomla (Конфликтуют с подключаемыми скриптами шаблона)
-JHtml::_('jquery.framework');
+//JHtml::_('jquery.framework');
 //unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery.min.js']);
 //unset($doc->_scripts[JURI::root(true). '/media/system/js/core.js']);
 //unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-migrate.min.js']);
 //unset($doc->_scripts[JURI::root(true). '/media/jui/js/jquery-noconflict.js']);
 unset($doc->_scripts[JURI::root(true). '/media/jui/js/bootstrap.min.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-core.js']);
-//unset($doc->_scripts[JURI::root(true). '/media/system/js/modal.js']);
+unset($doc->_scripts[JURI::root(true). '/media/system/js/modal.js']);
 unset($doc->_scripts[JURI::root(true). '/media/system/js/mootools-more.js']);
 unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/owl.carousel.min.js']);
 
@@ -231,9 +242,12 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 							</button>
 							<div class="top_login">
-								
+								<?php if ($showGuest):?>
 								<a href="#login" class="fancybox"><i class="fa fa-key" aria-hidden="true"></i>Вход</a>
-								<a href="#register" class="fancybox"><i class="fa fa-user" aria-hidden="true"></i>Регистрация</a>
+								<a href="/component/users/?view=registration"><i class="fa fa-user" aria-hidden="true"></i>Регистрация</a>
+							<?php else:?>
+								<jdoc:include type="modules" name="position-1"/>
+							<?php endif;?>
 							</div>
 						</div><!-- /.top_links -->
 					</div>
@@ -1140,7 +1154,11 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 			<button id="top" class="up" data-spy="affix" data-offset-top="50" title="Наверх"><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
 			</button>
 			<div class="hidden">
-				<form action="" id="login" class="login_form">
+				<div id="login">
+					<jdoc:include type="modules" name="position-1"/>
+				</div>
+
+				<!-- <form action="" id="login" class="login_form">
 					<h3>Вход на сайт</h3>
 					<div class="form-group has-success has-feedback">
 						<label for="inputEmail" class="col-sm-3 control-label">Email</label>
@@ -1168,8 +1186,9 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 							<button type="submit" class="btn btn-info">Войти</button>
 						</div>
 					</div>
-				</form>
-				<form id="register" class="form-horizontal" role="form">
+				</form> -->
+
+<!-- 				<form id="register" class="form-horizontal" role="form">
 					<div class="form-group has-success has-feedback">
 						<label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
 						<div class="col-sm-9">
@@ -1177,7 +1196,7 @@ unset($doc->_scripts[JURI::root(true). '/components/com_cobalt/library/tws/js/ow
 							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
 					</div>
-				</form>
+				</form> -->
 			</div>
 	<!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
