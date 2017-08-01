@@ -253,8 +253,8 @@ ul.profil_menu li i{
 	}
 	.top_login .login-greeting{
 		position: absolute;
-		top: 0px;
-		right: 30px;
+		top: -5px;
+		right: 0px;
 		color:yellow;
 		width: 250px;
 	}
@@ -262,7 +262,7 @@ ul.profil_menu li i{
 		list-style-type: none;
 		display: block;
 		position: absolute;
-		top:15px;
+		top:12px;
 		right: 80px;
 	}
 	.top_login ul.unstyled li a{
@@ -281,7 +281,7 @@ ul.profil_menu li i{
 	.logout-button{
 		position: absolute;
 		top: 0px;
-		right: 0px;
+		right: -7px;
 	}
 
 
