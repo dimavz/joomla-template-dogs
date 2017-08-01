@@ -75,10 +75,9 @@ if(!class_exists('CarticleHelper'))
 						<?php echo HTMLFormatHelper::compare($item, $obj->submission_types[$item->type_id], $obj->section);?>
 						<?php if($item->controls):?>
 							<div class="btn-group" role="group" data-toggle="tooltip" data-placement="top" title="Параметры">
-								<button button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-cog" aria-hidden="true"></i>
-									<span class="caret"></span>
-								</button>
+								<a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-mini">
+								<?php echo HTMLFormatHelper::icon('gear.png');  ?>
+							</a>
 
 								<ul class="dropdown-menu">
 									<?php echo list_controls($item->controls);?>
