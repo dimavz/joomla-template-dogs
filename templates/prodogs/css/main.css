@@ -251,23 +251,6 @@ ul.profil_menu li i{
 	.top_login{
 		margin-top: -10px;
 	}
-	.top_login .login-greeting{
-		position: absolute;
-		top: -5px;
-		right: 0px;
-		color:yellow;
-		width: 250px;
-	}
-	.top_login ul.unstyled{
-		list-style-type: none;
-		display: block;
-		position: absolute;
-		top:12px;
-		right: 80px;
-	}
-	.top_login ul.unstyled li a{
-		font-size: 14px;
-	}
 	.top_login a{
 		display: inline-block;
 		padding-left: 5px;
@@ -278,10 +261,47 @@ ul.profil_menu li i{
 		padding-right: 5px;
 		font-size: 20px;
 	}
-	.logout-button{
+	.top_user{
+		margin: 0;
 		position: absolute;
-		top: 0px;
-		right: -7px;
+		top: -10px;
+		right: 0;
+	}
+	.top_user form{
+		display: inline-block;
+		width: 250px;
+		height: 50px;
+	}
+	.top_user .login-greeting{
+		width: 250px;
+		height: 25px;
+		display: block;
+		float: left;
+	}
+	.top_user .user-profile{;
+		width: 150px;
+		height: 25px;
+		display: block;
+		float: left;
+	}
+	.top_user .user-profile a{
+		font-size: 14px;
+	}
+	
+	.top_user .logout-button{
+		display: block;
+		float: right;
+		width: 100px;
+		height: 25px;
+	}
+
+	.top_user .logout-button .btn{
+		padding: 1px 5px;
+		margin-top: -5px;
+	}
+
+	.top_user .logout-button .btn:hover {
+		color: yellow;
 	}
 
 

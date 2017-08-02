@@ -11,6 +11,10 @@ $(document).ready(function() {
 		$(".top_login").slideToggle();
 	});
 
+	$(".auth_button").click(function(){
+		$(".top_user").slideToggle();
+	});
+
 	$(".add_ad").click(function(){
 		$(".footer_left_block ul").slideToggle();
 	});
