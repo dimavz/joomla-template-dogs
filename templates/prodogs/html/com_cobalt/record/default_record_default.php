@@ -15,8 +15,12 @@ $icons = array();
 $category = array();
 $author = array();
 $details = array();
+$time = array();
 $started = FALSE;
 $i = $o = 0;
+
+$countTab = 1;
+$countContentTab = 1;
 
 ?>
 <style>
@@ -33,54 +37,53 @@ $i = $o = 0;
 <?php
 if($params->get('tmpl_core.item_categories') && $item->categories_links)
 {
-	$category[] = sprintf('<dt>%s<dt> <dd>%s<dd>', (count($item->categories_links) > 1 ? JText::_('CCATEGORIES') : JText::_('CCATEGORY')), implode(', ', $item->categories_links));
+	$category['categories'] = sprintf('%s : %s', (count($item->categories_links) > 1 ? JText::_('CCATEGORIES') : JText::_('CCATEGORY')), implode(', ', $item->categories_links));
 }
 if($params->get('tmpl_core.item_user_categories') && $item->ucatid)
 {
-	$category[] = sprintf('<dt>%s<dt> <dd>%s<dd>', JText::_('CUCAT'), $item->ucatname_link);
+	$category['user_categories'] = sprintf('<dt>%s<dt> <dd>%s<dd>', JText::_('CUCAT'), $item->ucatname_link);
 }
 if($params->get('tmpl_core.item_author') && $item->user_id)
 {
-	$a[] = JText::sprintf('CWRITTENBY', CCommunityHelper::getName($item->user_id, $this->section));
+	$a['name'] = JText::sprintf('CWRITTENBY', CCommunityHelper::getName($item->user_id, $this->section));
 	if($params->get('tmpl_core.item_author_filter'))
 	{
-		$a[] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $this->section, array('nohtml' => 1))), $this->section);
+		$a['author_filter'] = FilterHelper::filterButton('filter_user', $item->user_id, NULL, JText::sprintf('CSHOWALLUSERREC', CCommunityHelper::getName($item->user_id, $this->section, array('nohtml' => 1))), $this->section);
 	}
-	$author[] = implode(' ', $a);
 }
 if($params->get('tmpl_core.item_ctime'))
 {
-	$author[] = JText::sprintf('CONDATE', JHtml::_('date', $item->created, $params->get('tmpl_core.item_time_format')));
+	$time['ctime'] = JText::sprintf('CONDATE', JHtml::_('date', $item->created, $params->get('tmpl_core.item_time_format')));
 }
 
 if($params->get('tmpl_core.item_mtime'))
 {
-	$author[] = JText::_('CMTIME').': '.JHtml::_('date', $item->modify, $params->get('tmpl_core.item_time_format'));
+	$time['mtime'] = JText::_('CMTIME').': '.JHtml::_('date', $item->modify, $params->get('tmpl_core.item_time_format'));
 }
 if($params->get('tmpl_core.item_extime'))
 {
-	$author[] = JText::_('CEXTIME').': '.($item->expire ? JHtml::_('date', $item->expire, $params->get('tmpl_core.item_time_format')) : JText::_('CNEVER'));
+	$time['extime'] = JText::_('CEXTIME').': '.($item->expire ? JHtml::_('date', $item->expire, $params->get('tmpl_core.item_time_format')) : JText::_('CNEVER'));
 }
 
 if($params->get('tmpl_core.item_type'))
 {
-	$details[] = sprintf('%s: %s %s', JText::_('CTYPE'), $this->type->name, ($params->get('tmpl_core.item_type_filter') ? FilterHelper::filterButton('filter_type', $item->type_id, NULL, JText::sprintf('CSHOWALLTYPEREC', $this->type->name), $this->section) : NULL));
+	$details['type'] = sprintf('%s: %s %s', JText::_('CTYPE'), $this->type->name, ($params->get('tmpl_core.item_type_filter') ? FilterHelper::filterButton('filter_type', $item->type_id, NULL, JText::sprintf('CSHOWALLTYPEREC', $this->type->name), $this->section) : NULL));
 }
 if($params->get('tmpl_core.item_hits'))
 {
-	$details[] = sprintf('%s: %s', JText::_('CHITS'), $item->hits);
+	$details['hits'] = sprintf('%s: %s', JText::_('CHITS'), $item->hits);
 }
 if($params->get('tmpl_core.item_comments_num'))
 {
-	$details[] = sprintf('%s: %s', JText::_('CCOMMENTS'), CommentHelper::numComments($this->type, $this->item));
+	$details['comments_num'] = sprintf('%s: %s', JText::_('CCOMMENTS'), CommentHelper::numComments($this->type, $this->item));
 }
 if($params->get('tmpl_core.item_favorite_num'))
 {
-	$details[] = sprintf('%s: %s', JText::_('CFAVORITED'), $item->favorite_num);
+	$details['favorite_num'] = sprintf('%s: %s', JText::_('CFAVORITED'), $item->favorite_num);
 }
 if($params->get('tmpl_core.item_follow_num'))
 {
-	$details[] = sprintf('%s: %s', JText::_('CFOLLOWERS'), $item->subscriptions_num);
+	$details['follow_num'] = sprintf('%s: %s', JText::_('CFOLLOWERS'), $item->subscriptions_num);
 }
 ?>
 
@@ -131,95 +134,159 @@ if($params->get('tmpl_core.item_follow_num'))
 					<?php endif;?>
 				</div>
 			</div><!-- /.post_category -->
-			<div class="post_rating">
-				<?php if($params->get('tmpl_core.item_rating')):?>
-					<div class="span2">
+
+			<!-- Начало вывода рейтинга -->
+			<?php if($params->get('tmpl_core.item_rating')):?>
+				<div class="post_rating">
+					<span>
 						<?php echo $item->rating;?>
-					</div>
-				<?php endif;?>
-			</div><!-- /.post_rating -->
+					</span>
+				</div><!-- /.post_rating -->
+			<?php endif;?>
+			<!-- Конец вывода рейтинга -->
 			
 			<!-- Начало вывода основного содержания статьи (Полей)-->
 			<div class="post_info">
-				<?php if(isset($this->item->fields_by_groups[null])):?>
-					<dl class="dl-horizontal fields-list">
-						<?php foreach ($this->item->fields_by_groups[null] as $field_id => $field):?>
-							<dt id="<?php echo 'dt-'.$field_id; ?>" class="<?php echo $field->class;?>">
-								<?php if($field->params->get('core.show_lable') > 1):?>
-									<label id="<?php echo $field->id;?>-lbl">
-										<?php echo $field->label; ?>
-										<?php if($field->params->get('core.icon')):?>
-											<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
-										<?php endif;?>
-									</label>
-									<?php if($field->params->get('core.label_break') > 1):?>
-									<?php endif;?>
-								<?php endif;?>
-							</dt>
-							<dd id="<?php echo 'dd-'.$field_id; ?>" class="<?php echo $field->fieldclass;?><?php echo ($field->params->get('core.label_break') > 1 ? ' line-brk' : NULL) ?>">
+				<!-- Вывод полей без группы -->
+				<?php if($item->fields_by_groups[null]):?>
+					<?php foreach ($item->fields_by_groups[null] as $field_id => $field):?>
+						<?php if (isset($field->value['image'])) :?>
+							<div class="post_image">
 								<?php echo $field->result; ?>
-							</dd>
-						<?php endforeach;?>
-					</dl>
-					<?php unset($this->item->fields_by_groups[null]);?>
-				<?php endif;?>
+							</div>
+							<?php continue;?>
+						<?php endif;?>
 
-				<?php if(in_array($params->get('tmpl_params.item_grouping_type', 0), array(1)) && count($this->item->fields_by_groups)):?>
-					<div class="clearfix"></div>
-					<div class="tabbable <?php echo $params->get('tmpl_params.tabs_position');  ?>">
-						<ul class="nav <?php echo $params->get('tmpl_params.tabs_style', 'nav-tabs');  ?>" id="tabs-list">
-							<?php if(isset($this->item->fields_by_groups)):?>
-								<?php foreach ($this->item->fields_by_groups as $group_id => $fields) :?>
-									<li>
-										<a href="#tab-<?php echo $o++?>" data-toggle="tab">
-											<?php if(!empty($item->field_groups[$group_id]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
-												<?php echo HTMLFormatHelper::icon($item->field_groups[$group_id]['icon']) ?>
-											<?php endif; ?>
-											<?php echo JText::_($group_id)?>
-										</a>
-									</li>
-								<?php endforeach;?>
+						<dt id="<?php echo 'dt-'.$field_id; ?>" class="<?php echo $field->class;?>">
+							<?php if($field->params->get('core.show_lable') > 1):?>
+								<label id="<?php echo $field->id;?>-lbl">
+									<?php echo $field->label; ?>
+									<?php if($field->params->get('core.icon')):?>
+										<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+									<?php endif;?>
+								</label>
+								<?php if($field->params->get('core.label_break') > 1):?>
+								<?php endif;?>
 							<?php endif;?>
-						</ul>
-					<?php endif;?>
-
-					<?php if(isset($this->item->fields_by_groups)):?>
-						<?php foreach ($this->item->fields_by_groups as $group_name => $fields) :?>
-							<?php $started = true;?>
-							<?php group_start($this, $group_name, 'tab-'.$i++);?>
-							<dl class="dl-horizontal fields-list fields-group<?php echo $i;?>">
-								<?php foreach ($fields as $field_id => $field):?>
-									<dt id="<?php echo 'dt-'.$field_id; ?>" class="<?php echo $field->class;?>">
-										<?php if($field->params->get('core.show_lable') > 1):?>
-											<label id="<?php echo $field->id;?>-lbl">
-												<?php echo $field->label; ?>
-												<?php if($field->params->get('core.icon')):?>
-													<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
-												<?php endif;?>
-											</label>
-											<?php if($field->params->get('core.label_break') > 1):?>
-											<?php endif;?>
-										<?php endif;?>
-									</dt>
-									<dd id="<?php echo 'dd-'.$field_id; ?>" class="<?php echo $field->fieldclass;?><?php echo ($field->params->get('core.label_break') > 1 ? ' line-brk' : NULL) ?>">
-										<?php echo $field->result; ?>
-									</dd>
-								<?php endforeach;?>
-							</dl>
-							<?php group_end($this);?>
-						<?php endforeach;?>
-					<?php endif;?>
-
-					<?php if($started):?>
-						<?php total_end($this);?>
-					<?php endif;?>
-
-					<?php if(in_array($params->get('tmpl_params.item_grouping_type', 0), array(1))  && count($this->item->fields_by_groups)):?>
-					</div>
-					<div class="clearfix"></div>
-					<br />
+						</dt>
+						<dd id="<?php echo 'dd-'.$field_id; ?>" class="<?php echo $field->fieldclass;?><?php echo ($field->params->get('core.label_break') > 1 ? ' line-brk' : NULL) ?>">
+							<?php echo $field->result; ?>
+						</dd>
+					<?php endforeach;?>
+					<?php unset($item->fields_by_groups[null]);?>
 				<?php endif;?>
+				<!-- Конец Вывода полей без группы -->
 
+				<div class="clearfix"></div>
+
+				<!-- Вывод полей с группой -->
+				<div class="post_text">
+
+					<!-- Формируем ТАБЫ -->
+					<?php if(isset($item->fields_by_groups)):?>
+						<?php $countTab = $this->countTab; /*Счётчик табов*/ ?>
+						<?php echo '<ul class="nav nav-tabs" role="tablist">' ;?>
+						<?php $fl = true ; // Флаг активности таба?>
+						<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
+
+							<?php if(!empty($group_name)):?>
+								<?php if($fl):?>
+									<?php echo '<li role="presentation" class="active">';?>
+									<?php echo '<a href="#tab'.$countTab.'" aria-controls="tab'.$countTab.'" role="tab" data-toggle="tab" aria-expanded="true">';?>
+									<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
+										<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
+									<?php endif; ?>
+									<?php echo $group_name;?>
+									<?php echo '</a>';?>
+									<?php echo '</li>' ;?>
+									<?php $fl = false;?>
+								<?php else:?>
+									<?php echo '<li role="presentation">';?>
+									<?php echo '<a href="#tab'.$countTab.'" aria-controls="tab'.$countTab.'" role="tab" data-toggle="tab" aria-expanded="false">';?>
+									<?php if(!empty($item->field_groups[$group_name]['icon']) && $params->get('tmpl_params.show_groupicon', 1)): ?>
+										<?php echo HTMLFormatHelper::icon($item->field_groups[$group_name]['icon']) ?>
+									<?php endif; ?>
+									<?php echo $group_name;?>
+									<?php echo '</a>';?>
+									<?php echo '</li>' ;?>
+								<?php endif;?>
+							<?php endif;?>
+							<?php $countTab++; /*Увеличиваем Счётчик табов*/ ?>	
+							<?php $this->countTab = $countTab; /*Увеличиваем Счётчик табов*/ ?>	
+						<?php endforeach;?>
+						<?php echo '</ul>' ;?>
+					<?php endif;?>
+					<!-- Конец формирования ТАБОВ -->
+
+					<!-- Формируем поля ТАБОВ -->
+					<div class="tab-content">
+						<?php if(isset($item->fields_by_groups)):?>
+							<?php $countContentTab = $this->countContentTab; /*Счётчик контента*/ ?>
+							<?php $fl_cont = true ; // Флаг активности контента таба?>
+							<?php foreach ($item->fields_by_groups as $group_name => $fields) :?>
+								<?php if($fl_cont):?>
+									<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade in active" role="tabpanel">' ;?>
+									<?php if(!empty($group_name)):?>
+										<?php //echo '<ul>' ;?>
+										<dl class="dl-horizontal text-overflow">
+											<?php foreach ($fields as $field_id => $field):?>
+												<?php if($field->params->get('core.show_lable') > 1):?>
+													<dt id="<?php echo $field->id;?>-lbl" for="field_<?php echo $field->id;?>" class="<?php echo $field->class;?>" >
+														<?php echo $field->label; ?>
+														<?php if($field->params->get('core.icon')):?>
+															<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+														<?php endif;?>
+													</dt>
+													<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+														<?php echo $field->result; ?>
+													</dd>
+												<?php else:?>
+													<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+														<?php echo $field->result; ?>
+													</dd>
+												<?php endif;?>
+											<?php endforeach;?>
+										</dl>
+										<?php //echo '</ul>' ;?>
+									<?php endif;?>
+									<?php echo '</div>' ;?>
+									<?php $fl_cont = false; ?>
+								<?php else:?>
+									<?php echo '<div id="tab'.$countContentTab.'" class="tab-pane fade" role="tabpanel">' ;?>
+									<?php if(!empty($group_name)):?>
+										<?php //echo '<ul>' ;?>
+										<dl class="dl-horizontal text-overflow">
+											<?php foreach ($fields as $field_id => $field):?>
+												<?php if($field->params->get('core.show_lable') > 1):?>
+													<dt id="<?php echo $field->id;?>-lbl" for="field_<?php echo $field->id;?>" class="<?php echo $field->class;?>" >
+														<?php echo $field->label; ?>
+														<?php if($field->params->get('core.icon')):?>
+															<?php echo HTMLFormatHelper::icon($field->params->get('core.icon'));  ?>
+														<?php endif;?>
+													</dt>
+													<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+														<?php echo $field->result; ?>
+													</dd>
+												<?php else:?>
+													<dd class="input-field<?php echo ($field->params->get('core.label_break') > 1 ? '-full' : NULL)?> <?php echo $field->fieldclass;?>">
+														<?php echo $field->result; ?>
+													</dd>
+												<?php endif;?>
+											<?php endforeach;?>
+										</dl>
+										<?php //echo '</ul>' ;?>
+									<?php endif;?>
+									<?php echo '</div>' ;?>
+								<?php endif;?>
+								<?php $countContentTab++; /*Увеличение Счётчика  контента*/ ?>
+								<?php $this->countContentTab = $countContentTab; /*Увеличение Счётчика  контента*/ ?>
+							<?php endforeach;?>
+						<?php endif;?>
+					</div><!-- /.tab-content -->
+					<!-- Конец формирования полей ТАБОВ -->
+
+				</div><!-- /.post_text -->
+				<!-- Конец вывода полей с группой -->
 			</div><!-- /.post_info -->
 			<!-- Конец вывода основного содержания статьи (Полей)-->
 
@@ -227,127 +294,105 @@ if($params->get('tmpl_core.item_follow_num'))
 				<?php echo $this->loadTemplate('tags');?>
 			</div>
 
-			<?php if($category || $author || $details || $params->get('tmpl_core.item_rating')): ?>
-				<div class="well article-info">
-					<div class="row-fluid">
-						
-						<div class="span<?php echo ($params->get('tmpl_core.item_rating') ? 8 : 10);?>">
-							<small>
-								<dl class="dl-horizontal user-info">
-									<?php if($category):?>
-										<?php echo implode(' ', $category);?>
-									<?php endif;?>
-									<?php if($author):?>
-										<dt><?php echo JText::_('Posted');?></dt>
-										<dd>
-											<?php echo implode(', ', $author);?>
-										</dd>
-									<?php endif;?>
-									<?php if($details):?>
-										<dt>Info</dt>
-										<dd class="hits">
-											<?php echo implode(', ', $details);?>
-										</dd>
-									<?php endif;?>
-								</dl>
-							</small>
-						</div>
-						<?php if($params->get('tmpl_core.item_author_avatar')):?>
-							<div class="span2 avatar">
-								<img src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 40), $params->get('tmpl_core.item_author_avatar_height', 40));?>" />
-							</div>
-						<?php endif;?>
-					</div>
-				</div>
+			<?php if($time || $author || $details): ?>
+				<div class="post_metainfo">
+						<ul>
+							<?php if($time): ?>
+								<?php if(isset($time['ctime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar.png" alt="Дата публикации" title="Дата публикации" width="24px" height="24px">
+										<span title="Дата публикации">
+											<?php echo $time['ctime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($time['mtime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Дата редактирования" title="Дата редактирования" width="24px" height="24px">
+										<span id="data_edit" title="Дата редактирования">
+											<?php echo $time['mtime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($time['extime'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/calendar_edit.png" alt="Заканчивается" title="Заканчивается" width="24px" height="24px">
+										<span id="data_edit" title="Заканчивается">
+											<?php echo $time['extime']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $time -->
+
+							<?php if($details): ?>
+								<?php if(isset($details['hits'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/eye_24x24.png" alt="Просмотров" title="Просмотров" width="24px" height="24px">
+										<span title="Просмотров">
+											<?php echo $details['hits']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['comments_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/comments.png" alt="Комментариев" title="Комментариев" width="24px" height="24px">
+										<span title="Комментариев">
+											<?php echo $details['comments_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['favorite_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/bookmark_24x24.png" alt="В закладках" title="В закладках" width="24px" height="24px">
+										<span title="В закладках">
+											<?php echo $details['favorite_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['vote_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/star.png" alt="Оценок" title="Оценок" width="24px" height="24px">
+										<span title="Оценок">
+											<?php echo $details['vote_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+								<?php if(isset($details['follow_num'])): ?>
+									<li><img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/sled_24x24.png" alt="Следят" title="Следят" width="24px" height="24px">
+										<span title="Следят">
+											<?php echo $details['follow_num']; ?>
+										</span>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $details -->
+
+							<?php if($author): ?>
+								<?php if(isset($author['author'])): ?>
+									<li>
+										<?php if($params->get('tmpl_core.item_author_avatar')):?>
+											<img class="img-polaroid" src="<?php echo CCommunityHelper::getAvatar($item->user_id, $params->get('tmpl_core.item_author_avatar_width', 24), $params->get('tmpl_core.item_author_avatar_height', 24));?>" />
+											<span id="autor" title="Автор">
+												<?php echo $author['author']; ?>
+												<?php if(isset($author['author_filter'])): ?>
+													<?php echo $author['author_filter']; ?>
+												<?php endif; ?>
+											</span>
+										<?php else:?>
+											<img src="<?php echo JUri::base().'templates/';?>prodogs/images/content/article/icons_metainfo/autor.png" alt="Автор" title="Автор" width="24px" height="24px">
+											<span id="autor" title="Автор">
+												<?php echo $author['author']; ?>
+												<?php if(isset($author['author_filter'])): ?>
+													<?php echo $author['author_filter']; ?>
+												<?php endif; ?>
+											</span>
+										<?php endif;?>
+									</li>
+								<?php endif; ?>
+
+							<?php endif; ?> <!-- end if $author-->
+						</ul>
+					</div><!-- /.post_metainfo -->
 			<?php endif;?>
 		</div><!-- end class="post" -->
-
-		<?php if($started):?>
-			<script type="text/javascript">
-				<?php if(in_array($params->get('tmpl_params.item_grouping_type', 0), array(1))):?>
-				jQuery('#tabs-list a:first').tab('show');
-			<?php elseif(in_array($params->get('tmpl_params.item_grouping_type', 0), array(2))):?>
-			jQuery('#tab-main').collapse('show');
-		<?php endif;?>
-	</script>
-<?php endif;?>
-
-
-
-
-
-
-<?php
-function group_start($data, $label, $name)
-{
-	static $start = false;
-	$icon = '';
-	if(!empty($data->item->field_groups[$label]['icon']) && $data->tmpl_params['record']->get('tmpl_params.show_groupicon', 1)) {
-		$icon = HTMLFormatHelper::icon($data->item->field_groups[$label]['icon']);
-	}
-	switch ($data->tmpl_params['record']->get('tmpl_params.item_grouping_type', 0))
-	{
-		//tab
-		case 1:
-		if(!$start)
-		{
-			echo '<div class="tab-content" id="tabs-box">';
-			$start = TRUE;
-		}
-		echo '<div class="tab-pane" id="'.$name.'">';
-		break;
-		//slider
-		case 2:
-		if(!$start)
-		{
-			echo '<div class="accordion" id="accordion2">';
-			$start = TRUE;
-		}
-		echo '<div class="accordion-group">
-		<div class="accordion-heading">
-			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#'.$name.'">
-				'.$icon. ' '. $label.'
-			</a>
-		</div>
-		<div id="'.$name.'" class="accordion-body collapse">
-			<div class="accordion-inner">';
-				break;
-		// fieldset
-				case 3:
-				echo "<legend>{$icon} {$label}</legend>";
-				break;
-			}
-
-			if($data->tmpl_params['record']->get('tmpl_params.show_groupdescr') && !empty($data->item->field_groups[$label]['descr']))
-			{
-				echo $data->item->field_groups[$label]['descr'];
-			}
-		}
-
-		function group_end($data)
-		{
-			switch ($data->tmpl_params['record']->get('tmpl_params.item_grouping_type', 0))
-			{
-				case 1:
-				echo '</div>';
-				break;
-				case 2:
-				echo '</div></div></div>';
-				break;
-			}
-		}
-
-		function total_end($data)
-		{
-			switch ($data->tmpl_params['record']->get('tmpl_params.item_grouping_type', 0))
-			{
-		//tab
-				case 1:
-				echo '</div>';
-				break;
-				case 2:
-				echo '</div>';
-				break;
-			}
-		}
 
