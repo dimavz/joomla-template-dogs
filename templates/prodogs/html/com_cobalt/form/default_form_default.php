@@ -83,7 +83,6 @@ $k = 0;
 }
 	
 </style>
-
 <div class="form-horizontal">
 <?php if(in_array($params->get('tmpl_params.form_grouping_type', 0), array(1, 4))):?>
 	<div class="tabbable<?php if($params->get('tmpl_params.form_grouping_type', 0) == 4) echo ' tabs-left' ?>">
@@ -415,10 +414,6 @@ $k = 0;
 		jQuery('#tab-main').collapse('show');
 	<?php endif;?>
 </script>
-
-
-
-
 
 
 <?php

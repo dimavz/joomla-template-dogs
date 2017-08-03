@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die();
 ?>
+<div class="clearfix"></div>
 <div class="form-actions">
 <div class="pull-right">
 	<?php if(!$this->isCheckedOut()):?>
@@ -49,3 +50,4 @@ defined('_JEXEC') or die();
 	<?php endif; ?>
 </div>
 </div>
+<div class="clearfix"></div>
